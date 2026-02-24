@@ -1123,20 +1123,6 @@ body.hov .cursor-dot {
   .founder-grid { grid-template-columns: 1fr; gap: 52px; }
 }
 
-/* ─── LANG BUTTON ─── */
-.lang-btn {
-  font-family: var(--caps);
-  font-size: .68rem;
-  letter-spacing: .18em;
-  background: transparent;
-  border: 1px solid var(--w15);
-  color: var(--w40);
-  padding: 8px 16px;
-  cursor: none;
-  transition: color .3s, border-color .3s;
-}
-.lang-btn:hover { color: var(--blue-glow); border-color: rgba(0,80,255,.4); }
-
 /* ─── MARQUEE ─── */
 .marquee-wrap {
   position: relative;

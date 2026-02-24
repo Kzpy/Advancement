@@ -470,10 +470,11 @@ body.hov .cursor-dot {
 
 .stat-n {
   font-family: var(--display);
-  font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+  font-size: clamp(2rem, 3.5vw, 3.8rem);
   font-weight: 300;
   line-height: 1;
   margin-bottom: 10px;
+  white-space: nowrap;
 }
 
 .stat-n em { font-style: normal; color: var(--blue-glow); }
@@ -969,10 +970,11 @@ body.hov .cursor-dot {
 }
 
 .ft-copy {
-  font-family: var(--caps);
-  font-size: .66rem;
-  letter-spacing: .1em;
+  font-family: var(--display);
+  font-size: .82rem;
+  letter-spacing: .06em;
   color: var(--w40);
+  font-weight: 300;
 }
 
 .ft-policy {
@@ -981,9 +983,10 @@ body.hov .cursor-dot {
 }
 
 .ft-policy a {
-  font-family: var(--caps);
-  font-size: .66rem;
-  letter-spacing: .1em;
+  font-family: var(--display);
+  font-size: .82rem;
+  font-weight: 300;
+  letter-spacing: .06em;
   color: var(--w40);
   transition: color .3s;
 }

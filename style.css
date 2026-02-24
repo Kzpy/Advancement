@@ -1347,3 +1347,10 @@ body.hov .cursor-dot {
 @media (max-width: 800px) {
   .cred-grid { grid-template-columns: 1fr; }
 }
+
+@media (hover: none), (pointer: coarse) {
+  html { cursor: auto; }
+  a, button { cursor: pointer; }
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}

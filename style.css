@@ -1048,3 +1048,76 @@ body.hov .cursor-dot {
   .services-sub  { text-align: left; }
   .ft-links      { grid-template-columns: 1fr; }
 }
+
+/* ─── FOUNDER ─── */
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.founder-title-label {
+  font-family: var(--caps);
+  font-size: .68rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--blue-glow);
+  margin-bottom: 20px;
+}
+
+.founder-name {
+  font-family: var(--display);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -.01em;
+  margin-bottom: 48px;
+}
+
+.founder-name em {
+  font-style: italic;
+  color: var(--blue-glow);
+}
+
+.founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.f-tag {
+  font-family: var(--caps);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border: 1px solid var(--w15);
+  color: var(--w70);
+  position: relative;
+  overflow: hidden;
+  transition: color .3s, border-color .3s;
+}
+
+.f-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--blue-pale);
+  transform: translateX(-101%);
+  transition: transform .35s var(--ease);
+}
+
+.f-tag:hover { color: var(--blue-glow); border-color: rgba(0,80,255,.35); }
+.f-tag:hover::before { transform: translateX(0); }
+
+.founder-p {
+  font-size: .96rem;
+  color: var(--w70);
+  line-height: 1.95;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1100px) {
+  .founder-grid { grid-template-columns: 1fr; gap: 52px; }
+}

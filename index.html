@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advancement | Future Consulting</title>
+  <meta name="description" content="未来を切り拓く、次世代コンサルティングファーム。Advancementへようこそ。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CANVAS -->
+  <canvas id="bg"></canvas>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-brand">Advancement</div>
+    <div class="loader-track">
+      <div class="loader-fill" id="loader-fill"></div>
+    </div>
+    <div class="loader-pct" id="loader-pct">0%</div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <a href="#hero" class="logo">Advancement</a>
+    <nav class="nav">
+      <a href="#about"    class="nav-link">Philosophy</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#news"     class="nav-link">News</a>
+      <a href="#contact"  class="nav-cta"><span>Contact</span></a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero" class="hero">
+      <div class="hero-grid"></div>
+      <div class="orb-r"></div>
+      <div class="orb-l"></div>
+
+      <div class="hero-body">
+        <div class="eyebrow">
+          <span class="eyebrow-bar"></span>
+          <span class="eyebrow-text">Next Generation Consulting</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="tl"><span class="ti t-ghost">Shape the</span></span>
+          <span class="tl"><span class="ti">Future.</span></span>
+          <span class="tl"><span class="ti t-blue">Now.</span></span>
+        </h1>
+
+        <p class="hero-desc">
+          複雑化する経営課題に、戦略とテクノロジーで本質的な解を。<br>
+          Advancementは、変革を実装まで伴走する戦略パートナーです。
+        </p>
+
+        <div class="hero-cta">
+          <a href="#contact" class="btn-fill">お問い合わせ</a>
+          <a href="#services" class="btn-ghost">サービスを見る</a>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <div class="sh-track"><div class="sh-fill"></div></div>
+        <span class="sh-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══ STATS ═══ -->
+    <div class="stats-band">
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <div class="stat-n">200<em>+</em></div>
+          <div class="stat-l">Projects Delivered</div>
+        </div>
+        <div class="stat reveal d1">
+          <div class="stat-n">98<em>%</em></div>
+          <div class="stat-l">Client Satisfaction</div>
+        </div>
+        <div class="stat reveal d2">
+          <div class="stat-n">15<em>+</em></div>
+          <div class="stat-l">Industries Covered</div>
+        </div>
+        <div class="stat reveal d3">
+          <div class="stat-n">8<em>yr</em></div>
+          <div class="stat-l">Years of Excellence</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PHILOSOPHY ═══ -->
+    <section id="about" class="section-wrap">
+      <div class="tag reveal">
+        <span class="tag-n">01</span>
+        <span class="tag-bar"></span>
+        Philosophy
+      </div>
+
+      <div class="philo-grid">
+        <div>
+          <h2 class="philo-h reveal">
+            Unleash<br>
+            Potential,<br>
+            <em>Redefine</em><br>
+            Limits.
+          </h2>
+          <div class="philo-vis reveal d1">
+            <div class="philo-vis-bg"></div>
+            <div class="philo-vis-ring"></div>
+            <div class="philo-vis-cross"></div>
+            <div class="philo-vis-dot"></div>
+          </div>
+        </div>
+
+        <div class="philo-right">
+          <p class="philo-p reveal">
+            既存の枠組みを超え、新たな価値を創造する。
+            Advancementは、テクノロジーとクリエイティビティを融合させ、企業のポテンシャルを最大限に引き出す戦略的パートナーです。
+          </p>
+          <p class="philo-p reveal d1">
+            変化が加速する現代において、私たちは常に未来を先読みし、クライアントとともに次の一手を描きます。単なる分析や提言に留まらず、実装まで伴走する本質的なパートナーシップを提供します。
+          </p>
+          <a href="#services" class="link-line reveal d2">サービス一覧へ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section id="services" class="section-wrap" style="padding-top: 0;">
+      <div class="tag reveal">
+        <span class="tag-n">02</span>
+        <span class="tag-bar"></span>
+        Services
+      </div>
+
+      <div class="services-head">
+        <h2 class="services-h reveal">Our Services</h2>
+        <p class="services-sub reveal">テクノロジーと戦略の融合で、<br>ビジネスの可能性を拡張する。</p>
+      </div>
+
+      <div class="srv-grid">
+        <div class="srv reveal">
+          <div class="srv-num">— 01</div>
+          <div class="srv-icon">⟳</div>
+          <h3>Digital<br>Transformation</h3>
+          <p>デジタル技術を活用し、ビジネスプロセスと顧客体験を根本から変革します。データドリブンな意思決定基盤の構築から、AI導入まで包括的に支援。</p>
+          <div class="srv-foot">Learn More</div>
+        </div>
+        <div class="srv reveal d1">
+          <div class="srv-num">— 02</div>
+          <div class="srv-icon">◈</div>
+          <h3>Business<br>Strategy</h3>
+          <p>市場の変化を先読みし、持続的な成長を実現するための戦略を策定。新規事業開発、M&A、グローバル展開など、企業のフェーズに合わせた最適解を提案。</p>
+          <div class="srv-foot">Learn More</div>
+        </div>
+        <div class="srv reveal d2">
+          <div class="srv-num">— 03</div>
+          <div class="srv-icon">✦</div>
+          <h3>Creative<br>&amp; Branding</h3>
+          <p>機能的価値だけでなく、感情的価値を訴求するブランディング。WEBデザイン、UI/UX設計、映像制作など、クリエイティブの力でブランド価値を最大化。</p>
+          <div class="srv-foot">Learn More</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ NEWS ═══ -->
+    <section id="news" class="section-wrap" style="padding-top: 0;">
+      <div class="news-head reveal">
+        <h2 class="news-h">News</h2>
+        <a href="#" class="news-all">All News</a>
+      </div>
+
+      <ul class="news-list">
+        <li class="news-li reveal">
+          <a href="#" class="news-a">
+            <span class="news-date">2026.02.15</span>
+            <span class="news-tag press">Press</span>
+            <span class="news-title">次世代AIソリューション「Advancement core」の提供を開始。</span>
+            <span class="news-arr">→</span>
+          </a>
+        </li>
+        <li class="news-li reveal d1">
+          <a href="#" class="news-a">
+            <span class="news-date">2026.01.20</span>
+            <span class="news-tag event">Event</span>
+            <span class="news-title">グローバルカンファレンス「Future Business Summit 2026」に弊社代表が登壇します。</span>
+            <span class="news-arr">→</span>
+          </a>
+        </li>
+        <li class="news-li reveal d2">
+          <a href="#" class="news-a">
+            <span class="news-date">2025.12.10</span>
+            <span class="news-tag">Info</span>
+            <span class="news-title">本社移転のお知らせ。</span>
+            <span class="news-arr">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" class="section-wrap" style="padding-top: 0;">
+      <div class="contact-box">
+        <div class="contact-grid">
+          <div>
+            <div class="tag reveal">
+              <span class="tag-n">04</span>
+              <span class="tag-bar"></span>
+              Contact
+            </div>
+            <h2 class="contact-h reveal">
+              Let's Build<br>
+              the <em>Future</em><br>
+              Together.
+            </h2>
+            <p class="contact-desc reveal d1">
+              プロジェクトのご相談、採用についてなど、<br>
+              お気軽にお問い合わせください。
+            </p>
+          </div>
+
+          <form class="form reveal">
+            <div class="field">
+              <label>Name</label>
+              <input type="text" placeholder="山田 太郎">
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="hello@example.com">
+            </div>
+            <div class="field">
+              <label>Company</label>
+              <input type="text" placeholder="株式会社 Example">
+            </div>
+            <div class="field">
+              <label>Message</label>
+              <textarea rows="3" placeholder="ご相談内容をご記入ください…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              Send Message <span class="arr">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="ft-top">
+      <div>
+        <div class="ft-brand">Advancement</div>
+        <p class="ft-tagline">挑戦者に未来を。<br>テクノロジーと戦略の融合で<br>ビジネスの可能性を拡張する。</p>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">Philosophy</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Digital Transformation</a></li>
+            <li><a href="#">Business Strategy</a></li>
+            <li><a href="#">Creative &amp; Branding</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-copy">© 2026 Advancement Inc. All rights reserved.</p>
+      <div class="ft-policy">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

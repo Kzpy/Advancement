@@ -15,24 +15,34 @@
 
   <div id="loader">
     <div class="loader-brand">Advancement</div>
-    <div class="loader-track">
-      <div class="loader-fill" id="loader-fill"></div>
-    </div>
+    <div class="loader-track"><div class="loader-fill" id="loader-fill"></div></div>
     <div class="loader-pct" id="loader-pct">0%</div>
   </div>
 
-  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
   <div class="cursor-ring" id="cursor-ring"></div>
 
   <header class="header" id="header">
     <a href="#hero" class="logo">Advancement</a>
     <nav class="nav">
-      <a href="#about"    class="nav-link">Philosophy</a>
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#news"     class="nav-link">News</a>
-      <a href="#contact"  class="nav-cta"><span>Contact</span></a>
+      <a href="#about"    class="nav-link" data-jp="Philosophy" data-en="Philosophy">Philosophy</a>
+      <a href="#services" class="nav-link" data-jp="Services"   data-en="Services">Services</a>
+      <a href="#news"     class="nav-link" data-jp="News"       data-en="News">News</a>
+      <a href="#contact"  class="nav-cta"><span data-jp="Contact" data-en="Contact">Contact</span></a>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
     </nav>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"    class="mm-link" data-jp="Philosophy" data-en="Philosophy">Philosophy</a>
+    <a href="#services" class="mm-link" data-jp="Services"   data-en="Services">Services</a>
+    <a href="#news"     class="mm-link" data-jp="News"       data-en="News">News</a>
+    <a href="#contact"  class="mm-link" data-jp="Contact"    data-en="Contact">Contact</a>
+    <button class="mm-lang" onclick="toggleLang()">EN / JP</button>
+  </div>
 
   <main>
 
@@ -43,20 +53,22 @@
       <div class="hero-body">
         <div class="eyebrow">
           <span class="eyebrow-bar"></span>
-          <span class="eyebrow-text">Strategic Consulting × AI</span>
+          <span class="eyebrow-text" data-jp="Strategic Consulting × AI" data-en="Strategic Consulting × AI">Strategic Consulting × AI</span>
         </div>
         <h1 class="hero-title">
           <span class="tl"><span class="ti t-ghost">Shape the</span></span>
           <span class="tl"><span class="ti">Future.</span></span>
           <span class="tl"><span class="ti t-blue">Now.</span></span>
         </h1>
-        <p class="hero-desc" data-jp="経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。<br>Advancementは、変革を実装まで伴走する戦略パートナーです。" data-en="We fuse management strategy with AI to unlock the full potential of your business.<br>Advancement is the strategic partner that executes transformation alongside you.">
+        <p class="hero-desc"
+           data-jp="経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。<br>Advancementは、変革を実装まで伴走する戦略パートナーです。"
+           data-en="We fuse management strategy with AI to unlock the full potential of your business.<br>Advancement is the strategic partner that executes transformation alongside you.">
           経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。<br>
           Advancementは、変革を実装まで伴走する戦略パートナーです。
         </p>
         <div class="hero-cta">
-          <a href="#contact" class="btn-fill">Contact Us</a>
-          <a href="#services" class="btn-ghost">Our Services</a>
+          <a href="#contact" class="btn-fill" data-jp="お問い合わせ" data-en="Contact Us">お問い合わせ</a>
+          <a href="#services" class="btn-ghost" data-jp="サービスを見る" data-en="Our Services">サービスを見る</a>
         </div>
       </div>
       <div class="scroll-hint">
@@ -69,26 +81,25 @@
       <div class="stats-grid">
         <div class="stat reveal">
           <div class="stat-n">2023<em>.</em>06</div>
-          <div class="stat-l">Founded</div>
+          <div class="stat-l" data-jp="創業" data-en="Founded">創業</div>
         </div>
         <div class="stat reveal d1">
           <div class="stat-n">AI<em> × </em>Mgmt</div>
-          <div class="stat-l">Core Methodology</div>
+          <div class="stat-l" data-jp="コアメソドロジー" data-en="Core Methodology">コアメソドロジー</div>
         </div>
         <div class="stat reveal d2">
           <div class="stat-n">100<em>%</em></div>
-          <div class="stat-l">Execution Focus</div>
+          <div class="stat-l" data-jp="実行にコミット" data-en="Execution Focus">実行にコミット</div>
         </div>
         <div class="stat reveal d3">
           <div class="stat-n">∞</div>
-          <div class="stat-l">Potential Unlocked</div>
+          <div class="stat-l" data-jp="無限の可能性" data-en="Potential Unlocked">無限の可能性</div>
         </div>
       </div>
     </div>
 
-    <!-- ═══ MARQUEE ═══ -->
     <div class="marquee-wrap">
-      <div class="marquee-track" id="marquee-track">
+      <div class="marquee-track">
         <span>AI Transformation</span><span class="m-dot">◆</span>
         <span>Business Strategy</span><span class="m-dot">◆</span>
         <span>Startup Advisory</span><span class="m-dot">◆</span>
@@ -104,44 +115,38 @@
 
     <section id="about" class="section-wrap">
       <div class="tag reveal">
-        <span class="tag-n">01</span>
-        <span class="tag-bar"></span>
-        Philosophy
+        <span class="tag-n">01</span><span class="tag-bar"></span>Philosophy
       </div>
       <div class="philo-grid">
         <div>
           <h2 class="philo-h reveal">
-            Unleash<br>
-            Potential,<br>
-            <em>Redefine</em><br>
-            Limits.
+            Unleash<br>Potential,<br><em>Redefine</em><br>Limits.
           </h2>
         </div>
         <div class="philo-right">
-          <p class="philo-p reveal">
-            経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。
-            Advancementは、戦略立案から実装まで一気通貫で支援する戦略パートナーです。
+          <p class="philo-p reveal"
+             data-jp="経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。Advancementは、戦略立案から実装まで一気通貫で支援する戦略パートナーです。"
+             data-en="We combine management expertise with AI to unlock the full potential of your enterprise. Advancement is the strategic partner that supports you end-to-end, from strategy to execution.">
+            経営とAIを掛け合わせ、企業のポテンシャルを最大限引き出す。Advancementは、戦略立案から実装まで一気通貫で支援する戦略パートナーです。
           </p>
-          <p class="philo-p reveal d1">
+          <p class="philo-p reveal d1"
+             data-jp="変化が加速する現代において、AIを活用した意思決定と実行力が競争優位の源泉となります。私たちは経営の本質を見極め、テクノロジーで加速させる伴走型のアプローチで、クライアントの変革を支えます。"
+             data-en="In today's accelerating world, AI-driven decision-making and execution are the source of competitive advantage. We identify the essence of management and support client transformation through a technology-accelerated, hands-on approach.">
             変化が加速する現代において、AIを活用した意思決定と実行力が競争優位の源泉となります。私たちは経営の本質を見極め、テクノロジーで加速させる伴走型のアプローチで、クライアントの変革を支えます。
           </p>
-          <a href="#services" class="link-line reveal d2">Our Services</a>
+          <a href="#services" class="link-line reveal d2" data-jp="サービス一覧へ" data-en="Our Services">サービス一覧へ</a>
         </div>
       </div>
     </section>
 
-
-    <!-- ═══ FOUNDER ═══ -->
     <section id="founder" class="section-wrap" style="padding-top: 0;">
       <div class="tag reveal">
-        <span class="tag-n">02</span>
-        <span class="tag-bar"></span>
-        Founder
+        <span class="tag-n">02</span><span class="tag-bar"></span>Founder
       </div>
       <div class="founder-grid">
         <div class="founder-left reveal">
           <div class="founder-name-block">
-            <div class="founder-title-label">Representative Director</div>
+            <div class="founder-title-label" data-jp="代表取締役" data-en="Representative Director">代表取締役</div>
             <h2 class="founder-name">Kashiwabara<br><em>Kazuhiro</em></h2>
           </div>
           <div class="founder-tags">
@@ -152,48 +157,92 @@
           </div>
         </div>
         <div class="founder-right reveal d1">
-          <p class="founder-p">
+          <p class="founder-p"
+             data-jp="エンジニア、ITコンサルタント、経営管理の実務を経て、2023年、Advancementを創業。"
+             data-en="After careers in engineering, IT consulting, and management, he founded Advancement in 2023.">
             エンジニア、ITコンサルタント、経営管理の実務を経て、2023年、Advancementを創業。
           </p>
-          <p class="founder-p">
+          <p class="founder-p"
+             data-jp="テクノロジーと経営、そして資本の力を掛け合わせることで、企業が本来持つポテンシャルを最大限に解放する——それが私たちのミッションです。"
+             data-en="By combining the power of technology, management, and capital, we unleash the true potential every company holds. That is our mission.">
             テクノロジーと経営、そして資本の力を掛け合わせることで、企業が本来持つポテンシャルを最大限に解放する——それが私たちのミッションです。
           </p>
-          <a href="#contact" class="link-line">Get in Touch</a>
+          <a href="#contact" class="link-line" data-jp="お問い合わせ" data-en="Get in Touch">お問い合わせ</a>
         </div>
       </div>
     </section>
 
     <section id="services" class="section-wrap" style="padding-top: 0;">
       <div class="tag reveal">
-        <span class="tag-n">03</span>
-        <span class="tag-bar"></span>
-        Services
+        <span class="tag-n">03</span><span class="tag-bar"></span>Services
       </div>
       <div class="services-head">
         <h2 class="services-h reveal">Our Services</h2>
-        <p class="services-sub reveal">経営とAIの融合で、<br>ビジネスの可能性を拡張する。</p>
+        <p class="services-sub reveal"
+           data-jp="経営とAIの融合で、<br>ビジネスの可能性を拡張する。"
+           data-en="Fusing management and AI<br>to expand business potential.">
+          経営とAIの融合で、<br>ビジネスの可能性を拡張する。
+        </p>
       </div>
       <div class="srv-grid">
         <div class="srv reveal" id="service-ai">
           <div class="srv-num">— 01</div>
           <div class="srv-icon">⟳</div>
           <h3>AI<br>Transformation</h3>
-          <p>AIを経営戦略の中核に据え、ビジネスプロセスと意思決定を根本から変革します。導入計画の策定から実装・運用まで包括的に支援。</p>
-          <a href="#contact" class="srv-foot">Contact Us</a>
+          <p data-jp="AIを経営戦略の中核に据え、ビジネスプロセスと意思決定を根本から変革します。導入計画の策定から実装・運用まで包括的に支援。"
+             data-en="We place AI at the core of management strategy, fundamentally transforming business processes and decision-making. Comprehensive support from planning through implementation and operations.">
+            AIを経営戦略の中核に据え、ビジネスプロセスと意思決定を根本から変革します。導入計画の策定から実装・運用まで包括的に支援。
+          </p>
+          <a href="#contact" class="srv-foot" data-jp="お問い合わせ" data-en="Contact Us">お問い合わせ</a>
         </div>
         <div class="srv reveal d1" id="service-bs">
           <div class="srv-num">— 02</div>
           <div class="srv-icon">◈</div>
           <h3>Business<br>Strategy</h3>
-          <p>市場の変化を先読みし、持続的な成長を実現するための戦略を策定。新規事業開発、事業承継、組織改革など、企業のフェーズに合わせた最適解を提案。</p>
-          <a href="#contact" class="srv-foot">Contact Us</a>
+          <p data-jp="市場の変化を先読みし、持続的な成長を実現するための戦略を策定。新規事業開発、事業承継、組織改革など、企業のフェーズに合わせた最適解を提案。"
+             data-en="We anticipate market shifts and formulate strategies for sustainable growth. From new business development and succession to organizational reform — tailored solutions for every stage.">
+            市場の変化を先読みし、持続的な成長を実現するための戦略を策定。新規事業開発、事業承継、組織改革など、企業のフェーズに合わせた最適解を提案。
+          </p>
+          <a href="#contact" class="srv-foot" data-jp="お問い合わせ" data-en="Contact Us">お問い合わせ</a>
         </div>
         <div class="srv reveal d2" id="service-vc">
           <div class="srv-num">— 03</div>
           <div class="srv-icon">◎</div>
           <h3>Startup Investment<br>Advisory</h3>
-          <p>スタートアップの資金調達・投資戦略をトータルサポート。事業計画の精緻化からピッチ資料の作成、投資家とのマッチングまで一貫して支援します。</p>
-          <a href="#contact" class="srv-foot">Contact Us</a>
+          <p data-jp="スタートアップの資金調達・投資戦略をトータルサポート。事業計画の精緻化からピッチ資料の作成、投資家とのマッチングまで一貫して支援します。"
+             data-en="Total support for startup fundraising and investment strategy. From refining business plans and creating pitch materials to investor matching — end-to-end support.">
+            スタートアップの資金調達・投資戦略をトータルサポート。事業計画の精緻化からピッチ資料の作成、投資家とのマッチングまで一貫して支援します。
+          </p>
+          <a href="#contact" class="srv-foot" data-jp="お問い合わせ" data-en="Contact Us">お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials" class="section-wrap" style="padding-top: 0;">
+      <div class="tag reveal">
+        <span class="tag-n">04</span><span class="tag-bar"></span>
+        <span data-jp="Why Advancement" data-en="Why Advancement">Why Advancement</span>
+      </div>
+      <div class="cred-grid">
+        <div class="cred-card reveal">
+          <div class="cred-icon">01</div>
+          <h3 class="cred-h" data-jp="技術と経営、<br>両方わかる" data-en="Tech &amp; Management.<br>Both.">技術と経営、<br>両方わかる</h3>
+          <p class="cred-p" data-jp="エンジニアリングから経営管理まで実務を経た代表が、現場レベルで課題を理解し、経営レベルで解を設計します。" data-en="Our founder brings hands-on experience from engineering to management — understanding challenges operationally and designing solutions at the executive level.">エンジニアリングから経営管理まで実務を経た代表が、現場レベルで課題を理解し、経営レベルで解を設計します。</p>
+        </div>
+        <div class="cred-card reveal d1">
+          <div class="cred-icon">02</div>
+          <h3 class="cred-h" data-jp="戦略で終わらない、<br>実装まで" data-en="Strategy through<br>Execution.">戦略で終わらない、<br>実装まで</h3>
+          <p class="cred-p" data-jp="コンサルティングは提言で終わりがちです。Advancementは実装フェーズまで伴走し、確実に成果を出すことにコミットします。" data-en="Consulting often ends at recommendations. Advancement commits to walking alongside clients through implementation to ensure real outcomes.">コンサルティングは提言で終わりがちです。Advancementは実装フェーズまで伴走し、確実に成果を出すことにコミットします。</p>
+        </div>
+        <div class="cred-card reveal d2">
+          <div class="cred-icon">03</div>
+          <h3 class="cred-h" data-jp="AIを武器にする<br>経営戦略" data-en="AI as a Strategic<br>Weapon.">AIを武器にする<br>経営戦略</h3>
+          <p class="cred-p" data-jp="AIは導入することが目的ではありません。経営戦略と融合させて初めて競争優位になる。その設計ができる数少ないパートナーです。" data-en="AI is not the goal — integrating it with management strategy to create competitive advantage is. We are one of the few partners who can architect that.">AIは導入することが目的ではありません。経営戦略と融合させて初めて競争優位になる。その設計ができる数少ないパートナーです。</p>
+        </div>
+        <div class="cred-card reveal d3">
+          <div class="cred-icon">04</div>
+          <h3 class="cred-h" data-jp="スタートアップから<br>大企業まで" data-en="Startups to<br>Enterprises.">スタートアップから<br>大企業まで</h3>
+          <p class="cred-p" data-jp="創業期のスタートアップへの投資支援から、大企業のAI変革まで。企業のフェーズに合わせた最適なアプローチを提供します。" data-en="From investment support for early-stage startups to AI transformation for large enterprises — we tailor our approach to your stage.">創業期のスタートアップへの投資支援から、大企業のAI変革まで。企業のフェーズに合わせた最適なアプローチを提供します。</p>
         </div>
       </div>
     </section>
@@ -207,7 +256,7 @@
           <a href="#" class="news-a">
             <span class="news-date">2023.06.08</span>
             <span class="news-tag press">Press</span>
-            <span class="news-title">Advancement Inc. Founded.</span>
+            <span class="news-title" data-jp="Advancement Inc. 創業。" data-en="Advancement Inc. Founded.">Advancement Inc. 創業。</span>
             <span class="news-arr">→</span>
           </a>
         </li>
@@ -219,18 +268,15 @@
         <div class="contact-grid">
           <div>
             <div class="tag reveal">
-              <span class="tag-n">05</span>
-              <span class="tag-bar"></span>
-              Contact        Contact
+              <span class="tag-n">06</span><span class="tag-bar"></span>Contact
             </div>
             <h2 class="contact-h reveal">
-              Let's Build<br>
-              the <em>Future</em><br>
-              Together.
+              Let's Build<br>the <em>Future</em><br>Together.
             </h2>
-            <p class="contact-desc reveal d1">
-              プロジェクトのご相談、投資相談など、<br>
-              お気軽にお問い合わせください。
+            <p class="contact-desc reveal d1"
+               data-jp="プロジェクトのご相談、投資相談など、<br>お気軽にお問い合わせください。"
+               data-en="For project inquiries, investment consultations,<br>please feel free to reach out.">
+              プロジェクトのご相談、投資相談など、<br>お気軽にお問い合わせください。
             </p>
           </div>
           <form class="form reveal" action="https://api.web3forms.com/submit" method="POST">
@@ -238,23 +284,23 @@
             <input type="hidden" name="subject" value="Advancement — New Inquiry">
             <input type="hidden" name="from_name" value="Advancement HP">
             <div class="field">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Taro Yamada" required>
+              <label data-jp="お名前" data-en="Name">お名前</label>
+              <input type="text" name="name" placeholder="山田 太郎" required>
             </div>
             <div class="field">
-              <label>Email</label>
+              <label data-jp="メールアドレス" data-en="Email">メールアドレス</label>
               <input type="email" name="email" placeholder="hello@example.com" required>
             </div>
             <div class="field">
-              <label>Company</label>
-              <input type="text" name="company" placeholder="Example Inc.">
+              <label data-jp="会社名" data-en="Company">会社名</label>
+              <input type="text" name="company" placeholder="株式会社 Example">
             </div>
             <div class="field">
-              <label>Message</label>
-              <textarea rows="3" name="message" placeholder="Please describe your inquiry..." required></textarea>
+              <label data-jp="お問い合わせ内容" data-en="Message">お問い合わせ内容</label>
+              <textarea rows="3" name="message" placeholder="ご相談内容をご記入ください…" required></textarea>
             </div>
             <button type="submit" class="btn-submit">
-              Send Message <span class="arr">→</span>
+              <span data-jp="送信する" data-en="Send Message">送信する</span> <span class="arr">→</span>
             </button>
           </form>
         </div>
@@ -267,7 +313,11 @@
     <div class="ft-top">
       <div>
         <div class="ft-brand">Advancement</div>
-        <p class="ft-tagline">経営とAIを掛け合わせ、<br>企業のポテンシャルを最大限引き出す。</p>
+        <p class="ft-tagline"
+           data-jp="経営とAIを掛け合わせ、<br>企業のポテンシャルを最大限引き出す。"
+           data-en="Fusing management and AI<br>to unlock unlimited potential.">
+          経営とAIを掛け合わせ、<br>企業のポテンシャルを最大限引き出す。
+        </p>
       </div>
       <div class="ft-links">
         <div class="ft-col">
@@ -289,7 +339,7 @@
         <div class="ft-col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#contact" data-jp="お問い合わせ" data-en="Contact Us">お問い合わせ</a></li>
           </ul>
         </div>
       </div>
@@ -297,8 +347,8 @@
     <div class="ft-bot">
       <p class="ft-copy">© 2026 Advancement Inc. All rights reserved.</p>
       <div class="ft-policy">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" data-jp="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</a>
+        <a href="#" data-jp="利用規約" data-en="Terms of Use">利用規約</a>
       </div>
     </div>
   </footer>

@@ -254,6 +254,62 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
+/* ─── HAMBURGER MENU ─── */
+(function initHamburger() {
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.classList.toggle('open');
+    menu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  menu.querySelectorAll('.mm-link').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+/* ─── LANGUAGE TOGGLE ─── */
+let currentLang = 'ja';
+
+function toggleLang() {
+  currentLang = currentLang === 'ja' ? 'en' : 'ja';
+  const isEN = currentLang === 'en';
+
+  // Update all lang buttons
+  document.querySelectorAll('#lang-btn').forEach(b => b.textContent = isEN ? 'JP' : 'EN');
+  document.querySelectorAll('.mm-lang').forEach(b => b.textContent = isEN ? 'JP / EN' : 'EN / JP');
+
+  // Update all elements with data-jp / data-en
+  document.querySelectorAll('[data-jp][data-en]').forEach(el => {
+    const val = isEN ? el.dataset.en : el.dataset.jp;
+    if (!val) return;
+    // Use innerHTML to support <br> tags
+    el.innerHTML = val;
+  });
+
+  // Form placeholders
+  const placeholders = {
+    '[name="name"]':    { jp: '山田 太郎',          en: 'Taro Yamada' },
+    '[name="email"]':   { jp: 'hello@example.com',  en: 'hello@example.com' },
+    '[name="company"]': { jp: '株式会社 Example',   en: 'Example Inc.' },
+    '[name="message"]': { jp: 'ご相談内容をご記入ください…', en: 'Please describe your inquiry...' },
+  };
+  Object.entries(placeholders).forEach(([sel, t]) => {
+    const el = document.querySelector(sel);
+    if (el) el.placeholder = isEN ? t.en : t.jp;
+  });
+
+  // html lang attribute
+  document.documentElement.lang = currentLang;
+}
+
 /* ─── SCROLL PROGRESS BAR ─── */
 (function initProgress() {
   const bar = document.createElement('div');

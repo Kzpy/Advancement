@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | Advancement</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .policy-wrap { position:relative; z-index:2; max-width:800px; margin:0 auto; padding:160px 40px 120px; }
+    .policy-eyebrow { font-family:var(--caps); font-size:.68rem; letter-spacing:.28em; color:var(--blue-glow); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+    .policy-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--blue-glow); }
+    .policy-title { font-family:var(--display); font-size:clamp(2.4rem,5vw,4rem); font-weight:300; letter-spacing:-.01em; margin-bottom:16px; }
+    .policy-date { font-family:var(--caps); font-size:.7rem; letter-spacing:.15em; color:var(--w40); margin-bottom:64px; padding-bottom:40px; border-bottom:1px solid var(--w15); }
+    .policy-section { margin-bottom:48px; }
+    .policy-section h2 { font-family:var(--display); font-size:1.35rem; font-weight:400; margin-bottom:16px; color:var(--w100); display:flex; align-items:center; gap:12px; }
+    .policy-section h2::before { content:''; display:block; width:4px; height:4px; background:var(--blue-glow); border-radius:50%; flex-shrink:0; }
+    .policy-section p, .policy-section li { font-size:.93rem; color:var(--w70); line-height:2.0; }
+    .policy-section ul { list-style:none; padding:0; }
+    .policy-section ul li { padding-left:1.4em; position:relative; }
+    .policy-section ul li::before { content:'—'; position:absolute; left:0; color:var(--blue-glow); font-size:.8rem; }
+    .policy-back { display:inline-flex; align-items:center; gap:10px; font-family:var(--caps); font-size:.72rem; letter-spacing:.2em; color:var(--w40); margin-top:64px; transition:color .3s; }
+    .policy-back::before { content:'←'; transition:transform .3s; }
+    .policy-back:hover { color:var(--blue-glow); }
+    .policy-back:hover::before { transform:translateX(-4px); }
+    .lang-toggle-wrap { position:fixed; top:50%; right:32px; transform:translateY(-50%); z-index:600; display:flex; flex-direction:column; gap:8px; }
+    .lang-toggle-btn { font-family:var(--caps); font-size:.65rem; letter-spacing:.18em; background:rgba(5,9,18,.85); border:1px solid var(--w15); color:var(--w40); padding:8px 14px; cursor:pointer; transition:color .3s, border-color .3s; backdrop-filter:blur(12px); }
+    .lang-toggle-btn.active { color:var(--blue-glow); border-color:rgba(0,80,255,.5); }
+    .lang-toggle-btn:hover { color:var(--blue-glow); border-color:rgba(0,80,255,.4); }
+    [data-lang] { display:none; }
+    [data-lang].visible { display:block; }
+    @media (max-width:800px) {
+      .policy-wrap { padding:120px 20px 80px; }
+      .lang-toggle-wrap { top:auto; bottom:80px; right:16px; transform:none; flex-direction:row; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <header class="header sticky" id="header">
+    <a href="index.html" class="logo">Advancement</a>
+    <nav class="nav">
+      <a href="index.html#about"    class="nav-link">Philosophy</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="index.html#news"     class="nav-link">News</a>
+      <a href="index.html#contact"  class="nav-cta"><span>Contact</span></a>
+    </nav>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#about"    class="mm-link">Philosophy</a>
+    <a href="index.html#services" class="mm-link">Services</a>
+    <a href="index.html#news"     class="mm-link">News</a>
+    <a href="index.html#contact"  class="mm-link">Contact</a>
+  </div>
+
+  <div class="lang-toggle-wrap">
+    <button class="lang-toggle-btn active" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <button class="lang-toggle-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main>
+    <div class="policy-wrap">
+      <div class="policy-eyebrow">Legal</div>
+
+      <div data-lang="ja" class="visible">
+        <h1 class="policy-title">プライバシーポリシー</h1>
+        <p class="policy-date">制定日：2023年6月8日</p>
+        <div class="policy-section"><h2>基本方針</h2><p>株式会社Advancement（以下「当社」）は、お客様の個人情報の保護を重要な責務と認識し、個人情報の適切な取扱いおよび保護に努めます。本プライバシーポリシーは、当社が運営するウェブサイト（advancement.co.jp）における個人情報の取扱いについて定めるものです。</p></div>
+        <div class="policy-section"><h2>取得する個人情報</h2><p>当社は、以下の情報を取得することがあります。</p><ul><li>お名前</li><li>メールアドレス</li><li>会社名・所属組織名</li><li>お問い合わせ内容</li><li>アクセスログ（IPアドレス、ブラウザ情報等）</li></ul></div>
+        <div class="policy-section"><h2>利用目的</h2><ul><li>お問い合わせへの回答および対応</li><li>サービスに関するご案内・情報提供</li><li>業務上必要な連絡</li><li>ウェブサイトの改善・最適化</li></ul></div>
+        <div class="policy-section"><h2>第三者への提供</h2><p>当社は、法令に基づく場合を除き、お客様の同意を得ることなく個人情報を第三者に提供しません。業務委託先に対し必要な範囲内で提供する場合は、委託先に対して適切な監督を行います。</p></div>
+        <div class="policy-section"><h2>安全管理</h2><p>個人情報への不正アクセス、紛失、破壊、改ざん、漏洩等を防止するため、適切な安全管理措置を講じます。</p></div>
+        <div class="policy-section"><h2>開示・訂正・削除</h2><p>ご自身の個人情報の開示・訂正・削除を希望される場合は、下記お問い合わせ先までご連絡ください。合理的な範囲内で速やかに対応いたします。</p></div>
+        <div class="policy-section"><h2>Cookie・アクセス解析</h2><p>当サイトでは、アクセス状況の把握・サービス改善を目的としてCookieおよびアクセス解析ツールを使用することがあります。Cookieはブラウザの設定により無効化することができます。</p></div>
+        <div class="policy-section"><h2>お問い合わせ</h2><p>株式会社Advancement<br>担当：代表取締役 柏原 一広<br>Email：k.kashiwabara@advancement.co.jp</p></div>
+        <div class="policy-section"><h2>改定</h2><p>本ポリシーは法令の改正や業務内容の変更に応じて改定することがあります。改定後のポリシーは当ウェブサイト上に掲載した時点から効力を生じます。</p></div>
+        <a href="index.html" class="policy-back">トップページへ戻る</a>
+      </div>
+
+      <div data-lang="en">
+        <h1 class="policy-title">Privacy Policy</h1>
+        <p class="policy-date">Established: June 8, 2023</p>
+        <div class="policy-section"><h2>Basic Policy</h2><p>Advancement Inc. ("the Company") recognizes the protection of personal information as an important responsibility and is committed to its proper handling and protection. This Privacy Policy governs the handling of personal information on our website (advancement.co.jp).</p></div>
+        <div class="policy-section"><h2>Information We Collect</h2><p>We may collect the following information:</p><ul><li>Full name</li><li>Email address</li><li>Company / organization name</li><li>Inquiry content</li><li>Access logs (IP address, browser information, etc.)</li></ul></div>
+        <div class="policy-section"><h2>Purpose of Use</h2><ul><li>Responding to inquiries</li><li>Providing service information and updates</li><li>Business communications</li><li>Website improvement and optimization</li></ul></div>
+        <div class="policy-section"><h2>Third-Party Disclosure</h2><p>We will not provide personal information to third parties without the user's consent, except as required by law. When sharing with contracted service providers, we ensure appropriate supervision.</p></div>
+        <div class="policy-section"><h2>Security</h2><p>We implement appropriate security measures to prevent unauthorized access, loss, destruction, falsification, or leakage of personal information.</p></div>
+        <div class="policy-section"><h2>Disclosure, Correction &amp; Deletion</h2><p>To request disclosure, correction, or deletion of your personal information, please contact us using the details below. We will respond promptly within reasonable scope.</p></div>
+        <div class="policy-section"><h2>Cookies &amp; Analytics</h2><p>This website may use cookies and access analytics tools to understand usage and improve our services. Cookies can be disabled through your browser settings.</p></div>
+        <div class="policy-section"><h2>Contact</h2><p>Advancement Inc.<br>Representative Director: Kazuhiro Kashiwabara<br>Email: k.kashiwabara@advancement.co.jp</p></div>
+        <div class="policy-section"><h2>Amendments</h2><p>This policy may be revised in response to legal changes or updates to our business. Revised policies take effect upon publication on this website.</p></div>
+        <a href="index.html" class="policy-back">Back to Top</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
+      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <div class="ft-policy">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      document.title = lang === 'en' ? 'Privacy Policy | Advancement' : 'プライバシーポリシー | Advancement';
+    }
+  </script>
+</body>
+</html>

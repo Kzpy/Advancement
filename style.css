@@ -662,6 +662,7 @@ body.hov .cursor-dot {
   background: linear-gradient(135deg, rgba(0,80,255,.1), transparent 60%);
   opacity: 0;
   transition: opacity .4s;
+  pointer-events: none;
 }
 
 .srv:hover { border-color: rgba(0,80,255,.35); }
@@ -711,11 +712,14 @@ body.hov .cursor-dot {
   align-items: center;
   gap: 10px;
   transition: color .3s;
+  position: relative;
+  z-index: 2;
 }
 
-.srv-foot::after { content: '→'; transition: transform .3s; }
+.srv-foot::after { content: '→'; transition: transform .3s; pointer-events: none; }
 .srv:hover .srv-foot { color: var(--blue-glow); }
 .srv:hover .srv-foot::after { transform: translateX(6px); }
+.srv-foot { position: relative; z-index: 2; }
 
 /* ─── NEWS ─── */
 .news-head {
@@ -1182,32 +1186,57 @@ body.hov .cursor-dot {
 .founder-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
+  gap: 80px;
+  align-items: start;
 }
 
 .founder-title-label {
   font-family: var(--caps);
-  font-size: .68rem;
-  letter-spacing: .25em;
+  font-size: .7rem;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--blue-glow);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.founder-title-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--blue-glow);
 }
 
 .founder-name {
   font-family: var(--display);
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.8rem, 5vw, 5rem);
   font-weight: 300;
   line-height: 1.0;
   letter-spacing: -.01em;
-  margin-bottom: 48px;
+  margin-bottom: 20px;
 }
 
 .founder-name em {
   font-style: italic;
   color: var(--blue-glow);
 }
+
+.founder-name-kanji {
+  font-family: 'Hiragino Mincho ProN', 'Noto Serif JP', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: .35em;
+  color: var(--w100);
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--w15);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
 
 .founder-tags {
   display: flex;
@@ -1353,4 +1382,58 @@ body.hov .cursor-dot {
   a, button { cursor: pointer; }
   .cursor-dot,
   .cursor-ring { display: none; }
+}
+
+
+/* ─── FOUNDER META ─── */
+.founder-meta {
+  display: flex;
+  gap: 36px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--w15);
+}
+.founder-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fmi-label {
+  font-family: var(--caps);
+  font-size: .6rem;
+  letter-spacing: .22em;
+  color: var(--w30);
+}
+.fmi-val {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: var(--w70);
+  letter-spacing: .05em;
+}
+
+/* ─── FOUNDER RIGHT ─── */
+.founder-right {
+  padding-top: 12px;
+}
+.founder-p {
+  font-size: 1.02rem;
+  color: var(--w70);
+  line-height: 2.0;
+  margin-bottom: 28px;
+}
+.founder-p:first-of-type {
+  font-size: 1.15rem;
+  color: var(--w100);
+  line-height: 1.9;
+  padding-left: 20px;
+  border-left: 2px solid var(--blue-glow);
+}
+
+@media (max-width: 1100px) {
+  .founder-grid { grid-template-columns: 1fr; gap: 52px; }
+  .founder-name-kanji { font-size: 1.3rem; }
+}
+@media (max-width: 480px) {
+  .founder-name-kanji { font-size: 1.1rem; letter-spacing: .25em; }
 }

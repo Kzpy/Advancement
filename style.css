@@ -13,20 +13,20 @@
 }
 
 :root {
-  --ink:        #050912;
-  --ink-mid:    #0c1530;
-  --ink-light:  #132050;
-  --blue:       #0050ff;
-  --blue-bright:#2b7fff;
-  --blue-glow:  #5599ff;
+  --ink:        #070d1c;
+  --ink-mid:    #0f1c3a;
+  --ink-light:  #162660;
+  --blue:       #1060ff;
+  --blue-bright:#3d8fff;
+  --blue-glow:  #6aabff;
   --blue-pale:  rgba(0, 80, 255, 0.08);
-  --sky:        #a8c8ff;
+  --sky:        #c0d8ff;
 
   --w100: rgba(255,255,255,1.00);
-  --w70:  rgba(255,255,255,0.70);
-  --w40:  rgba(255,255,255,0.40);
-  --w15:  rgba(255,255,255,0.07);
-  --w05:  rgba(255,255,255,0.04);
+  --w70:  rgba(255,255,255,0.85);
+  --w40:  rgba(255,255,255,0.58);
+  --w15:  rgba(255,255,255,0.13);
+  --w05:  rgba(255,255,255,0.07);
 
   --display: 'Cormorant Garamond', Georgia, serif;
   --caps:    'Cormorant SC', Georgia, serif;

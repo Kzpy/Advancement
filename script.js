@@ -1,8 +1,8 @@
 /* =============================================
-   ADVANCEMENT — script.js
+   ADVANCEMENT -- script.js
    ============================================= */
 
-/* ─── LOADER ─── */
+/* --- LOADER --- */
 (function initLoader() {
   const fill  = document.getElementById('loader-fill');
   const pctEl = document.getElementById('loader-pct');
@@ -21,7 +21,7 @@
   }, 75);
 })();
 
-/* ─── CUSTOM CURSOR ─── */
+/* --- CUSTOM CURSOR --- */
 (function initCursor() {
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
@@ -50,7 +50,7 @@
   });
 })();
 
-/* ─── HEADER STICKY ─── */
+/* --- HEADER STICKY --- */
 (function initHeader() {
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
@@ -58,7 +58,7 @@
   }, { passive: true });
 })();
 
-/* ─── WEBGL LOW-POLY MESH ─── */
+/* --- WEBGL LOW-POLY MESH --- */
 (function initLowPoly() {
   const canvas = document.getElementById('bg');
   const script = document.createElement('script');
@@ -78,11 +78,11 @@
     const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
     camera.position.set(0, 0, 28);
 
-    // ── Low-poly icosahedron shards ──
+    // -- Low-poly icosahedron shards --
     const SHARD_COUNT = 55;
     const shards = [];
 
-    const colors = [0x0050ff, 0x0070ff, 0x2b7fff, 0x003acc, 0x5599ff, 0x001a66];
+    const colors = [0x1060ff, 0x2080ff, 0x3d8fff, 0x0050dd, 0x6aabff, 0x0033aa, 0x88ccff];
 
     for (let i = 0; i < SHARD_COUNT; i++) {
       const size = Math.random() * 2.8 + 0.6;
@@ -105,14 +105,14 @@
         color: col,
         wireframe: true,
         transparent: true,
-        opacity: Math.random() * 0.18 + 0.04,
+        opacity: Math.random() * 0.28 + 0.09,
       });
 
       // Solid face version (very faint)
       const solidMat = new THREE.MeshBasicMaterial({
         color: col,
         transparent: true,
-        opacity: Math.random() * 0.04 + 0.01,
+        opacity: Math.random() * 0.07 + 0.025,
         side: THREE.DoubleSide,
       });
 
@@ -147,7 +147,7 @@
       shards.push({ wire, solid, speed, baseY: y, baseX: x });
     }
 
-    // ── Floating grid plane (subtle) ──
+    // -- Floating grid plane (subtle) --
     const gridGeo = new THREE.PlaneGeometry(80, 50, 18, 12);
     const gridMat = new THREE.MeshBasicMaterial({
       color: 0x0040cc,
@@ -160,7 +160,7 @@
     grid.position.set(0, -8, -10);
     scene.add(grid);
 
-    // ── Large background shard (hero piece) ──
+    // -- Large background shard (hero piece) --
     const heroGeo = new THREE.IcosahedronGeometry(9, 1);
     const hPos = heroGeo.attributes.position;
     for (let v = 0; v < hPos.count; v++) {
@@ -172,10 +172,10 @@
     }
     heroGeo.computeVertexNormals();
     const heroMat = new THREE.MeshBasicMaterial({
-      color: 0x0030aa,
+      color: 0x0044cc,
       wireframe: true,
       transparent: true,
-      opacity: 0.07,
+      opacity: 0.13,
     });
     const hero = new THREE.Mesh(heroGeo, heroMat);
     hero.position.set(12, 2, -8);
@@ -221,7 +221,7 @@
         s.solid.position.x = floatX;
 
         // Pulse opacity
-        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.06 + 0.09);
+        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.08 + 0.14);
         s.solid.material.opacity = (Math.sin(t * 0.8 + i) * 0.015 + 0.02);
       });
 
@@ -238,7 +238,7 @@
   }
 })();
 
-/* ─── SCROLL REVEAL ─── */
+/* --- SCROLL REVEAL --- */
 (function initReveal() {
   const obs = new IntersectionObserver(
     entries => {
@@ -254,7 +254,7 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
-/* ─── HAMBURGER MENU ─── */
+/* --- HAMBURGER MENU --- */
 (function initHamburger() {
   const btn  = document.getElementById('hamburger');
   const menu = document.getElementById('mobile-menu');
@@ -275,7 +275,7 @@
   });
 })();
 
-/* ─── LANGUAGE TOGGLE ─── */
+/* --- LANGUAGE TOGGLE --- */
 let currentLang = 'ja';
 
 function toggleLang() {
@@ -294,23 +294,16 @@ function toggleLang() {
     el.innerHTML = val;
   });
 
-  // Form placeholders
-  const placeholders = {
-    '[name="name"]':    { jp: '山田 太郎',          en: 'Taro Yamada' },
-    '[name="email"]':   { jp: 'hello@example.com',  en: 'hello@example.com' },
-    '[name="company"]': { jp: '株式会社 Example',   en: 'Example Inc.' },
-    '[name="message"]': { jp: 'ご相談内容をご記入ください…', en: 'Please describe your inquiry...' },
-  };
-  Object.entries(placeholders).forEach(([sel, t]) => {
-    const el = document.querySelector(sel);
-    if (el) el.placeholder = isEN ? t.en : t.jp;
+  // Form placeholders from data attributes
+  document.querySelectorAll('input[data-ph-en], textarea[data-ph-en]').forEach(el => {
+    el.placeholder = isEN ? el.dataset.phEn : el.dataset.phJp;
   });
 
   // html lang attribute
   document.documentElement.lang = currentLang;
 }
 
-/* ─── SCROLL PROGRESS BAR ─── */
+/* --- SCROLL PROGRESS BAR --- */
 (function initProgress() {
   const bar = document.createElement('div');
   bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#0050ff,#5599ff);z-index:9999;transition:width .1s linear;pointer-events:none;';

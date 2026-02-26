@@ -1358,12 +1358,10 @@ body.hov .cursor-dot {
 /* --- FOUNDER KANJI --- */
 .founder-name-kanji {
   font-family: 'Hiragino Mincho ProN', 'Noto Serif JP', Georgia, serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
-  letter-spacing: .35em;
+  letter-spacing: .3em;
   color: var(--w100);
-  margin-top: 16px;
-  margin-bottom: 36px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--w15);
+  margin-top: 20px;
+  margin-bottom: 44px;
 }

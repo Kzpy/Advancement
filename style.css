@@ -1236,14 +1236,7 @@ body.hov .cursor-dot {
   align-items: baseline;
   gap: 16px;
 }
-.founder-name-kanji::after {
-  content: 'KAZUHIRO KASHIWABARA';
-  font-family: var(--caps);
-  font-size: .58rem;
-  letter-spacing: .2em;
-  color: var(--w30);
-  font-weight: 300;
-}
+
 
 .founder-tags {
   display: flex;

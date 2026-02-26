@@ -18,15 +18,15 @@
   --ink-light:  #132050;
   --blue:       #0050ff;
   --blue-bright:#2b7fff;
-  --blue-glow:  #5599ff;
+  --blue-glow:  #66aaff;
   --blue-pale:  rgba(0, 80, 255, 0.08);
-  --sky:        #a8c8ff;
+  --sky:        #c4d9ff;
 
   --w100: rgba(255,255,255,1.00);
-  --w70:  rgba(255,255,255,0.70);
-  --w40:  rgba(255,255,255,0.40);
-  --w15:  rgba(255,255,255,0.07);
-  --w05:  rgba(255,255,255,0.04);
+  --w70:  rgba(255,255,255,0.82);
+  --w40:  rgba(255,255,255,0.55);
+  --w15:  rgba(255,255,255,0.12);
+  --w05:  rgba(255,255,255,0.06);
 
   --display: 'Cormorant Garamond', Georgia, serif;
   --caps:    'Cormorant SC', Georgia, serif;
@@ -155,7 +155,7 @@ body.hov .cursor-dot {
 
 .loader-pct {
   font-family: var(--caps);
-  font-size: .72rem;
+  font-size: .84rem;
   letter-spacing: .18em;
   color: rgba(255,255,255,.3);
 }
@@ -311,7 +311,7 @@ body.hov .cursor-dot {
 
 .eyebrow-text {
   font-family: var(--caps);
-  font-size: .7rem;
+  font-size: .82rem;
   letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--blue-glow);
@@ -424,7 +424,7 @@ body.hov .cursor-dot {
 
 .sh-label {
   font-family: var(--caps);
-  font-size: .6rem;
+  font-size: .76rem;
   letter-spacing: .25em;
   color: var(--w40);
   writing-mode: vertical-rl;
@@ -482,7 +482,7 @@ body.hov .cursor-dot {
 
 .stat-l {
   font-family: var(--caps);
-  font-size: .66rem;
+  font-size: .78rem;
   letter-spacing: .18em;
   color: var(--w40);
   text-transform: uppercase;
@@ -500,7 +500,7 @@ body.hov .cursor-dot {
   align-items: center;
   gap: 12px;
   font-family: var(--caps);
-  font-size: .68rem;
+  font-size: .80rem;
   letter-spacing: .25em;
   text-transform: uppercase;
   color: var(--blue-glow);
@@ -510,7 +510,7 @@ body.hov .cursor-dot {
 .tag-n {
   border: 1px solid currentColor;
   padding: 2px 9px;
-  font-size: .6rem;
+  font-size: .76rem;
   opacity: .55;
 }
 
@@ -631,7 +631,7 @@ body.hov .cursor-dot {
 
 .services-sub {
   font-family: var(--caps);
-  font-size: .73rem;
+  font-size: .84rem;
   letter-spacing: .12em;
   color: var(--w70);
   max-width: 280px;
@@ -652,7 +652,7 @@ body.hov .cursor-dot {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: border-color .4s;
+  transition: border-color .4s, transform .5s var(--ease), box-shadow .5s var(--ease);
 }
 
 .srv::before {
@@ -662,7 +662,6 @@ body.hov .cursor-dot {
   background: linear-gradient(135deg, rgba(0,80,255,.1), transparent 60%);
   opacity: 0;
   transition: opacity .4s;
-  pointer-events: none;
 }
 
 .srv:hover { border-color: rgba(0,80,255,.35); }
@@ -670,7 +669,7 @@ body.hov .cursor-dot {
 
 .srv-num {
   font-family: var(--caps);
-  font-size: .62rem;
+  font-size: .78rem;
   letter-spacing: .25em;
   color: var(--blue-glow);
   margin-bottom: 36px;
@@ -705,21 +704,18 @@ body.hov .cursor-dot {
 .srv-foot {
   margin-top: 44px;
   font-family: var(--caps);
-  font-size: .68rem;
+  font-size: .80rem;
   letter-spacing: .2em;
   color: var(--w40);
   display: flex;
   align-items: center;
   gap: 10px;
   transition: color .3s;
-  position: relative;
-  z-index: 2;
 }
 
-.srv-foot::after { content: '→'; transition: transform .3s; pointer-events: none; }
+.srv-foot::after { content: '→'; transition: transform .3s; }
 .srv:hover .srv-foot { color: var(--blue-glow); }
 .srv:hover .srv-foot::after { transform: translateX(6px); }
-.srv-foot { position: relative; z-index: 2; }
 
 /* ─── NEWS ─── */
 .news-head {
@@ -739,7 +735,7 @@ body.hov .cursor-dot {
 
 .news-all {
   font-family: var(--caps);
-  font-size: .7rem;
+  font-size: .82rem;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--w40);
@@ -776,7 +772,7 @@ body.hov .cursor-dot {
 
 .news-tag {
   font-family: var(--caps);
-  font-size: .6rem;
+  font-size: .76rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   padding: 5px 12px;
@@ -860,7 +856,7 @@ body.hov .cursor-dot {
 .field label {
   display: block;
   font-family: var(--caps);
-  font-size: .62rem;
+  font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--w40);
@@ -951,7 +947,7 @@ body.hov .cursor-dot {
 
 .ft-col h4 {
   font-family: var(--caps);
-  font-size: .62rem;
+  font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--w40);
@@ -1029,7 +1025,7 @@ body.hov .cursor-dot {
 /* ─── LANG BUTTON ─── */
 .lang-btn {
   font-family: var(--caps);
-  font-size: .68rem;
+  font-size: .80rem;
   letter-spacing: .18em;
   background: transparent;
   border: 1px solid var(--w15);
@@ -1091,7 +1087,7 @@ body.hov .cursor-dot {
 
 .mm-lang {
   font-family: var(--caps);
-  font-size: .72rem;
+  font-size: .84rem;
   letter-spacing: .22em;
   background: transparent;
   border: 1px solid var(--w15);
@@ -1151,7 +1147,7 @@ body.hov .cursor-dot {
 
   /* News */
   .news-a        { grid-template-columns: 1fr auto; grid-template-rows: auto auto; gap: 6px; padding: 20px 0; }
-  .news-date     { grid-column: 1; font-size: .68rem; }
+  .news-date     { grid-column: 1; font-size: .80rem; }
   .news-tag      { grid-column: 2; grid-row: 1; }
   .news-title    { grid-column: 1 / 3; font-size: .88rem; }
   .news-arr      { display: none; }
@@ -1186,57 +1182,32 @@ body.hov .cursor-dot {
 .founder-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+  gap: 100px;
+  align-items: center;
 }
 
 .founder-title-label {
   font-family: var(--caps);
-  font-size: .7rem;
-  letter-spacing: .28em;
+  font-size: .80rem;
+  letter-spacing: .25em;
   text-transform: uppercase;
   color: var(--blue-glow);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.founder-title-label::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 1px;
-  background: var(--blue-glow);
+  margin-bottom: 20px;
 }
 
 .founder-name {
   font-family: var(--display);
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
   font-weight: 300;
   line-height: 1.0;
   letter-spacing: -.01em;
-  margin-bottom: 20px;
+  margin-bottom: 48px;
 }
 
 .founder-name em {
   font-style: italic;
   color: var(--blue-glow);
 }
-
-.founder-name-kanji {
-  font-family: 'Hiragino Mincho ProN', 'Noto Serif JP', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: .35em;
-  color: var(--w100);
-  margin-bottom: 36px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--w15);
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
 
 .founder-tags {
   display: flex;
@@ -1246,7 +1217,7 @@ body.hov .cursor-dot {
 
 .f-tag {
   font-family: var(--caps);
-  font-size: .68rem;
+  font-size: .80rem;
   letter-spacing: .18em;
   text-transform: uppercase;
   padding: 8px 20px;
@@ -1301,7 +1272,7 @@ body.hov .cursor-dot {
 
 .marquee-track span {
   font-family: var(--caps);
-  font-size: .72rem;
+  font-size: .84rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--w40);
@@ -1309,7 +1280,7 @@ body.hov .cursor-dot {
 
 .marquee-track .m-dot {
   color: var(--blue-glow);
-  font-size: .45rem;
+  font-size: .84rem;
   letter-spacing: 0;
 }
 
@@ -1382,58 +1353,4 @@ body.hov .cursor-dot {
   a, button { cursor: pointer; }
   .cursor-dot,
   .cursor-ring { display: none; }
-}
-
-
-/* ─── FOUNDER META ─── */
-.founder-meta {
-  display: flex;
-  gap: 36px;
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid var(--w15);
-}
-.founder-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.fmi-label {
-  font-family: var(--caps);
-  font-size: .6rem;
-  letter-spacing: .22em;
-  color: var(--w30);
-}
-.fmi-val {
-  font-family: var(--display);
-  font-size: 1.35rem;
-  font-weight: 300;
-  color: var(--w70);
-  letter-spacing: .05em;
-}
-
-/* ─── FOUNDER RIGHT ─── */
-.founder-right {
-  padding-top: 12px;
-}
-.founder-p {
-  font-size: 1.02rem;
-  color: var(--w70);
-  line-height: 2.0;
-  margin-bottom: 28px;
-}
-.founder-p:first-of-type {
-  font-size: 1.15rem;
-  color: var(--w100);
-  line-height: 1.9;
-  padding-left: 20px;
-  border-left: 2px solid var(--blue-glow);
-}
-
-@media (max-width: 1100px) {
-  .founder-grid { grid-template-columns: 1fr; gap: 52px; }
-  .founder-name-kanji { font-size: 1.3rem; }
-}
-@media (max-width: 480px) {
-  .founder-name-kanji { font-size: 1.1rem; letter-spacing: .25em; }
 }

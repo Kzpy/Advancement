@@ -1,8 +1,8 @@
 /* =============================================
-   ADVANCEMENT -- script.js
+   ADVANCEMENT — script.js
    ============================================= */
 
-/* --- LOADER --- */
+/* ─── LOADER ─── */
 (function initLoader() {
   const fill  = document.getElementById('loader-fill');
   const pctEl = document.getElementById('loader-pct');
@@ -21,7 +21,7 @@
   }, 75);
 })();
 
-/* --- CUSTOM CURSOR --- */
+/* ─── CUSTOM CURSOR ─── */
 (function initCursor() {
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
@@ -50,22 +50,15 @@
   });
 })();
 
-/* --- HEADER STICKY --- */
+/* ─── HEADER STICKY ─── */
 (function initHeader() {
   const header = document.getElementById('header');
-  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        header.classList.toggle('sticky', window.scrollY > 60);
-        ticking = false;
-      });
-      ticking = true;
-    }
+    header.classList.toggle('sticky', window.scrollY > 60);
   }, { passive: true });
 })();
 
-/* --- WEBGL LOW-POLY MESH --- */
+/* ─── WEBGL LOW-POLY MESH ─── */
 (function initLowPoly() {
   const canvas = document.getElementById('bg');
   const script = document.createElement('script');
@@ -75,22 +68,21 @@
 
   function initThree() {
     let W = window.innerWidth, H = window.innerHeight;
-    const isMobile = W < 800;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(W, H);
-    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
 
     const scene  = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
     camera.position.set(0, 0, 28);
 
-    // -- Low-poly icosahedron shards --
-    const SHARD_COUNT = isMobile ? 20 : 55;
+    // ── Low-poly icosahedron shards ──
+    const SHARD_COUNT = 55;
     const shards = [];
 
-    const colors = [0x0055ff, 0x1a7fff, 0x3388ff, 0x0066dd, 0x66aaff, 0x0044cc, 0x88bbff];
+    const colors = [0x0050ff, 0x0070ff, 0x2b7fff, 0x003acc, 0x5599ff, 0x001a66];
 
     for (let i = 0; i < SHARD_COUNT; i++) {
       const size = Math.random() * 2.8 + 0.6;
@@ -113,14 +105,14 @@
         color: col,
         wireframe: true,
         transparent: true,
-        opacity: Math.random() * 0.28 + 0.08,
+        opacity: Math.random() * 0.18 + 0.04,
       });
 
       // Solid face version (very faint)
       const solidMat = new THREE.MeshBasicMaterial({
         color: col,
         transparent: true,
-        opacity: Math.random() * 0.07 + 0.02,
+        opacity: Math.random() * 0.04 + 0.01,
         side: THREE.DoubleSide,
       });
 
@@ -155,7 +147,7 @@
       shards.push({ wire, solid, speed, baseY: y, baseX: x });
     }
 
-    // -- Floating grid plane (subtle) --
+    // ── Floating grid plane (subtle) ──
     const gridGeo = new THREE.PlaneGeometry(80, 50, 18, 12);
     const gridMat = new THREE.MeshBasicMaterial({
       color: 0x0040cc,
@@ -168,7 +160,7 @@
     grid.position.set(0, -8, -10);
     scene.add(grid);
 
-    // -- Large background shard (hero piece) --
+    // ── Large background shard (hero piece) ──
     const heroGeo = new THREE.IcosahedronGeometry(9, 1);
     const hPos = heroGeo.attributes.position;
     for (let v = 0; v < hPos.count; v++) {
@@ -183,29 +175,27 @@
       color: 0x0030aa,
       wireframe: true,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.07,
     });
     const hero = new THREE.Mesh(heroGeo, heroMat);
     hero.position.set(12, 2, -8);
     scene.add(hero);
 
-    // Mouse parallax (desktop only)
+    // Mouse parallax
     let mx = 0, my = 0;
-    if (!isMobile) {
-      document.addEventListener('mousemove', e => {
-        mx = (e.clientX / W - 0.5);
-        my = (e.clientY / H - 0.5);
-      });
-    }
+    document.addEventListener('mousemove', e => {
+      mx = (e.clientX / W - 0.5);
+      my = (e.clientY / H - 0.5);
+    });
 
     let t = 0;
     function animate() {
       requestAnimationFrame(animate);
-      t += isMobile ? 0.007 : 0.012;
+      t += 0.008;
 
       // Rotate hero shard slowly
-      hero.rotation.x += 0.0014;
-      hero.rotation.y += 0.0018;
+      hero.rotation.x += 0.0008;
+      hero.rotation.y += 0.0012;
 
       // Grid subtle drift
       grid.rotation.z += 0.0002;
@@ -223,16 +213,16 @@
         s.solid.rotation.copy(s.wire.rotation);
 
         // Gentle float
-        const floatY = s.baseY + Math.sin(t + i * 0.4) * 1.4;
-        const floatX = s.baseX + Math.cos(t * 0.7 + i * 0.3) * 0.7;
+        const floatY = s.baseY + Math.sin(t + i * 0.4) * 0.8;
+        const floatX = s.baseX + Math.cos(t * 0.6 + i * 0.3) * 0.4;
         s.wire.position.y  = floatY;
         s.solid.position.y = floatY;
         s.wire.position.x  = floatX;
         s.solid.position.x = floatX;
 
         // Pulse opacity
-        s.wire.material.opacity  = (Math.sin(t * 0.9 + i) * 0.10 + 0.14);
-        s.solid.material.opacity = (Math.sin(t * 0.9 + i) * 0.025 + 0.04);
+        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.06 + 0.09);
+        s.solid.material.opacity = (Math.sin(t * 0.8 + i) * 0.015 + 0.02);
       });
 
       renderer.render(scene, camera);
@@ -248,24 +238,23 @@
   }
 })();
 
-/* --- SCROLL REVEAL --- */
+/* ─── SCROLL REVEAL ─── */
 (function initReveal() {
   const obs = new IntersectionObserver(
     entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          const delay = parseFloat(e.target.dataset.delay || 0) * 1000;
-          setTimeout(() => e.target.classList.add('in'), delay);
+          e.target.classList.add('in');
           obs.unobserve(e.target);
         }
       });
     },
-    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.08 }
   );
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
-/* --- HAMBURGER MENU --- */
+/* ─── HAMBURGER MENU ─── */
 (function initHamburger() {
   const btn  = document.getElementById('hamburger');
   const menu = document.getElementById('mobile-menu');
@@ -286,7 +275,7 @@
   });
 })();
 
-/* --- LANGUAGE TOGGLE --- */
+/* ─── LANGUAGE TOGGLE ─── */
 let currentLang = 'ja';
 
 function toggleLang() {
@@ -305,29 +294,29 @@ function toggleLang() {
     el.innerHTML = val;
   });
 
-  // Form placeholders -- values stored in data attributes on the inputs
-  document.querySelectorAll('input[data-ph-en], textarea[data-ph-en]').forEach(el => {
-    el.placeholder = isEN ? el.dataset.phEn : el.dataset.phJp;
+  // Form placeholders
+  const placeholders = {
+    '[name="name"]':    { jp: '山田 太郎',          en: 'Taro Yamada' },
+    '[name="email"]':   { jp: 'hello@example.com',  en: 'hello@example.com' },
+    '[name="company"]': { jp: '株式会社 Example',   en: 'Example Inc.' },
+    '[name="message"]': { jp: 'ご相談内容をご記入ください…', en: 'Please describe your inquiry...' },
+  };
+  Object.entries(placeholders).forEach(([sel, t]) => {
+    const el = document.querySelector(sel);
+    if (el) el.placeholder = isEN ? t.en : t.jp;
   });
 
   // html lang attribute
   document.documentElement.lang = currentLang;
 }
 
-/* --- SCROLL PROGRESS BAR --- */
+/* ─── SCROLL PROGRESS BAR ─── */
 (function initProgress() {
   const bar = document.createElement('div');
   bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#0050ff,#5599ff);z-index:9999;transition:width .1s linear;pointer-events:none;';
   document.body.appendChild(bar);
-  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-        bar.style.width = pct + '%';
-        ticking = false;
-      });
-      ticking = true;
-    }
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
   }, { passive: true });
 })();

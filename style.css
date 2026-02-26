@@ -662,6 +662,7 @@ body.hov .cursor-dot {
   background: linear-gradient(135deg, rgba(0,80,255,.1), transparent 60%);
   opacity: 0;
   transition: opacity .4s;
+  pointer-events: none;
 }
 
 .srv:hover { border-color: rgba(0,80,255,.35); }
@@ -711,11 +712,14 @@ body.hov .cursor-dot {
   align-items: center;
   gap: 10px;
   transition: color .3s;
+  position: relative;
+  z-index: 2;
 }
 
-.srv-foot::after { content: '→'; transition: transform .3s; }
+.srv-foot::after { content: '→'; transition: transform .3s; pointer-events: none; }
 .srv:hover .srv-foot { color: var(--blue-glow); }
 .srv:hover .srv-foot::after { transform: translateX(6px); }
+.srv-foot { position: relative; z-index: 2; }
 
 /* ─── NEWS ─── */
 .news-head {
@@ -1353,4 +1357,14 @@ body.hov .cursor-dot {
   a, button { cursor: pointer; }
   .cursor-dot,
   .cursor-ring { display: none; }
+}
+
+/* ─── FOUNDER KANJI ─── */
+.founder-name-kanji {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: .85rem;
+  font-weight: 300;
+  letter-spacing: .2em;
+  color: var(--w40);
+  margin-top: 14px;
 }

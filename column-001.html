@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本企業のAI活用はなぜPOCで止まるのか | Column | Advancement</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Article Layout ── */
+    .article-wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 160px 40px 120px;
+    }
+
+    /* Eyebrow / breadcrumb */
+    .article-eyebrow {
+      font-family: var(--caps);
+      font-size: .68rem;
+      letter-spacing: .28em;
+      color: var(--blue-glow);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .article-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--blue-glow);
+    }
+    .article-eyebrow a {
+      color: var(--w40);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .article-eyebrow a:hover { color: var(--blue-glow); }
+    .article-eyebrow .sep { color: var(--w20); }
+
+    /* Meta */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .article-date {
+      font-family: var(--caps);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      color: var(--w40);
+    }
+    .article-tag {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .18em;
+      padding: 4px 12px;
+      border: 1px solid rgba(255,160,0,.3);
+      color: #fbbf24;
+    }
+    .article-author {
+      font-family: var(--caps);
+      font-size: .65rem;
+      letter-spacing: .14em;
+      color: var(--w40);
+    }
+
+    /* Title */
+    .article-title {
+      font-family: var(--display);
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -.01em;
+      line-height: 1.3;
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--w15);
+    }
+
+    /* Lead sentence */
+    .article-lead {
+      font-size: 1.05rem;
+      color: var(--w80);
+      line-height: 2.0;
+      margin-bottom: 56px;
+      padding-left: 24px;
+      border-left: 2px solid rgba(0,80,255,.35);
+    }
+
+    /* Body */
+    .article-body {
+      color: var(--w70);
+      font-size: .95rem;
+      line-height: 2.1;
+    }
+    .article-body p { margin-bottom: 28px; }
+
+    .article-body h2 {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--w100);
+      margin: 64px 0 20px;
+      padding-top: 64px;
+      border-top: 1px solid var(--w15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .article-body h2 .h2-num {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .2em;
+      color: var(--blue-glow);
+      margin-right: 4px;
+    }
+
+    .article-body h3 {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--w90);
+      margin: 40px 0 16px;
+    }
+
+    .article-body ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 28px;
+    }
+    .article-body ul li {
+      padding-left: 1.6em;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .article-body ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--blue-glow);
+      font-size: .8rem;
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: rgba(0,50,180,.07);
+      border: 1px solid rgba(0,80,255,.15);
+      padding: 28px 32px;
+      margin: 40px 0;
+      font-size: .9rem;
+      line-height: 2.0;
+    }
+    .highlight strong { color: var(--blue-glow); font-weight: 500; }
+    .highlight .hl-label {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--blue-glow);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    /* Quote */
+    .article-body blockquote {
+      border-left: 2px solid rgba(0,80,255,.4);
+      padding: 16px 24px;
+      margin: 36px 0;
+      background: rgba(0,50,180,.05);
+      color: var(--w60);
+      font-size: .9rem;
+      line-height: 1.95;
+      font-style: italic;
+    }
+
+    /* Data callout */
+    .data-callout {
+      display: flex;
+      gap: 0;
+      margin: 48px 0;
+      border: 1px solid var(--w15);
+    }
+    .data-item {
+      flex: 1;
+      padding: 28px 24px;
+      border-right: 1px solid var(--w15);
+      text-align: center;
+    }
+    .data-item:last-child { border-right: none; }
+    .data-num {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--blue-glow);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .data-num span { font-size: 1.2rem; }
+    .data-label {
+      font-family: var(--caps);
+      font-size: .6rem;
+      letter-spacing: .16em;
+      color: var(--w40);
+      line-height: 1.6;
+    }
+
+    /* Conclusion label */
+    .conclusion-label {
+      font-family: var(--caps);
+      font-size: .65rem;
+      letter-spacing: .25em;
+      color: var(--blue-glow);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .conclusion-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--blue-glow);
+    }
+
+    /* Author box */
+    .author-box {
+      margin-top: 80px;
+      padding: 32px 36px;
+      border: 1px solid var(--w15);
+      background: rgba(0,30,100,.07);
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 0;
+      background: rgba(0,80,255,.15);
+      border: 1px solid rgba(0,80,255,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--caps);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      color: var(--blue-glow);
+    }
+    .author-info {}
+    .author-name {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--w90);
+      margin-bottom: 6px;
+    }
+    .author-role {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .16em;
+      color: var(--blue-glow);
+      margin-bottom: 12px;
+    }
+    .author-bio {
+      font-size: .83rem;
+      color: var(--w50);
+      line-height: 1.8;
+    }
+
+    /* Article footer nav */
+    .article-footer {
+      margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid var(--w15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--caps);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      color: var(--w40);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .article-back::before { content: '←'; transition: transform .3s; }
+    .article-back:hover { color: var(--blue-glow); }
+    .article-back:hover::before { transform: translateX(-4px); }
+
+    /* Lang toggle */
+    .lang-toggle-wrap {
+      position: fixed;
+      top: 50%;
+      right: 32px;
+      transform: translateY(-50%);
+      z-index: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .lang-toggle-btn {
+      font-family: var(--caps);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      background: rgba(5,9,18,.85);
+      border: 1px solid var(--w15);
+      color: var(--w40);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: color .3s, border-color .3s;
+      backdrop-filter: blur(12px);
+    }
+    .lang-toggle-btn.active { color: var(--blue-glow); border-color: rgba(0,80,255,.5); }
+    .lang-toggle-btn:hover  { color: var(--blue-glow); border-color: rgba(0,80,255,.4); }
+
+    [data-lang]         { display: none; }
+    [data-lang].visible { display: block; }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .article-wrap { padding: 120px 20px 80px; }
+      .lang-toggle-wrap { top: auto; bottom: 80px; right: 16px; transform: none; flex-direction: row; }
+      .data-callout { flex-direction: column; }
+      .data-item { border-right: none; border-bottom: 1px solid var(--w15); }
+      .data-item:last-child { border-bottom: none; }
+      .author-box { flex-direction: column; gap: 20px; }
+      .article-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <header class="header sticky" id="header">
+    <a href="index.html" class="logo">Advancement</a>
+    <nav class="nav">
+      <a href="index.html#about"    class="nav-link">Philosophy</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="news.html"           class="nav-link">News</a>
+      <a href="index.html#contact"  class="nav-cta"><span>Contact</span></a>
+    </nav>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#about"    class="mm-link">Philosophy</a>
+    <a href="index.html#services" class="mm-link">Services</a>
+    <a href="news.html"           class="mm-link">News</a>
+    <a href="index.html#contact"  class="mm-link">Contact</a>
+  </div>
+
+  <div class="lang-toggle-wrap">
+    <button class="lang-toggle-btn active" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <button class="lang-toggle-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main>
+    <div class="article-wrap">
+
+      <!-- ══════════════════════════════════
+           JAPANESE
+      ══════════════════════════════════ -->
+      <div data-lang="ja" class="visible">
+
+        <div class="article-eyebrow">
+          <a href="news.html">News & Column</a>
+          <span class="sep">/</span>
+          <span>Column</span>
+        </div>
+
+        <div class="article-meta">
+          <span class="article-date">2025.01.15</span>
+          <span class="article-tag">Column</span>
+          <span class="article-author">柏原 一博</span>
+        </div>
+
+        <h1 class="article-title">
+          日本企業のAI活用はなぜPOCで止まるのか<br>
+          ——「実装の壁」を越えるための3つの視点
+        </h1>
+
+        <p class="article-lead">
+          生成AIへの関心は高まる一方、多くの企業でAI活用が「実証実験（POC）どまり」に終わっている。
+          その背景には技術の問題ではなく、戦略・組織・評価設計の構造的な問題が潜んでいる。
+          本稿では、この「実装の壁」の正体を分解し、突破するための実践的視点を示す。
+        </p>
+
+        <!-- Data callout -->
+        <div class="data-callout">
+          <div class="data-item">
+            <div class="data-num">67<span>%</span></div>
+            <div class="data-label">生成AIのPOCを<br>実施した大企業の割合</div>
+          </div>
+          <div class="data-item">
+            <div class="data-num">18<span>%</span></div>
+            <div class="data-label">そのうち全社展開に<br>至った割合</div>
+          </div>
+          <div class="data-item">
+            <div class="data-num">3<span>倍</span></div>
+            <div class="data-label">グローバル平均との<br>実装速度の差</div>
+          </div>
+        </div>
+
+        <div class="article-body">
+
+          <h2><span class="h2-num">01 —</span> 戦略不在：「何のためのAIか」が定義されていない</h2>
+
+          <p>
+            POCが組織展開に至らない最大の原因は、戦略上の位置づけの欠如だ。
+            「AIを使ってみた」という実績作りが目的化し、
+            業務課題の解決や競争優位の構築との接続が設計されていないケースが多い。
+          </p>
+          <p>
+            その結果、POCで優れた成果が出ても「本当に全社に展開すべきか」の判断軸がなく、
+            展開が止まる。投資対効果の問いに答えられないまま次の予算サイクルを迎え、
+            立ち消えとなる。
+          </p>
+
+          <div class="highlight">
+            <span class="hl-label">Key Insight</span>
+            AIは「技術的に何ができるか」ではなく、「どの経営課題を解くか」から逆算して
+            設計されなければ、組織の意思決定を通らない。POC前に<strong>戦略仮説を持つこと</strong>が前提条件だ。
+          </div>
+
+          <h2><span class="h2-num">02 —</span> 組織設計の欠如：変化を吸収する器がない</h2>
+
+          <p>
+            AI導入は業務プロセスの変更を必然的に伴う。しかし多くの企業で、
+            変化を推進する「AI推進主体」が明確に設定されていない。
+            IT部門はシステム側、事業部門は現場業務側に閉じており、
+            両者を横断する変革の担い手が不在のまま導入が進む。
+          </p>
+
+          <h3>よく見られる組織上の課題</h3>
+          <ul>
+            <li>AI推進部門が「お目付け役」化し、現場の主体性が育たない</li>
+            <li>現場担当者のAIリテラシーが低く、使い方のイメージが持てない</li>
+            <li>中間管理職が変化のメリットを体感できず、抵抗勢力になる</li>
+            <li>成功事例を横展開する仕組みが設計されていない</li>
+          </ul>
+
+          <p>
+            これらは個人の問題ではなく、組織設計の問題だ。
+            変革を内側から起こす「AI活用リーダー」を意図的に育成し、
+            各部門に配置する構造が不可欠となる。
+          </p>
+
+          <h2><span class="h2-num">03 —</span> 評価設計の欠陥：ROIが可視化されていない</h2>
+
+          <p>
+            「AIを導入したが効果が見えない」という声は多い。
+            その多くは、効果測定の設計がPOC開始前に行われていないことが原因だ。
+            比較対象となるベースラインが存在せず、定性的な感想に留まる。
+          </p>
+
+          <blockquote>
+            ROIの可視化は後付けではできない。
+            「この業務に何時間かかっているか」を測定し始めた時点から、
+            AI導入の効果検証は始まっている。
+          </blockquote>
+
+          <p>
+            Microsoft 365 CopilotやChatGPT Enterpriseを活用した
+            先行企業の事例では、週あたり4〜5時間の業務削減が定量的に確認されており、
+            年換算での一人当たり工数削減は20〜25日規模に達する。
+            こうした数値は、経営層への投資継続の説得材料として機能する。
+          </p>
+
+          <div class="highlight">
+            <span class="hl-label">実践チェックリスト</span>
+            <strong>POC開始前に定義すべき3点：</strong><br>
+            ① 解決対象の業務課題と現状の工数・コスト<br>
+            ② 成功の定義（KGI/KPIと目標値）<br>
+            ③ 横展開の判断基準（どのスコアで全社展開に移行するか）
+          </div>
+
+          <h2><span class="h2-num">おわりに —</span> AIトランスフォーメーションは「経営の問い」だ</h2>
+
+          <p>
+            生成AIの技術は十分に成熟している。問われているのはテクノロジーの選定ではなく、
+            「自社はどう変わるのか」という経営意志と、変化を実現する組織能力だ。
+          </p>
+          <p>
+            POCの先に進めない企業の多くは、技術に問題があるのではなく、
+            戦略・組織・評価の三層が揃っていないだけだ。
+            この三層を統合的に設計し直すことが、AIトランスフォーメーションの本質だと私は考える。
+          </p>
+          <p>
+            Advancementでは、この「実装の壁」を越えるための支援を行っている。
+            課題感をお持ちの方は、ぜひ一度ご相談いただきたい。
+          </p>
+
+        </div>
+
+        <!-- Author box -->
+        <div class="author-box">
+          <div class="author-avatar">K.K.</div>
+          <div class="author-info">
+            <div class="author-name">柏原 一博</div>
+            <div class="author-role">Founder & Representative Director, Advancement Inc.</div>
+            <div class="author-bio">
+              ネットワークエンジニア、コンサルティングファームでのプロジェクトマネジメント・BPR、
+              ベンチャーキャピタルでの投資実務を経て、2023年6月に株式会社Advancementを設立。
+              AI Transformation・Business Strategy・Startup Advisoryの3領域で企業の変革を支援する。
+            </div>
+          </div>
+        </div>
+
+        <div class="article-footer">
+          <a href="news.html" class="article-back">記事一覧へ戻る</a>
+        </div>
+
+      </div><!-- /data-lang="ja" -->
+
+
+      <!-- ══════════════════════════════════
+           ENGLISH
+      ══════════════════════════════════ -->
+      <div data-lang="en">
+
+        <div class="article-eyebrow">
+          <a href="news.html">News & Column</a>
+          <span class="sep">/</span>
+          <span>Column</span>
+        </div>
+
+        <div class="article-meta">
+          <span class="article-date">2025.01.15</span>
+          <span class="article-tag">Column</span>
+          <span class="article-author">Kazuhiro Kashiwabara</span>
+        </div>
+
+        <h1 class="article-title">
+          Why AI Adoption Stalls at POC in Japanese Enterprises<br>
+          — Three Perspectives for Breaking Through the Implementation Wall
+        </h1>
+
+        <p class="article-lead">
+          Interest in generative AI continues to grow, yet for many companies, AI adoption ends at the
+          proof-of-concept stage. The root cause is not a technology problem — it is a structural challenge
+          of strategy, organization, and evaluation design. This article deconstructs the nature of this
+          "implementation wall" and offers practical perspectives for breaking through.
+        </p>
+
+        <!-- Data callout -->
+        <div class="data-callout">
+          <div class="data-item">
+            <div class="data-num">67<span>%</span></div>
+            <div class="data-label">Large enterprises that<br>conducted generative AI POCs</div>
+          </div>
+          <div class="data-item">
+            <div class="data-num">18<span>%</span></div>
+            <div class="data-label">Of those that achieved<br>organization-wide rollout</div>
+          </div>
+          <div class="data-item">
+            <div class="data-num">3<span>×</span></div>
+            <div class="data-label">Gap in implementation speed<br>vs. global average</div>
+          </div>
+        </div>
+
+        <div class="article-body">
+
+          <h2><span class="h2-num">01 —</span> No Strategy: "What is AI for?" Goes Undefined</h2>
+
+          <p>
+            The primary reason POCs fail to advance is a lack of strategic positioning.
+            The goal of "having tried AI" becomes the end in itself, with no connection designed
+            between the initiative and solving business challenges or building competitive advantage.
+          </p>
+          <p>
+            As a result, even when a POC delivers strong results, there is no framework for deciding
+            whether to deploy it organization-wide. Unable to answer questions of ROI, the initiative
+            meets the next budget cycle and quietly disappears.
+          </p>
+
+          <div class="highlight">
+            <span class="hl-label">Key Insight</span>
+            AI must be designed not from "what technology can do," but by working backward from
+            "which management challenge does this solve?" Without that, it cannot clear the
+            organizational decision-making hurdles.
+            <strong>Holding a strategic hypothesis before POC begins is a prerequisite.</strong>
+          </div>
+
+          <h2><span class="h2-num">02 —</span> No Organizational Design: No Structure to Absorb Change</h2>
+
+          <p>
+            AI adoption inevitably requires changes to business processes. Yet in many companies,
+            a clear "AI transformation owner" has never been established. IT teams operate on
+            the systems side, business units operate on the operations side, and no one exists
+            to bridge the two as an agent of transformation.
+          </p>
+
+          <h3>Common organizational challenges</h3>
+          <ul>
+            <li>AI promotion teams become gatekeepers, stunting grassroots ownership</li>
+            <li>Frontline staff lack AI literacy and cannot envision practical application</li>
+            <li>Middle managers, unable to personally experience the benefits, become points of resistance</li>
+            <li>No mechanism exists to replicate success stories across the organization</li>
+          </ul>
+
+          <p>
+            These are not individual failures — they are organizational design failures.
+            Deliberately developing and deploying "AI utilization leaders" within each department
+            is essential to building the capacity for transformation.
+          </p>
+
+          <h2><span class="h2-num">03 —</span> Flawed Evaluation Design: ROI Remains Invisible</h2>
+
+          <p>
+            "We introduced AI but couldn't see the impact" — this is a common complaint.
+            In most cases, the root cause is that measurement design was never completed before the POC began.
+            Without a baseline to compare against, outcomes remain qualitative impressions.
+          </p>
+
+          <blockquote>
+            ROI visibility cannot be retrofitted. Measuring the impact of AI adoption begins
+            the moment you start tracking "how long does this task currently take?"
+          </blockquote>
+
+          <p>
+            Leading enterprises deploying Microsoft 365 Copilot and ChatGPT Enterprise have
+            quantifiably confirmed reductions of four to five hours per week per employee —
+            translating annually to a reduction of twenty to twenty-five person-days per person.
+            These figures become the compelling evidence needed to sustain executive investment.
+          </p>
+
+          <div class="highlight">
+            <span class="hl-label">Practical Checklist</span>
+            <strong>Three things to define before a POC begins:</strong><br>
+            ① The target business challenge and current man-hours / cost<br>
+            ② The definition of success (KGI / KPI and target values)<br>
+            ③ Rollout criteria (at what score does organization-wide deployment proceed?)
+          </div>
+
+          <h2><span class="h2-num">Closing —</span> AI Transformation Is a Management Question</h2>
+
+          <p>
+            The technology of generative AI is sufficiently mature. What is being tested is not
+            the choice of technology, but the management will to define "how will we transform?"
+            and the organizational capability to deliver on it.
+          </p>
+          <p>
+            For most companies stuck beyond POC, the technology is not the problem.
+            Strategy, organization, and evaluation design are simply not aligned across all three layers.
+            Redesigning these three layers in an integrated way is, I believe, the true substance
+            of AI transformation.
+          </p>
+          <p>
+            At Advancement, we support organizations in breaking through precisely this implementation wall.
+            If any of this resonates with challenges you are facing, we welcome the opportunity to talk.
+          </p>
+
+        </div>
+
+        <!-- Author box -->
+        <div class="author-box">
+          <div class="author-avatar">K.K.</div>
+          <div class="author-info">
+            <div class="author-name">Kazuhiro Kashiwabara</div>
+            <div class="author-role">Founder & Representative Director, Advancement Inc.</div>
+            <div class="author-bio">
+              After a career spanning network engineering, project management and BPR at a consulting firm,
+              and investment execution at a venture capital firm, Kazuhiro founded Advancement Inc. in June 2023.
+              He supports corporate transformation across three domains: AI Transformation, Business Strategy,
+              and Startup Advisory.
+            </div>
+          </div>
+        </div>
+
+        <div class="article-footer">
+          <a href="news.html" class="article-back">Back to News</a>
+        </div>
+
+      </div><!-- /data-lang="en" -->
+
+    </div><!-- /.article-wrap -->
+  </main>
+
+  <footer class="footer">
+    <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
+      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <div class="ft-policy">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      document.title = lang === 'en'
+        ? 'Why AI Adoption Stalls at POC | Column | Advancement'
+        : '日本企業のAI活用はなぜPOCで止まるのか | Column | Advancement';
+    }
+  </script>
+</body>
+</html>

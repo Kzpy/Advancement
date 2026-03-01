@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Column | Advancement</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Page Layout ── */
+    .news-page-wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 160px 40px 120px;
+    }
+
+    /* Eyebrow */
+    .page-eyebrow {
+      font-family: var(--caps);
+      font-size: .68rem;
+      letter-spacing: .28em;
+      color: var(--blue-glow);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--blue-glow);
+    }
+
+    /* Page title */
+    .page-title {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -.01em;
+      margin-bottom: 16px;
+    }
+    .page-desc {
+      font-family: var(--caps);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      color: var(--w40);
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--w15);
+    }
+
+    /* ── Filter tabs ── */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .2em;
+      padding: 8px 20px;
+      border: 1px solid var(--w15);
+      background: transparent;
+      color: var(--w40);
+      cursor: pointer;
+      transition: color .3s, border-color .3s, background .3s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--blue-glow);
+      border-color: rgba(0,80,255,.5);
+      background: rgba(0,50,200,.07);
+    }
+
+    /* ── Article cards (list style matching existing news-list) ── */
+    .article-list { list-style: none; }
+
+    .article-li {
+      border-bottom: 1px solid var(--w15);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s var(--ease), transform .55s var(--ease);
+    }
+    .article-li.in { opacity: 1; transform: none; }
+
+    .article-row {
+      display: grid;
+      grid-template-columns: 148px 96px 1fr 24px;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 0;
+      text-decoration: none;
+      transition: padding .3s var(--ease);
+    }
+    .article-row:hover { padding-left: 18px; }
+
+    .ar-date {
+      font-family: var(--caps);
+      font-size: .76rem;
+      letter-spacing: .06em;
+      color: var(--w40);
+    }
+
+    .ar-tag {
+      font-family: var(--caps);
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--w15);
+      color: var(--w40);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .ar-tag.column { border-color: rgba(255,160,0,.3);  color: #fbbf24; }
+    .ar-tag.press  { border-color: rgba(0,160,255,.3);  color: var(--blue-glow); }
+    .ar-tag.event  { border-color: rgba(120,80,255,.3); color: #a78bfa; }
+
+    .ar-body {}
+    .ar-title {
+      font-size: .95rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--w100);
+      margin-bottom: 6px;
+      transition: color .3s;
+    }
+    .article-row:hover .ar-title { color: var(--blue-glow); }
+    .ar-excerpt {
+      font-size: .8rem;
+      color: var(--w40);
+      line-height: 1.7;
+    }
+
+    .ar-arr {
+      color: var(--w15);
+      transition: color .3s, transform .3s;
+      font-size: .9rem;
+    }
+    .article-row:hover .ar-arr { color: var(--blue-glow); transform: translateX(4px); }
+
+    /* ── Back link ── */
+    .page-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--caps);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      color: var(--w40);
+      text-decoration: none;
+      margin-top: 72px;
+      transition: color .3s;
+    }
+    .page-back::before { content: '←'; transition: transform .3s; }
+    .page-back:hover { color: var(--blue-glow); }
+    .page-back:hover::before { transform: translateX(-4px); }
+
+    /* ── Lang toggle (same as other pages) ── */
+    .lang-toggle-wrap {
+      position: fixed;
+      top: 50%;
+      right: 32px;
+      transform: translateY(-50%);
+      z-index: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .lang-toggle-btn {
+      font-family: var(--caps);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      background: rgba(5,9,18,.85);
+      border: 1px solid var(--w15);
+      color: var(--w40);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: color .3s, border-color .3s;
+      backdrop-filter: blur(12px);
+    }
+    .lang-toggle-btn.active { color: var(--blue-glow); border-color: rgba(0,80,255,.5); }
+    .lang-toggle-btn:hover  { color: var(--blue-glow); border-color: rgba(0,80,255,.4); }
+
+    [data-lang]         { display: none; }
+    [data-lang].visible { display: block; }
+
+    /* ── Responsive ── */
+    @media (max-width: 800px) {
+      .news-page-wrap { padding: 120px 20px 80px; }
+      .lang-toggle-wrap { top: auto; bottom: 80px; right: 16px; transform: none; flex-direction: row; }
+      .article-row {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto auto;
+        gap: 6px;
+        padding: 24px 0;
+      }
+      .ar-date    { grid-column: 1; font-size: .68rem; }
+      .ar-tag     { grid-column: 2; grid-row: 1; }
+      .ar-body    { grid-column: 1 / 3; }
+      .ar-arr     { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <header class="header sticky" id="header">
+    <a href="index.html" class="logo">Advancement</a>
+    <nav class="nav">
+      <a href="index.html#about"    class="nav-link">Philosophy</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="news.html"           class="nav-link" style="color:var(--blue-glow);">News</a>
+      <a href="index.html#contact"  class="nav-cta"><span>Contact</span></a>
+    </nav>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#about"    class="mm-link">Philosophy</a>
+    <a href="index.html#services" class="mm-link">Services</a>
+    <a href="news.html"           class="mm-link">News</a>
+    <a href="index.html#contact"  class="mm-link">Contact</a>
+  </div>
+
+  <div class="lang-toggle-wrap">
+    <button class="lang-toggle-btn active" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <button class="lang-toggle-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main>
+    <div class="news-page-wrap">
+      <div class="page-eyebrow">Latest</div>
+
+      <!-- ── JAPANESE ── -->
+      <div data-lang="ja" class="visible">
+        <h1 class="page-title">News & Column</h1>
+        <p class="page-desc">最新情報・コラム</p>
+
+        <!-- Filter -->
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all"   onclick="filterArticles('all',   this)">ALL</button>
+          <button class="filter-btn"        data-filter="column" onclick="filterArticles('column', this)">Column</button>
+          <button class="filter-btn"        data-filter="press"  onclick="filterArticles('press',  this)">Press</button>
+        </div>
+
+        <!-- Article list -->
+        <ul class="article-list" id="article-list-ja">
+
+          <!-- Column 001 -->
+          <li class="article-li in" data-category="column">
+            <a href="column-001.html" class="article-row">
+              <span class="ar-date">2025.01.15</span>
+              <span class="ar-tag column">Column</span>
+              <span class="ar-body">
+                <span class="ar-title">日本企業のAI活用はなぜPOCで止まるのか ——「実装の壁」を越えるための3つの視点</span>
+                <span class="ar-excerpt">多くの企業がAI導入を試みながらも、組織全体への定着に至らない。その根本的な原因と、突破するための実践的アプローチを解説する。</span>
+              </span>
+              <span class="ar-arr">→</span>
+            </a>
+          </li>
+
+          <!-- Press 001 -->
+          <li class="article-li in" data-category="press">
+            <a href="article.html" class="article-row">
+              <span class="ar-date">2023.06.08</span>
+              <span class="ar-tag press">Press</span>
+              <span class="ar-body">
+                <span class="ar-title">Advancement Inc. 創業。AIと戦略で、日本企業の変革を加速する。</span>
+                <span class="ar-excerpt">2023年6月8日、AI Transformation・Business Strategy・Startup Advisory を軸とした戦略コンサルティング会社として創業。</span>
+              </span>
+              <span class="ar-arr">→</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <a href="index.html" class="page-back">トップページへ戻る</a>
+      </div>
+
+      <!-- ── ENGLISH ── -->
+      <div data-lang="en">
+        <h1 class="page-title">News & Column</h1>
+        <p class="page-desc">Latest updates & insights</p>
+
+        <!-- Filter -->
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all"    onclick="filterArticles('all',    this)">ALL</button>
+          <button class="filter-btn"        data-filter="column"  onclick="filterArticles('column',  this)">Column</button>
+          <button class="filter-btn"        data-filter="press"   onclick="filterArticles('press',   this)">Press</button>
+        </div>
+
+        <!-- Article list -->
+        <ul class="article-list" id="article-list-en">
+
+          <!-- Column 001 -->
+          <li class="article-li in" data-category="column">
+            <a href="column-001.html" class="article-row">
+              <span class="ar-date">2025.01.15</span>
+              <span class="ar-tag column">Column</span>
+              <span class="ar-body">
+                <span class="ar-title">Why AI Adoption Stalls at POC in Japanese Enterprises — Three Perspectives for Breaking Through the Implementation Wall</span>
+                <span class="ar-excerpt">Many companies attempt AI adoption yet fail to embed it organization-wide. We examine the root causes and offer practical approaches to break through.</span>
+              </span>
+              <span class="ar-arr">→</span>
+            </a>
+          </li>
+
+          <!-- Press 001 -->
+          <li class="article-li in" data-category="press">
+            <a href="article.html" class="article-row">
+              <span class="ar-date">2023.06.08</span>
+              <span class="ar-tag press">Press</span>
+              <span class="ar-body">
+                <span class="ar-title">Advancement Inc. Founded — Accelerating Corporate Transformation with AI and Strategy.</span>
+                <span class="ar-excerpt">Established June 8, 2023, as a strategic consulting firm centered on AI Transformation, Business Strategy, and Startup Advisory.</span>
+              </span>
+              <span class="ar-arr">→</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <a href="index.html" class="page-back">Back to Top</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
+      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <div class="ft-policy">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* ── Language toggle ── */
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      document.title = lang === 'en' ? 'News & Column | Advancement' : 'News & Column | Advancement';
+    }
+
+    /* ── Filter ── */
+    function filterArticles(category, btn) {
+      // Update active button (within same lang block)
+      btn.closest('.filter-row').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter visible list
+      const langBlock = btn.closest('[data-lang]');
+      if (!langBlock) return;
+      langBlock.querySelectorAll('.article-li').forEach(li => {
+        const match = category === 'all' || li.dataset.category === category;
+        li.style.display = match ? '' : 'none';
+        if (match) {
+          // Retrigger animation
+          li.classList.remove('in');
+          requestAnimationFrame(() => li.classList.add('in'));
+        }
+      });
+    }
+  </script>
+</body>
+</html>

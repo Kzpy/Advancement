@@ -179,37 +179,6 @@
       font-style: italic;
     }
 
-    /* Data callout */
-    .data-callout {
-      display: flex;
-      gap: 0;
-      margin: 48px 0;
-      border: 1px solid var(--w15);
-    }
-    .data-item {
-      flex: 1;
-      padding: 28px 24px;
-      border-right: 1px solid var(--w15);
-      text-align: center;
-    }
-    .data-item:last-child { border-right: none; }
-    .data-num {
-      font-family: var(--display);
-      font-size: 2.6rem;
-      font-weight: 300;
-      color: var(--blue-glow);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .data-num span { font-size: 1.2rem; }
-    .data-label {
-      font-family: var(--caps);
-      font-size: .6rem;
-      letter-spacing: .16em;
-      color: var(--w40);
-      line-height: 1.6;
-    }
-
     /* Conclusion label */
     .conclusion-label {
       font-family: var(--caps);
@@ -334,9 +303,6 @@
     @media (max-width: 800px) {
       .article-wrap { padding: 120px 20px 80px; }
       .lang-toggle-wrap { top: auto; bottom: 80px; right: 16px; transform: none; flex-direction: row; }
-      .data-callout { flex-direction: column; }
-      .data-item { border-right: none; border-bottom: 1px solid var(--w15); }
-      .data-item:last-child { border-bottom: none; }
       .author-box { flex-direction: column; gap: 20px; }
       .article-footer { flex-direction: column; align-items: flex-start; }
     }
@@ -397,90 +363,73 @@
         </h1>
 
         <p class="article-lead">
-          生成AIへの関心は高まる一方、多くの企業でAI活用が「実証実験（POC）どまり」に終わっている。
-          その背景には技術の問題ではなく、戦略・組織・評価設計の構造的な問題が潜んでいる。
-          本稿では、この「実装の壁」の正体を分解し、突破するための実践的視点を示す。
+          生成AIへの関心は高まる一方、多くの企業でAI活用が「実証実験（POC）どまり」に終わっています。
+          その背景には技術の問題ではなく、戦略・組織・評価設計の構造的な問題が潜んでいます。
+          本稿では、この「実装の壁」の正体を分解し、突破するための実践的な視点をお伝えします。
         </p>
-
-        <!-- Data callout -->
-        <div class="data-callout">
-          <div class="data-item">
-            <div class="data-num">67<span>%</span></div>
-            <div class="data-label">生成AIのPOCを<br>実施した大企業の割合</div>
-          </div>
-          <div class="data-item">
-            <div class="data-num">18<span>%</span></div>
-            <div class="data-label">そのうち全社展開に<br>至った割合</div>
-          </div>
-          <div class="data-item">
-            <div class="data-num">3<span>倍</span></div>
-            <div class="data-label">グローバル平均との<br>実装速度の差</div>
-          </div>
-        </div>
 
         <div class="article-body">
 
           <h2><span class="h2-num">01 —</span> 戦略不在：「何のためのAIか」が定義されていない</h2>
 
           <p>
-            POCが組織展開に至らない最大の原因は、戦略上の位置づけの欠如だ。
+            POCが組織展開に至らない最大の原因は、戦略上の位置づけの欠如です。
             「AIを使ってみた」という実績作りが目的化し、
-            業務課題の解決や競争優位の構築との接続が設計されていないケースが多い。
+            業務課題の解決や競争優位の構築との接続が設計されていないケースが多く見受けられます。
           </p>
           <p>
             その結果、POCで優れた成果が出ても「本当に全社に展開すべきか」の判断軸がなく、
-            展開が止まる。投資対効果の問いに答えられないまま次の予算サイクルを迎え、
-            立ち消えとなる。
+            展開が止まってしまいます。投資対効果の問いに答えられないまま次の予算サイクルを迎え、
+            立ち消えになるというパターンが繰り返されています。
           </p>
 
           <div class="highlight">
             <span class="hl-label">Key Insight</span>
             AIは「技術的に何ができるか」ではなく、「どの経営課題を解くか」から逆算して
-            設計されなければ、組織の意思決定を通らない。POC前に<strong>戦略仮説を持つこと</strong>が前提条件だ。
+            設計されなければ、組織の意思決定を通りません。POC前に<strong>戦略仮説を持つこと</strong>が前提条件です。
           </div>
 
           <h2><span class="h2-num">02 —</span> 組織設計の欠如：変化を吸収する器がない</h2>
 
           <p>
-            AI導入は業務プロセスの変更を必然的に伴う。しかし多くの企業で、
-            変化を推進する「AI推進主体」が明確に設定されていない。
+            AI導入は業務プロセスの変更を必然的に伴います。しかし多くの企業で、
+            変化を推進する「AI推進主体」が明確に設定されていません。
             IT部門はシステム側、事業部門は現場業務側に閉じており、
-            両者を横断する変革の担い手が不在のまま導入が進む。
+            両者を横断する変革の担い手が不在のまま導入が進んでいるのが実情です。
           </p>
 
           <h3>よく見られる組織上の課題</h3>
           <ul>
             <li>AI推進部門が「お目付け役」化し、現場の主体性が育たない</li>
             <li>現場担当者のAIリテラシーが低く、使い方のイメージが持てない</li>
-            <li>中間管理職が変化のメリットを体感できず、抵抗勢力になる</li>
+            <li>中間管理職が変化のメリットを体感できず、抵抗勢力になってしまう</li>
             <li>成功事例を横展開する仕組みが設計されていない</li>
           </ul>
 
           <p>
-            これらは個人の問題ではなく、組織設計の問題だ。
+            これらは個人の問題ではなく、組織設計の問題です。
             変革を内側から起こす「AI活用リーダー」を意図的に育成し、
-            各部門に配置する構造が不可欠となる。
+            各部門に配置する構造を整えることが不可欠です。
           </p>
 
-          <h2><span class="h2-num">03 —</span> 評価設計の欠陥：ROIが可視化されていない</h2>
+          <h2><span class="h2-num">03 —</span> 評価設計の欠如：ROIが可視化されていない</h2>
 
           <p>
-            「AIを導入したが効果が見えない」という声は多い。
-            その多くは、効果測定の設計がPOC開始前に行われていないことが原因だ。
-            比較対象となるベースラインが存在せず、定性的な感想に留まる。
+            「AIを導入したが効果が見えない」という声は多く聞かれます。
+            その多くは、効果測定の設計がPOC開始前に行われていないことが原因です。
+            比較対象となるベースラインが存在せず、定性的な感想に留まってしまいます。
           </p>
 
           <blockquote>
-            ROIの可視化は後付けではできない。
+            ROIの可視化は後付けではできません。
             「この業務に何時間かかっているか」を測定し始めた時点から、
-            AI導入の効果検証は始まっている。
+            AI導入の効果検証はすでに始まっています。
           </blockquote>
 
           <p>
-            Microsoft 365 CopilotやChatGPT Enterpriseを活用した
-            先行企業の事例では、週あたり4〜5時間の業務削減が定量的に確認されており、
-            年換算での一人当たり工数削減は20〜25日規模に達する。
-            こうした数値は、経営層への投資継続の説得材料として機能する。
+            効果測定を設計しないまま導入を進めると、結果が出ても「AIのおかげかどうかわからない」
+            という状況に陥ります。経営層への投資継続の説得材料を作るためにも、
+            POC設計の段階から測定の仕組みを組み込むことが重要です。
           </p>
 
           <div class="highlight">
@@ -491,16 +440,20 @@
             ③ 横展開の判断基準（どのスコアで全社展開に移行するか）
           </div>
 
-          <h2><span class="h2-num">おわりに —</span> AIトランスフォーメーションは「経営の問い」だ</h2>
+          <h2><span class="h2-num">おわりに —</span> AIトランスフォーメーションは「経営の問い」です</h2>
 
           <p>
-            生成AIの技術は十分に成熟している。問われているのはテクノロジーの選定ではなく、
-            「自社はどう変わるのか」という経営意志と、変化を実現する組織能力だ。
+            生成AIの技術は十分に成熟しています。問われているのはテクノロジーの選定ではなく、
+            「自社はどう変わるのか」という経営意志と、変化を実現する組織能力です。
           </p>
           <p>
             POCの先に進めない企業の多くは、技術に問題があるのではなく、
-            戦略・組織・評価の三層が揃っていないだけだ。
-            この三層を統合的に設計し直すことが、AIトランスフォーメーションの本質だと私は考える。
+            戦略・組織・評価の三層が揃っていないだけです。
+            この三層を統合的に設計し直すことが、AIトランスフォーメーションの本質だと私は考えています。
+          </p>
+          <p>
+            Advancementでは、この「実装の壁」を越えるための支援を行っています。
+            課題感をお持ちの方は、ぜひ一度ご相談ください。
           </p>
 
         </div>
@@ -512,9 +465,9 @@
             <div class="author-name">柏原 一博</div>
             <div class="author-role">Founder & Representative Director, Advancement Inc.</div>
             <div class="author-bio">
-              ネットワークエンジニア、コンサルティングファームでのプロジェクトマネジメント・BPR、
-              ベンチャーキャピタルでの投資実務を経て、2023年6月に株式会社Advancementを設立。
-              AI Transformation・Business Strategy・Startup Advisoryの3領域で企業の変革を支援する。
+              エンジニア、コンサルティングファームでのプロジェクトマネジメント・BPR、
+              ベンチャーキャピタルでの投資実務を経て、2023年6月に株式会社Advancementを設立しました。
+              AI Transformation・Business Strategy・Startup Advisoryの3領域で企業の変革を支援しています。
             </div>
           </div>
         </div>
@@ -554,22 +507,6 @@
           of strategy, organization, and evaluation design. This article deconstructs the nature of this
           "implementation wall" and offers practical perspectives for breaking through.
         </p>
-
-        <!-- Data callout -->
-        <div class="data-callout">
-          <div class="data-item">
-            <div class="data-num">67<span>%</span></div>
-            <div class="data-label">Large enterprises that<br>conducted generative AI POCs</div>
-          </div>
-          <div class="data-item">
-            <div class="data-num">18<span>%</span></div>
-            <div class="data-label">Of those that achieved<br>organization-wide rollout</div>
-          </div>
-          <div class="data-item">
-            <div class="data-num">3<span>×</span></div>
-            <div class="data-label">Gap in implementation speed<br>vs. global average</div>
-          </div>
-        </div>
 
         <div class="article-body">
 
@@ -631,10 +568,10 @@
           </blockquote>
 
           <p>
-            Leading enterprises deploying Microsoft 365 Copilot and ChatGPT Enterprise have
-            quantifiably confirmed reductions of four to five hours per week per employee —
-            translating annually to a reduction of twenty to twenty-five person-days per person.
-            These figures become the compelling evidence needed to sustain executive investment.
+            When AI is adopted without a measurement framework in place, even positive outcomes
+            leave teams unable to attribute results confidently. Building the case for continued
+            executive investment requires embedding measurement into the POC design from the outset —
+            not retrofitting it after the fact.
           </p>
 
           <div class="highlight">

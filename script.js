@@ -82,7 +82,7 @@
     const SHARD_COUNT = 55;
     const shards = [];
 
-    const colors = [0x0050ff, 0x2b7fff, 0x0030cc, 0x5599ff, 0x003acc, 0x1a60ff];
+    const colors = [0x0050ff, 0x0070ff, 0x2b7fff, 0x003acc, 0x5599ff, 0x001a66];
 
     for (let i = 0; i < SHARD_COUNT; i++) {
       const size = Math.random() * 2.8 + 0.6;
@@ -105,14 +105,14 @@
         color: col,
         wireframe: true,
         transparent: true,
-        opacity: Math.random() * 0.22 + 0.06,
+        opacity: Math.random() * 0.18 + 0.04,
       });
 
       // Solid face version (very faint)
       const solidMat = new THREE.MeshBasicMaterial({
         color: col,
         transparent: true,
-        opacity: Math.random() * 0.06 + 0.02,
+        opacity: Math.random() * 0.04 + 0.01,
         side: THREE.DoubleSide,
       });
 
@@ -150,10 +150,10 @@
     // ── Floating grid plane (subtle) ──
     const gridGeo = new THREE.PlaneGeometry(80, 50, 18, 12);
     const gridMat = new THREE.MeshBasicMaterial({
-      color: 0x0050ff,
+      color: 0x0040cc,
       wireframe: true,
       transparent: true,
-      opacity: 0.06,
+      opacity: 0.04,
     });
     const grid = new THREE.Mesh(gridGeo, gridMat);
     grid.rotation.x = -Math.PI / 3.5;
@@ -172,10 +172,10 @@
     }
     heroGeo.computeVertexNormals();
     const heroMat = new THREE.MeshBasicMaterial({
-      color: 0x0050ff,
+      color: 0x0030aa,
       wireframe: true,
       transparent: true,
-      opacity: 0.10,
+      opacity: 0.07,
     });
     const hero = new THREE.Mesh(heroGeo, heroMat);
     hero.position.set(12, 2, -8);
@@ -221,8 +221,8 @@
         s.solid.position.x = floatX;
 
         // Pulse opacity
-        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.07 + 0.12);
-        s.solid.material.opacity = (Math.sin(t * 0.8 + i) * 0.02 + 0.03);
+        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.06 + 0.09);
+        s.solid.material.opacity = (Math.sin(t * 0.8 + i) * 0.015 + 0.02);
       });
 
       renderer.render(scene, camera);

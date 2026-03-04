@@ -42,9 +42,9 @@
 
     /* Meta */
     .article-meta { display:flex; align-items:center; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
-    .article-date { font-family:var(--caps); font-size:.7rem; letter-spacing:.15em; color:var(--w40); }
-    .article-tag  { font-family:var(--caps); font-size:.62rem; letter-spacing:.18em; padding:4px 12px; border:1px solid rgba(255,160,0,.3); color:#fbbf24; }
-    .article-author { font-family:var(--caps); font-size:.65rem; letter-spacing:.14em; color:var(--w40); }
+    .article-date { font-family:var(--caps); font-size:.82rem; letter-spacing:.14em; color:var(--w40); }
+    .article-tag  { font-family:var(--caps); font-size:.74rem; letter-spacing:.16em; padding:4px 14px; border:1px solid rgba(180,83,9,.40); color:#b45309; }
+    .article-author { font-family:var(--caps); font-size:.78rem; letter-spacing:.13em; color:var(--w40); }
 
     /* Title */
     .article-title {
@@ -113,7 +113,7 @@
       line-height: 2.0;
     }
     .highlight strong { color:var(--blue-glow); font-weight:500; }
-    .hl-label { font-family:var(--caps); font-size:.62rem; letter-spacing:.22em; color:var(--blue-glow); display:block; margin-bottom:14px; }
+    .hl-label { font-family:var(--caps); font-size:.76rem; letter-spacing:.20em; color:var(--blue); display:block; margin-bottom:14px; }
 
     /* ── VISUAL COMPONENTS ── */
 
@@ -126,35 +126,35 @@
     }
     .pg-col {
       padding: 28px 24px;
-      background: rgba(255,255,255,.02);
+      background: #fff;
       border: 1px solid var(--w15);
     }
-    .pg-col.old { border-color: rgba(100,100,120,.25); background: rgba(80,80,100,.03); }
-    .pg-col.new { border-color: rgba(0,80,255,.25); background: rgba(0,50,180,.04); }
+    .pg-col.old { border-color: rgba(100,100,120,.30); background: rgba(240,240,248,.6); }
+    .pg-col.new { border-color: rgba(0,80,255,.30); background: rgba(240,245,255,.7); }
     .pg-col-label {
       font-family: var(--caps);
-      font-size: .6rem;
-      letter-spacing: .2em;
+      font-size: .74rem;
+      letter-spacing: .18em;
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(5,9,18,.10);
     }
-    .pg-col.old .pg-col-label { color: rgba(150,150,170,.7); }
-    .pg-col.new .pg-col-label { color: var(--blue-glow); }
+    .pg-col.old .pg-col-label { color: rgba(80,80,110,.60); }
+    .pg-col.new .pg-col-label { color: var(--blue); }
     .pg-item {
-      font-size: .83rem;
+      font-size: .88rem;
       color: var(--w60);
       line-height: 1.8;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid rgba(5,9,18,.07);
       display: flex;
       align-items: flex-start;
       gap: 10px;
     }
     .pg-item:last-child { border-bottom: none; }
-    .pg-item-icon { flex-shrink: 0; margin-top: 2px; font-size: .75rem; }
-    .pg-col.old .pg-item-icon { color: rgba(150,150,170,.5); }
-    .pg-col.new .pg-item-icon { color: var(--blue-glow); }
+    .pg-item-icon { flex-shrink: 0; margin-top: 2px; font-size: .8rem; }
+    .pg-col.old .pg-item-icon { color: rgba(80,80,110,.45); }
+    .pg-col.new .pg-item-icon { color: var(--blue); }
 
     /* 2. Org chart illustration */
     .org-vis {
@@ -165,9 +165,9 @@
     }
     .org-vis-label {
       font-family: var(--caps);
-      font-size: .6rem;
-      letter-spacing: .22em;
-      color: var(--blue-glow);
+      font-size: .76rem;
+      letter-spacing: .20em;
+      color: var(--blue);
       margin-bottom: 28px;
     }
     .org-tree {
@@ -205,8 +205,8 @@
     .org-node {
       padding: 10px 16px;
       font-family: var(--caps);
-      font-size: .6rem;
-      letter-spacing: .14em;
+      font-size: .72rem;
+      letter-spacing: .12em;
       border: 1px solid;
       text-align: center;
       min-width: 100px;
@@ -216,15 +216,15 @@
     }
     .org-node.in { opacity: 1; transform: none; }
     .org-node.human {
-      border-color: rgba(0,80,255,.4);
-      color: var(--blue-glow);
-      background: rgba(0,50,180,.08);
+      border-color: rgba(0,80,255,.50);
+      color: var(--blue);
+      background: rgba(0,50,180,.07);
     }
     .org-node.ai {
-      border-color: rgba(0,200,150,.3);
-      color: rgba(0,220,160,.8);
-      background: rgba(0,180,120,.05);
-      font-size: .55rem;
+      border-color: rgba(0,140,100,.50);
+      color: rgba(0,120,85,.95);
+      background: rgba(0,160,110,.07);
+      font-size: .68rem;
     }
     .org-note {
       font-size: .78rem;

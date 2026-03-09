@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CFVMSCSRT2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CFVMSCSRT2');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIを信じるな。「仕組み」を信じろ。| Column | Advancement</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .article-wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 160px 40px 120px;
+    }
+
+    .article-eyebrow {
+      font-family: var(--caps);
+      font-size: .68rem;
+      letter-spacing: .28em;
+      color: var(--blue-glow);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .article-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--blue-glow); }
+    .article-eyebrow a { color:var(--w40); text-decoration:none; transition:color .3s; }
+    .article-eyebrow a:hover { color:var(--blue-glow); }
+    .article-eyebrow .sep { color:var(--w20); }
+
+    .article-meta { display:flex; align-items:center; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
+    .article-date { font-family:var(--caps); font-size:.7rem; letter-spacing:.15em; color:var(--w40); }
+    .article-tag  { font-family:var(--caps); font-size:.62rem; letter-spacing:.18em; padding:4px 12px; border:1px solid rgba(255,160,0,.3); color:#fbbf24; }
+    .article-author { font-family:var(--caps); font-size:.65rem; letter-spacing:.14em; color:var(--w40); }
+
+    .article-title {
+      font-family: var(--display);
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -.01em;
+      line-height: 1.3;
+      margin-bottom: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--w15);
+    }
+
+    .article-lead {
+      font-size: 1.05rem;
+      color: var(--w80);
+      line-height: 2.1;
+      margin-bottom: 56px;
+      padding-left: 24px;
+      border-left: 2px solid rgba(0,80,255,.35);
+    }
+
+    .article-body { color:var(--w70); font-size:.95rem; line-height:2.1; }
+    .article-body p { margin-bottom:28px; }
+
+    .article-body h2 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--w100);
+      margin: 72px 0 20px;
+      padding-top: 56px;
+      border-top: 1px solid var(--w15);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .h2-num { font-family:var(--caps); font-size:.6rem; letter-spacing:.2em; color:var(--blue-glow); margin-top:5px; flex-shrink:0; }
+
+    .article-body h3 { font-family:var(--display); font-size:1.05rem; font-weight:500; color:var(--w90); margin:40px 0 16px; }
+
+    .article-body ul { list-style:none; padding:0; margin-bottom:28px; }
+    .article-body ul li { padding-left:1.6em; position:relative; margin-bottom:10px; }
+    .article-body ul li::before { content:'—'; position:absolute; left:0; color:var(--blue-glow); font-size:.8rem; }
+
+    .article-body blockquote {
+      border-left: 2px solid rgba(0,80,255,.4);
+      padding: 20px 28px;
+      margin: 36px 0;
+      background: rgba(0,50,180,.05);
+      color: var(--w70);
+      font-size: 1.05rem;
+      line-height: 1.95;
+      font-style: italic;
+    }
+
+    .highlight {
+      background: rgba(0,50,180,.07);
+      border: 1px solid rgba(0,80,255,.15);
+      padding: 28px 32px;
+      margin: 40px 0;
+      font-size: .9rem;
+      line-height: 2.0;
+    }
+    .highlight strong { color:var(--blue-glow); font-weight:500; }
+    .hl-label { font-family:var(--caps); font-size:.62rem; letter-spacing:.22em; color:var(--blue-glow); display:block; margin-bottom:14px; }
+
+    /* ── 1. F1 ENGINE ANALOGY ── */
+    .f1-diagram {
+      margin: 48px 0;
+      padding: 36px 32px;
+      border: 1px solid var(--w15);
+      background: rgba(0,20,80,.08);
+    }
+    .f1-diagram-label {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--blue-glow);
+      margin-bottom: 28px;
+    }
+    .f1-row {
+      display: flex;
+      align-items: stretch;
+      gap: 3px;
+      margin-bottom: 12px;
+    }
+    .f1-row:last-child { margin-bottom: 0; }
+    .f1-part-label {
+      font-family: var(--caps);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--w50);
+      width: 130px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      line-height: 1.4;
+    }
+    .f1-bar-wrap {
+      flex: 1;
+      height: 40px;
+      background: rgba(255,255,255,.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .f1-bar {
+      height: 100%;
+      width: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      font-family: var(--caps);
+      font-size: .58rem;
+      letter-spacing: .1em;
+      white-space: nowrap;
+      transition: width 1.2s cubic-bezier(.16,1,.3,1);
+    }
+    .f1-bar.replaceable {
+      background: linear-gradient(90deg, rgba(100,100,120,.5), rgba(80,80,100,.3));
+      color: rgba(255,255,255,.5);
+    }
+    .f1-bar.critical {
+      background: linear-gradient(90deg, rgba(0,80,255,.7), rgba(0,130,255,.5));
+      color: rgba(255,255,255,.85);
+    }
+    .f1-bar.strategy {
+      background: linear-gradient(90deg, rgba(0,180,120,.6), rgba(0,220,150,.4));
+      color: rgba(255,255,255,.85);
+    }
+    .f1-tag {
+      font-family: var(--caps);
+      font-size: .55rem;
+      letter-spacing: .15em;
+      padding: 3px 8px;
+      margin-left: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .f1-tag.swap { border: 1px solid rgba(150,150,170,.3); color: rgba(150,150,170,.6); }
+    .f1-tag.core { border: 1px solid rgba(0,80,255,.4); color: var(--blue-glow); }
+    .f1-tag.soul { border: 1px solid rgba(0,180,120,.4); color: rgba(0,220,150,.8); }
+
+    /* ── 2. DEPENDENCY RISK METER ── */
+    .risk-meter {
+      margin: 48px 0;
+      padding: 36px 32px;
+      border: 1px solid var(--w15);
+      background: rgba(0,20,80,.08);
+    }
+    .risk-meter-label {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--blue-glow);
+      margin-bottom: 28px;
+    }
+    .risk-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .risk-row:last-child { margin-bottom: 0; }
+    .risk-name {
+      font-family: var(--caps);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--w50);
+      width: 150px;
+      flex-shrink: 0;
+      line-height: 1.5;
+    }
+    .risk-bar-wrap {
+      flex: 1;
+      height: 28px;
+      background: rgba(255,255,255,.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .risk-bar {
+      height: 100%;
+      width: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-family: var(--caps);
+      font-size: .56rem;
+      letter-spacing: .1em;
+      white-space: nowrap;
+      transition: width 1.1s cubic-bezier(.16,1,.3,1);
+    }
+    .risk-bar.high   { background: linear-gradient(90deg, rgba(255,60,60,.6), rgba(200,0,0,.4));    color:rgba(255,255,255,.8); }
+    .risk-bar.mid    { background: linear-gradient(90deg, rgba(255,160,0,.5), rgba(200,120,0,.3));  color:rgba(255,255,255,.8); }
+    .risk-bar.low    { background: linear-gradient(90deg, rgba(0,80,255,.6), rgba(0,130,255,.4));   color:rgba(255,255,255,.8); }
+    .risk-level {
+      font-family: var(--caps);
+      font-size: .58rem;
+      letter-spacing: .12em;
+      width: 56px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .risk-level.high { color: rgba(255,80,80,.8); }
+    .risk-level.mid  { color: rgba(255,160,0,.8); }
+    .risk-level.low  { color: rgba(0,130,255,.8); }
+
+    /* ── 3. DATA STRUCTURE VISUAL ── */
+    .data-layers {
+      margin: 48px 0;
+      padding: 36px 32px;
+      border: 1px solid var(--w15);
+      background: rgba(0,20,80,.08);
+    }
+    .data-layers-label {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--blue-glow);
+      margin-bottom: 28px;
+    }
+    .dl-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dl-layer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border: 1px solid;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .dl-layer.in { opacity: 1; transform: none; }
+    .dl-layer.l1 { border-color: rgba(0,80,255,.35); background: rgba(0,50,200,.08); }
+    .dl-layer.l2 { border-color: rgba(0,80,255,.25); background: rgba(0,40,160,.06); }
+    .dl-layer.l3 { border-color: rgba(0,80,255,.15); background: rgba(0,30,120,.04); }
+    .dl-layer.l4 { border-color: rgba(100,100,150,.2); background: rgba(80,80,120,.03); }
+    .dl-icon {
+      font-size: .9rem;
+      flex-shrink: 0;
+      width: 28px;
+      text-align: center;
+    }
+    .dl-content { flex: 1; }
+    .dl-title {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      margin-bottom: 4px;
+    }
+    .dl-layer.l1 .dl-title { color: var(--blue-glow); }
+    .dl-layer.l2 .dl-title { color: rgba(0,150,255,.8); }
+    .dl-layer.l3 .dl-title { color: rgba(0,120,220,.7); }
+    .dl-layer.l4 .dl-title { color: var(--w40); }
+    .dl-desc { font-size: .78rem; color: var(--w50); line-height: 1.7; }
+    .dl-badge {
+      font-family: var(--caps);
+      font-size: .52rem;
+      letter-spacing: .14em;
+      padding: 4px 10px;
+      flex-shrink: 0;
+    }
+    .dl-layer.l1 .dl-badge { border: 1px solid rgba(0,80,255,.4); color: var(--blue-glow); }
+    .dl-layer.l2 .dl-badge { border: 1px solid rgba(0,100,200,.3); color: rgba(0,150,255,.7); }
+    .dl-layer.l3 .dl-badge { border: 1px solid rgba(0,80,180,.25); color: rgba(0,120,220,.6); }
+    .dl-layer.l4 .dl-badge { border: 1px solid rgba(100,100,150,.2); color: var(--w30); }
+
+    /* ── 4. PLUG-IN SWAP VISUAL ── */
+    .swap-vis {
+      margin: 48px 0;
+      padding: 36px 32px;
+      border: 1px solid var(--w15);
+      background: rgba(0,20,80,.08);
+    }
+    .swap-vis-label {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--blue-glow);
+      margin-bottom: 28px;
+    }
+    .swap-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+    .swap-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .swap-fixed-label {
+      font-family: var(--caps);
+      font-size: .58rem;
+      letter-spacing: .16em;
+      color: var(--blue-glow);
+      margin-bottom: 8px;
+    }
+    .swap-fixed-box {
+      padding: 20px 18px;
+      border: 1px solid rgba(0,80,255,.3);
+      background: rgba(0,50,200,.08);
+    }
+    .swap-fixed-title {
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      color: var(--w80);
+      margin-bottom: 8px;
+    }
+    .swap-fixed-item {
+      font-size: .78rem;
+      color: var(--w50);
+      line-height: 1.8;
+      padding-left: 1em;
+      position: relative;
+    }
+    .swap-fixed-item::before { content:'—'; position:absolute; left:0; color:var(--blue-glow); font-size:.75rem; }
+    .swap-arrow-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .swap-arrow {
+      font-family: var(--caps);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--w30);
+      text-align: center;
+    }
+    .swap-engine-label {
+      font-family: var(--caps);
+      font-size: .58rem;
+      letter-spacing: .16em;
+      color: var(--w40);
+      margin-bottom: 8px;
+    }
+    .swap-engine {
+      padding: 14px 16px;
+      border: 1px solid;
+      text-align: center;
+      font-family: var(--caps);
+      font-size: .62rem;
+      letter-spacing: .12em;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .swap-engine.in { opacity: 1; transform: none; }
+    .swap-engine.active { border-color: rgba(0,200,150,.5); color: rgba(0,220,150,.9); background: rgba(0,160,100,.06); }
+    .swap-engine.old    { border-color: rgba(100,100,120,.25); color: var(--w30); background: rgba(80,80,100,.03); }
+
+    /* Callout */
+    .callout-quote {
+      margin: 48px 0;
+      padding: 40px 36px;
+      border: 1px solid rgba(0,80,255,.2);
+      background: linear-gradient(135deg, rgba(0,40,160,.1), rgba(0,20,80,.06));
+      position: relative;
+      overflow: hidden;
+    }
+    .callout-quote::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0,80,255,.6), transparent);
+    }
+    .callout-quote-mark { font-family:var(--display); font-size:4rem; line-height:.7; color:rgba(0,80,255,.15); margin-bottom:16px; }
+    .callout-quote-text { font-family:var(--display); font-size:1.3rem; font-weight:300; color:var(--w90); line-height:1.6; margin-bottom:20px; }
+    .callout-quote-sub  { font-size:.82rem; color:var(--w50); line-height:1.8; }
+
+    /* Author */
+    .author-box {
+      margin-top: 80px;
+      padding: 32px 36px;
+      border: 1px solid var(--w15);
+      background: rgba(0,30,100,.07);
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .author-avatar { width:52px; height:52px; background:rgba(0,80,255,.15); border:1px solid rgba(0,80,255,.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--caps); font-size:.68rem; letter-spacing:.1em; color:var(--blue-glow); }
+    .author-name  { font-family:var(--display); font-size:1rem; font-weight:400; color:var(--w90); margin-bottom:6px; }
+    .author-role  { font-family:var(--caps); font-size:.62rem; letter-spacing:.16em; color:var(--blue-glow); margin-bottom:12px; }
+    .author-bio   { font-size:.83rem; color:var(--w50); line-height:1.8; }
+
+    .article-footer { margin-top:72px; padding-top:48px; border-top:1px solid var(--w15); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px; }
+    .article-back { display:inline-flex; align-items:center; gap:10px; font-family:var(--caps); font-size:.72rem; letter-spacing:.2em; color:var(--w40); text-decoration:none; transition:color .3s; }
+    .article-back::before { content:'←'; transition:transform .3s; }
+    .article-back:hover { color:var(--blue-glow); }
+    .article-back:hover::before { transform:translateX(-4px); }
+
+    .lang-toggle-wrap { position:fixed; top:50%; right:32px; transform:translateY(-50%); z-index:600; display:flex; flex-direction:column; gap:8px; }
+    .lang-toggle-btn { font-family:var(--caps); font-size:.65rem; letter-spacing:.18em; background:rgba(5,9,18,.85); border:1px solid var(--w15); color:var(--w40); padding:8px 14px; cursor:pointer; transition:color .3s, border-color .3s; backdrop-filter:blur(12px); }
+    .lang-toggle-btn.active { color:var(--blue-glow); border-color:rgba(0,80,255,.5); }
+    .lang-toggle-btn:hover  { color:var(--blue-glow); border-color:rgba(0,80,255,.4); }
+    [data-lang] { display:none; }
+    [data-lang].visible { display:block; }
+
+    @media (max-width: 800px) {
+      .article-wrap { padding:120px 20px 80px; }
+      .lang-toggle-wrap { top:auto; bottom:80px; right:16px; transform:none; flex-direction:row; }
+      .f1-part-label { width:90px; font-size:.55rem; }
+      .risk-name { width:100px; font-size:.56rem; }
+      .swap-grid { grid-template-columns: 1fr; }
+      .swap-arrow-col { flex-direction: row; justify-content: center; }
+      .author-box { flex-direction:column; gap:20px; }
+      .article-footer { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <header class="header sticky" id="header">
+    <a href="index.html" class="logo">Advancement</a>
+    <nav class="nav">
+      <a href="index.html#about"    class="nav-link">Philosophy</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="news.html"           class="nav-link">News</a>
+      <a href="index.html#contact"  class="nav-cta"><span>Contact</span></a>
+    </nav>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#about"    class="mm-link">Philosophy</a>
+    <a href="index.html#services" class="mm-link">Services</a>
+    <a href="news.html"           class="mm-link">News</a>
+    <a href="index.html#contact"  class="mm-link">Contact</a>
+  </div>
+
+  <div class="lang-toggle-wrap">
+    <button class="lang-toggle-btn active" id="btn-ja" onclick="setLang('ja')">JP</button>
+    <button class="lang-toggle-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <main>
+    <div class="article-wrap">
+
+      <!-- ══════════════════════════════
+           JAPANESE
+      ══════════════════════════════ -->
+      <div data-lang="ja" class="visible">
+
+        <div class="article-eyebrow">
+          <a href="news.html">News & Column</a>
+          <span class="sep">/</span>
+          <span>Column</span>
+        </div>
+
+        <div class="article-meta">
+          <span class="article-date">2026.03.09</span>
+          <span class="article-tag">Column</span>
+          <span class="article-author">柏原 一博</span>
+        </div>
+
+        <h1 class="article-title">
+          AIを信じるな。<br>
+          「仕組み」を信じろ。
+        </h1>
+
+        <p class="article-lead">
+          前回の記事（<a href="column-003.html" style="color:var(--blue-glow); text-decoration:none;">AIは「ツール」じゃない。今日からあなたの「部下」になる。</a>）では、AIを「部下」として雇うべきだとお伝えしました。<br><br>
+          今回は、経営者が最も陥りやすい<strong style="color:var(--w90);">「技術の罠」</strong>について警鐘を鳴らします。<br><br>
+          結論から言います。<strong style="color:var(--w90);">特定のAIツールに心中してはいけません。</strong>あなたが守るべきは「最新のAI」ではなく、自社の「業務フロー」と「組織データ」そのものです。
+        </p>
+
+        <div class="article-body">
+
+          <!-- ── Section 1 ── -->
+          <h2><span class="h2-num">01 —</span>AIは「入れ替え可能なエンジン」に過ぎない</h2>
+
+          <p>F1マシンを想像してください。エンジンは重要ですが、それ以上に重要なのは「シャーシ（車体）」「空力設計」、そして「チームの戦略」です。エンジンが進化すれば、最新のものに載せ替えればいい。</p>
+          <p>ビジネスも同じです。ChatGPTやClaude、GeminiといったAIモデルは、あくまで「エンジン」です。本当に価値があるのは、そのエンジンを積むための<strong style="color:var(--w90);">「自社専用のシャーシ（業務フロー）」</strong>です。</p>
+
+          <div class="f1-diagram" id="f1-ja">
+            <div class="f1-diagram-label">F1アナロジー — 何が本当に重要か</div>
+            <div class="f1-row">
+              <div class="f1-part-label">エンジン<br>（AIモデル）</div>
+              <div class="f1-bar-wrap"><div class="f1-bar replaceable" data-w="55">ChatGPT / Claude / Gemini — 入れ替え可能</div></div>
+              <div class="f1-tag swap">SWAP可</div>
+            </div>
+            <div class="f1-row">
+              <div class="f1-part-label">シャーシ<br>（業務フロー）</div>
+              <div class="f1-bar-wrap"><div class="f1-bar critical" data-w="85">自社専用の業務設計図 — これが競争優位</div></div>
+              <div class="f1-tag core">コア資産</div>
+            </div>
+            <div class="f1-row">
+              <div class="f1-part-label">チーム戦略<br>（組織データ）</div>
+              <div class="f1-bar-wrap"><div class="f1-bar strategy" data-w="95">蓄積された判断・ノウハウ — 他社に複製不能</div></div>
+              <div class="f1-tag soul">真の差別化</div>
+            </div>
+          </div>
+
+          <p>「業務の設計図」がブラックボックス化したままAIを導入しても、それは古い車に無理やり高性能エンジンを積むようなもの。最高のエンジンを積んでも、シャーシが対応できなければ火を噴いて止まるだけです。</p>
+
+          <!-- ── Section 2 ── -->
+          <h2><span class="h2-num">02 —</span>ツールへの依存が生む「経営リスク」</h2>
+
+          <p>「ChatGPTを全社導入したから安心だ」「Copilotを入れたから、うちはAI化できている」——もしそう思っているなら、非常に危険です。</p>
+          <p>AIの世界は今この瞬間も凄まじいスピードで塗り替えられています。今日最強だったモデルが、来月には二世代前の旧式になっている。そんなことが当たり前に起きる世界です。</p>
+
+          <div class="risk-meter" id="risk-ja">
+            <div class="risk-meter-label">特定ツール依存度 × リスクの関係</div>
+            <div class="risk-row">
+              <div class="risk-name">値上げへの<br>無防備さ</div>
+              <div class="risk-bar-wrap"><div class="risk-bar high" data-w="90">プライシング変更で即コスト増</div></div>
+              <div class="risk-level high">高リスク</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">サービス停止時の<br>業務停止リスク</div>
+              <div class="risk-bar-wrap"><div class="risk-bar high" data-w="85">代替手段ゼロで機能不全</div></div>
+              <div class="risk-level high">高リスク</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">競合の同質化<br>スピード</div>
+              <div class="risk-bar-wrap"><div class="risk-bar mid" data-w="70">同じツール→同じ品質へ収束</div></div>
+              <div class="risk-level mid">中リスク</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">業務フロー保有<br>組織の安定性</div>
+              <div class="risk-bar-wrap"><div class="risk-bar low" data-w="20">ツールが変わっても構造は不変</div></div>
+              <div class="risk-level low">低リスク</div>
+            </div>
+          </div>
+
+          <blockquote>
+            特定のAIツールに依存しすぎることは、自社の命運を他社のシステムに委ねるのと同じです。
+          </blockquote>
+
+          <p>経営者が本当にやるべきは、AIを追いかけることではありません。<strong style="color:var(--w90);">「どのAIが来ても、即座に自社の戦力として組み込める状態」</strong>を作っておくことです。</p>
+
+          <!-- ── Section 3 ── -->
+          <h2><span class="h2-num">03 —</span>「組織データ」こそが、AIを自社の部下にする</h2>
+
+          <p>「うちの会社ならではの判断」をAIにさせるために必要なのは、AIのプログラミング技術ではありません。蓄積された<strong style="color:var(--w90);">「組織データ」</strong>です。</p>
+
+          <div class="data-layers" id="datalayers-ja">
+            <div class="data-layers-label">組織データの4層構造 — 何を資産化すべきか</div>
+            <div class="dl-stack">
+              <div class="dl-layer l1" id="dl-ja-1">
+                <div class="dl-icon">📋</div>
+                <div class="dl-content">
+                  <div class="dl-title">業務判断ログ</div>
+                  <div class="dl-desc">「なぜその判断を下したか」の記録。AIが「わが社らしい」意思決定を学ぶ最重要データ。</div>
+                </div>
+                <div class="dl-badge">最優先</div>
+              </div>
+              <div class="dl-layer l2" id="dl-ja-2">
+                <div class="dl-icon">🔧</div>
+                <div class="dl-content">
+                  <div class="dl-title">トラブル対応全記録</div>
+                  <div class="dl-desc">過去の失敗・例外処理・クレーム対応。これがあるだけでAIの「現場知能」が格段に上がる。</div>
+                </div>
+                <div class="dl-badge">高価値</div>
+              </div>
+              <div class="dl-layer l3" id="dl-ja-3">
+                <div class="dl-icon">⭐</div>
+                <div class="dl-content">
+                  <div class="dl-title">顧客ごとのこだわり・品質基準</div>
+                  <div class="dl-desc">「この顧客にはこの対応」という暗黙知。構造化されていなければ退職と同時に消える。</div>
+                </div>
+                <div class="dl-badge">中価値</div>
+              </div>
+              <div class="dl-layer l4" id="dl-ja-4">
+                <div class="dl-icon">📁</div>
+                <div class="dl-content">
+                  <div class="dl-title">汎用ドキュメント・マニュアル</div>
+                  <div class="dl-desc">整備はされているが競合も持っている。差別化にはなりにくい基礎データ。</div>
+                </div>
+                <div class="dl-badge">基礎</div>
+              </div>
+            </div>
+          </div>
+
+          <p>このデータさえあれば、どんな汎用AIであっても一瞬で「あなたの会社のベテラン社員」に変貌させることができます。逆に、データが散乱し個人の頭の中にしかない状態では、どんなに高価なAIを入れても<strong style="color:var(--w90);">「世間一般の回答」</strong>しか返ってきません。</p>
+
+          <!-- ── Section 4 ── -->
+          <h2><span class="h2-num">04 —</span>プラグを差し替えるだけで、アップグレードが完了する</h2>
+
+          <p>「業務フロー」と「組織データ」を自社で完全に握っている組織は強い。「この業務プロセスには、このデータが必要だ」という定義さえできていれば、中身のAIが何に変わろうと関係ありません。</p>
+
+          <div class="swap-vis" id="swap-ja">
+            <div class="swap-vis-label">構造を持つ組織のAIアップグレード</div>
+            <div class="swap-grid">
+              <div class="swap-col">
+                <div class="swap-fixed-label">自社資産（不変）</div>
+                <div class="swap-fixed-box">
+                  <div class="swap-fixed-title">業務フロー</div>
+                  <div class="swap-fixed-item">誰が・いつ・何を判断するか</div>
+                  <div class="swap-fixed-item">データの流れと付加価値ポイント</div>
+                  <div class="swap-fixed-item">例外処理の定義</div>
+                </div>
+                <div class="swap-fixed-box" style="margin-top:8px;">
+                  <div class="swap-fixed-title">組織データ</div>
+                  <div class="swap-fixed-item">判断ログ・対応記録</div>
+                  <div class="swap-fixed-item">顧客ノウハウ・品質基準</div>
+                </div>
+              </div>
+              <div class="swap-arrow-col">
+                <div class="swap-arrow">← 接続 →</div>
+              </div>
+              <div class="swap-col">
+                <div class="swap-engine-label">AIエンジン（差し替え自由）</div>
+                <div class="swap-engine active" id="sw-ja-1">✓ 現行モデル（稼働中）</div>
+                <div class="swap-engine old"    id="sw-ja-2">旧モデル（引退）</div>
+                <div class="swap-engine old"    id="sw-ja-3">旧々モデル（引退）</div>
+                <div style="margin-top:12px; font-family:var(--caps); font-size:.55rem; letter-spacing:.14em; color:var(--w30); text-align:center;">次世代モデルが出たら<br>プラグを差し替えるだけ</div>
+              </div>
+            </div>
+          </div>
+
+          <p>「AIに詳しくなる」必要はありません。<strong style="color:var(--w90);">「自社の仕事の構造」に詳しくなってください。</strong>それが、AI時代における最強のガバナンスであり、経営者の責任です。</p>
+
+          <div class="callout-quote" id="callout-ja">
+            <div class="callout-quote-mark">"</div>
+            <div class="callout-quote-text">大切なのは、流行りのツールを<br>追いかけることではない。<br>自社の「型」を固め、「魂」を込めることだ。</div>
+            <div class="callout-quote-sub">
+              プラットフォーム側に生殺与奪の権を握られてはいけません。全ての業務フローと組織データを、自分たちの手の内に置いておくこと。あなたの会社の「型」、見えていますか？
+            </div>
+          </div>
+
+        </div>
+
+        <div class="author-box">
+          <div class="author-avatar">K.K.</div>
+          <div class="author-info">
+            <div class="author-name">柏原 一博</div>
+            <div class="author-role">Founder & Representative Director, Advancement Inc.</div>
+            <div class="author-bio">
+              ネットワークエンジニア、コンサルティングファームでのプロジェクトマネジメント・BPR、
+              ベンチャーキャピタルでの投資実務を経て、2023年6月に株式会社Advancementを設立しました。
+              AI Transformation・Business Strategy・Startup Advisoryの3領域で企業の変革を支援しています。
+            </div>
+          </div>
+        </div>
+
+        <div class="article-footer">
+          <a href="news.html" class="article-back">記事一覧へ戻る</a>
+        </div>
+
+      </div><!-- /ja -->
+
+
+      <!-- ══════════════════════════════
+           ENGLISH
+      ══════════════════════════════ -->
+      <div data-lang="en">
+
+        <div class="article-eyebrow">
+          <a href="news.html">News & Column</a>
+          <span class="sep">/</span>
+          <span>Column</span>
+        </div>
+
+        <div class="article-meta">
+          <span class="article-date">2026.03.09</span>
+          <span class="article-tag">Column</span>
+          <span class="article-author">Kazuhiro Kashiwabara</span>
+        </div>
+
+        <h1 class="article-title">
+          Don't Trust the AI.<br>
+          Trust the System.
+        </h1>
+
+        <p class="article-lead">
+          In the previous article (<a href="column-003.html" style="color:var(--blue-glow); text-decoration:none;">AI Is Not a "Tool." Starting Today, It Becomes Your Subordinate.</a>), I argued that AI should be treated as a subordinate, not a tool.<br><br>
+          This time, I want to sound the alarm on the <strong style="color:var(--w90);">trap that trips up most executives: over-committing to specific AI tools.</strong><br><br>
+          The conclusion is simple. <strong style="color:var(--w90);">Don't bet everything on a single AI platform.</strong> What you should be protecting is not "the latest AI" — it's your own business workflows and organizational data.
+        </p>
+
+        <div class="article-body">
+
+          <h2><span class="h2-num">01 —</span>AI Is Just a Replaceable Engine</h2>
+
+          <p>Picture an F1 car. The engine matters — but what matters more is the chassis, the aerodynamic design, and the team strategy. When a better engine arrives, you swap it in. The car still wins because the architecture was right.</p>
+          <p>Business is the same. ChatGPT, Claude, Gemini — these are engines. <strong style="color:var(--w90);">The real asset is the chassis: your proprietary business workflow.</strong></p>
+
+          <div class="f1-diagram" id="f1-en">
+            <div class="f1-diagram-label">The F1 Analogy — What Actually Matters</div>
+            <div class="f1-row">
+              <div class="f1-part-label">Engine<br>(AI Model)</div>
+              <div class="f1-bar-wrap"><div class="f1-bar replaceable" data-w="55">ChatGPT / Claude / Gemini — swappable</div></div>
+              <div class="f1-tag swap">SWAP</div>
+            </div>
+            <div class="f1-row">
+              <div class="f1-part-label">Chassis<br>(Workflow)</div>
+              <div class="f1-bar-wrap"><div class="f1-bar critical" data-w="85">Proprietary process design — competitive advantage</div></div>
+              <div class="f1-tag core">Core Asset</div>
+            </div>
+            <div class="f1-row">
+              <div class="f1-part-label">Team Strategy<br>(Org Data)</div>
+              <div class="f1-bar-wrap"><div class="f1-bar strategy" data-w="95">Accumulated judgment & know-how — impossible to copy</div></div>
+              <div class="f1-tag soul">True Edge</div>
+            </div>
+          </div>
+
+          <p>Deploying AI on top of an undocumented, black-box workflow is like bolting a race engine onto an old frame. No matter how powerful the engine, if the chassis can't handle it, it catches fire and stops.</p>
+
+          <h2><span class="h2-num">02 —</span>Tool Dependency Is a Management Risk</h2>
+
+          <p>"We've rolled out ChatGPT company-wide, so we're covered." "We have Copilot — we're AI-ready." If that's how you're thinking, you are in a vulnerable position.</p>
+          <p>The AI landscape is being rewritten at a pace that has no precedent. The most powerful model today will be two generations old next month. This is simply the norm in this world.</p>
+
+          <div class="risk-meter" id="risk-en">
+            <div class="risk-meter-label">Tool Dependency vs. Risk Exposure</div>
+            <div class="risk-row">
+              <div class="risk-name">Exposure to<br>price increases</div>
+              <div class="risk-bar-wrap"><div class="risk-bar high" data-w="90">Any pricing change hits you immediately</div></div>
+              <div class="risk-level high">High Risk</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">Business halt on<br>service shutdown</div>
+              <div class="risk-bar-wrap"><div class="risk-bar high" data-w="85">No fallback — full operational failure</div></div>
+              <div class="risk-level high">High Risk</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">Competitor<br>convergence speed</div>
+              <div class="risk-bar-wrap"><div class="risk-bar mid" data-w="70">Same tools → same quality → no differentiation</div></div>
+              <div class="risk-level mid">Mid Risk</div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-name">Stability of workflow-<br>owning organizations</div>
+              <div class="risk-bar-wrap"><div class="risk-bar low" data-w="20">Structure remains even as tools change</div></div>
+              <div class="risk-level low">Low Risk</div>
+            </div>
+          </div>
+
+          <blockquote>
+            Over-relying on a specific AI tool is the same as handing control of your company's fate to someone else's system.
+          </blockquote>
+
+          <p>What executives should actually be doing is not chasing AI. It's building <strong style="color:var(--w90);">the organizational state where any AI — whichever arrives next — can be immediately deployed as your own capability.</strong></p>
+
+          <h2><span class="h2-num">03 —</span>Organizational Data Is What Turns AI Into Your Subordinate</h2>
+
+          <p>Making AI execute "judgments unique to your company" does not require programming skills. It requires accumulated <strong style="color:var(--w90);">organizational data.</strong></p>
+
+          <div class="data-layers" id="datalayers-en">
+            <div class="data-layers-label">The 4-Layer Org Data Structure — What to Turn Into Assets</div>
+            <div class="dl-stack">
+              <div class="dl-layer l1" id="dl-en-1">
+                <div class="dl-icon">📋</div>
+                <div class="dl-content">
+                  <div class="dl-title">Decision Logs</div>
+                  <div class="dl-desc">Records of "why that judgment was made." The most critical data for AI to learn your company's decision-making style.</div>
+                </div>
+                <div class="dl-badge">Priority 1</div>
+              </div>
+              <div class="dl-layer l2" id="dl-en-2">
+                <div class="dl-icon">🔧</div>
+                <div class="dl-content">
+                  <div class="dl-title">Incident & Exception Records</div>
+                  <div class="dl-desc">Past failures, edge cases, complaint resolutions. This data alone dramatically elevates AI's operational intelligence.</div>
+                </div>
+                <div class="dl-badge">High Value</div>
+              </div>
+              <div class="dl-layer l3" id="dl-en-3">
+                <div class="dl-icon">⭐</div>
+                <div class="dl-content">
+                  <div class="dl-title">Client Preferences & Quality Standards</div>
+                  <div class="dl-desc">"For this client, handle it this way." Tacit knowledge that disappears the moment the person who holds it leaves.</div>
+                </div>
+                <div class="dl-badge">Mid Value</div>
+              </div>
+              <div class="dl-layer l4" id="dl-en-4">
+                <div class="dl-icon">📁</div>
+                <div class="dl-content">
+                  <div class="dl-title">General Docs & Manuals</div>
+                  <div class="dl-desc">Structured, but competitors have it too. Foundational data that doesn't generate differentiation on its own.</div>
+                </div>
+                <div class="dl-badge">Baseline</div>
+              </div>
+            </div>
+          </div>
+
+          <p>With this data in place, any general-purpose AI can be instantly transformed into your firm's most seasoned employee. Without it, no matter how expensive the AI you purchase, <strong style="color:var(--w90);">you will only ever receive generic answers</strong> — and generic answers don't win against competitors.</p>
+
+          <h2><span class="h2-num">04 —</span>Swap the Plug, and the Upgrade Is Complete</h2>
+
+          <p>Organizations that fully own their business workflows and organizational data are resilient. Once you have defined "this process requires this data," it doesn't matter what AI sits at the center. When a cheaper, smarter model arrives, you swap the plug and the upgrade is complete.</p>
+
+          <div class="swap-vis" id="swap-en">
+            <div class="swap-vis-label">AI Upgrades for Organizations That Own Their Structure</div>
+            <div class="swap-grid">
+              <div class="swap-col">
+                <div class="swap-fixed-label">Company Assets (Permanent)</div>
+                <div class="swap-fixed-box">
+                  <div class="swap-fixed-title">Business Workflow</div>
+                  <div class="swap-fixed-item">Who decides what, and when</div>
+                  <div class="swap-fixed-item">Data flow & value-add points</div>
+                  <div class="swap-fixed-item">Exception handling definitions</div>
+                </div>
+                <div class="swap-fixed-box" style="margin-top:8px;">
+                  <div class="swap-fixed-title">Organizational Data</div>
+                  <div class="swap-fixed-item">Decision logs & incident records</div>
+                  <div class="swap-fixed-item">Client know-how & quality standards</div>
+                </div>
+              </div>
+              <div class="swap-arrow-col">
+                <div class="swap-arrow">← connect →</div>
+              </div>
+              <div class="swap-col">
+                <div class="swap-engine-label">AI Engine (freely replaceable)</div>
+                <div class="swap-engine active" id="sw-en-1">✓ Current Model (active)</div>
+                <div class="swap-engine old"    id="sw-en-2">Previous Model (retired)</div>
+                <div class="swap-engine old"    id="sw-en-3">Legacy Model (retired)</div>
+                <div style="margin-top:12px; font-family:var(--caps); font-size:.55rem; letter-spacing:.14em; color:var(--w30); text-align:center;">Next-gen model arrives?<br>Just swap the plug.</div>
+              </div>
+            </div>
+          </div>
+
+          <p>You don't need to become an AI expert. <strong style="color:var(--w90);">You need to become an expert on the structure of your own work.</strong> That is AI-era governance — and it is an executive responsibility.</p>
+
+          <div class="callout-quote" id="callout-en">
+            <div class="callout-quote-mark">"</div>
+            <div class="callout-quote-text">The goal is not to chase<br>the latest tool.<br>It's to own your pattern — and pour your soul into it.</div>
+            <div class="callout-quote-sub">
+              Don't let the platform hold the keys to your survival. Keep every workflow and every data asset firmly in your own hands. Can you see the shape of your company's "pattern" right now?
+            </div>
+          </div>
+
+        </div>
+
+        <div class="author-box">
+          <div class="author-avatar">K.K.</div>
+          <div class="author-info">
+            <div class="author-name">Kazuhiro Kashiwabara</div>
+            <div class="author-role">Founder & Representative Director, Advancement Inc.</div>
+            <div class="author-bio">After careers spanning network engineering, project management and BPR at a consulting firm, and investment execution at a venture capital firm, Kazuhiro founded Advancement Inc. in June 2023. He supports corporate transformation across three domains: AI Transformation, Business Strategy, and Startup Advisory.</div>
+          </div>
+        </div>
+
+        <div class="article-footer">
+          <a href="news.html" class="article-back">Back to News</a>
+        </div>
+
+      </div><!-- /en -->
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
+      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <div class="ft-policy">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el =>
+        el.classList.toggle('visible', el.dataset.lang === lang)
+      );
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      document.title = lang === 'en'
+        ? "Don't Trust the AI. Trust the System. | Column | Advancement"
+        : 'AIを信じるな。「仕組み」を信じろ。| Column | Advancement';
+    }
+
+    function onVisible(el, cb, threshold = 0.2) {
+      if (!el) return;
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { cb(); obs.unobserve(el); } });
+      }, { threshold });
+      obs.observe(el);
+    }
+
+    /* ── F1 bars ── */
+    ['f1-ja', 'f1-en'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      onVisible(el, () => {
+        el.querySelectorAll('.f1-bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.transition = 'width 1.2s cubic-bezier(.16,1,.3,1)';
+            bar.style.width = bar.dataset.w + '%';
+          }, i * 200);
+        });
+      });
+    });
+
+    /* ── Risk bars ── */
+    ['risk-ja', 'risk-en'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      onVisible(el, () => {
+        el.querySelectorAll('.risk-bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.transition = 'width 1.1s cubic-bezier(.16,1,.3,1)';
+            bar.style.width = bar.dataset.w + '%';
+          }, i * 180);
+        });
+      });
+    });
+
+    /* ── Data layers stagger ── */
+    ['datalayers-ja', 'datalayers-en'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      onVisible(el, () => {
+        el.querySelectorAll('.dl-layer').forEach((layer, i) => {
+          setTimeout(() => layer.classList.add('in'), i * 150);
+        });
+      }, 0.1);
+    });
+
+    /* ── Swap visual engines ── */
+    ['ja', 'en'].forEach(lang => {
+      const vis = document.getElementById('swap-' + lang);
+      if (!vis) return;
+      onVisible(vis, () => {
+        ['1','2','3'].forEach((n, i) => {
+          const eng = document.getElementById(`sw-${lang}-${n}`);
+          if (eng) setTimeout(() => eng.classList.add('in'), i * 200);
+        });
+      }, 0.15);
+    });
+
+    /* ── Callout fade ── */
+    ['callout-ja', 'callout-en'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity .8s ease, transform .8s ease';
+      onVisible(el, () => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }, 0.3);
+    });
+  </script>
+</body>
+</html>

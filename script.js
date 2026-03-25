@@ -1,54 +1,7 @@
 /* =============================================
-   ADVANCEMENT — script.js
+   ADVANCEMENT v16 — script.js
+   Restrained, performant, purposeful.
    ============================================= */
-
-/* ─── LOADER ─── */
-(function initLoader() {
-  const fill  = document.getElementById('loader-fill');
-  const pctEl = document.getElementById('loader-pct');
-  const loader = document.getElementById('loader');
-  let pct = 0;
-
-  const tick = setInterval(() => {
-    pct += Math.random() * 11 + 2;
-    if (pct >= 100) {
-      pct = 100;
-      clearInterval(tick);
-      setTimeout(() => loader.classList.add('out'), 350);
-    }
-    fill.style.width = pct + '%';
-    pctEl.textContent  = Math.floor(pct) + '%';
-  }, 75);
-})();
-
-/* ─── CUSTOM CURSOR ─── */
-(function initCursor() {
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
-  });
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  (function loop() {
-    rx = lerp(rx, mx, 0.11);
-    ry = lerp(ry, my, 0.11);
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(loop);
-  })();
-
-  document.querySelectorAll('a, button, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
-  });
-})();
 
 /* ─── HEADER STICKY ─── */
 (function initHeader() {
@@ -58,130 +11,105 @@
   }, { passive: true });
 })();
 
-/* ─── WEBGL LOW-POLY MESH ─── */
-(function initLowPoly() {
+/* ─── AMBIENT WEBGL — subtle, low-poly, quiet ─── */
+(function initAmbient() {
   const canvas = document.getElementById('bg');
+  if (!canvas) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   const script = document.createElement('script');
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  script.onload = () => initThree();
+  script.onload = () => build();
+  script.onerror = () => { canvas.style.display = 'none'; };
   document.head.appendChild(script);
 
-  function initThree() {
+  function build() {
     let W = window.innerWidth, H = window.innerHeight;
+    const isMobile = W < 800;
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0);
 
     const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 200);
-    camera.position.set(0, 0, 28);
+    const camera = new THREE.PerspectiveCamera(55, W / H, 0.1, 200);
+    camera.position.set(0, 0, 30);
 
-    // ── Low-poly icosahedron shards ──
-    const SHARD_COUNT = 55;
+    // Fewer, larger shards — ambient, not busy
+    const SHARD_COUNT = isMobile ? 12 : 28;
     const shards = [];
 
-    const colors = [0x0050ff, 0x0070ff, 0x2b7fff, 0x003acc, 0x5599ff, 0x001a66];
-
     for (let i = 0; i < SHARD_COUNT; i++) {
-      const size = Math.random() * 2.8 + 0.6;
-      const geo  = new THREE.IcosahedronGeometry(size, 0); // detail=0 = raw low-poly
+      const size = Math.random() * 3.2 + 0.8;
+      const geo  = new THREE.IcosahedronGeometry(size, 0);
 
-      // Randomize vertex positions slightly for organic look
       const pos = geo.attributes.position;
       for (let v = 0; v < pos.count; v++) {
-        pos.setXYZ(
-          v,
-          pos.getX(v) + (Math.random() - 0.5) * size * 0.35,
-          pos.getY(v) + (Math.random() - 0.5) * size * 0.35,
-          pos.getZ(v) + (Math.random() - 0.5) * size * 0.35,
+        pos.setXYZ(v,
+          pos.getX(v) + (Math.random() - 0.5) * size * 0.3,
+          pos.getY(v) + (Math.random() - 0.5) * size * 0.3,
+          pos.getZ(v) + (Math.random() - 0.5) * size * 0.3,
         );
       }
       geo.computeVertexNormals();
 
-      const col = colors[Math.floor(Math.random() * colors.length)];
       const mat = new THREE.MeshBasicMaterial({
-        color: col,
+        color: 0x0050ff,
         wireframe: true,
         transparent: true,
-        opacity: Math.random() * 0.18 + 0.04,
+        opacity: Math.random() * 0.08 + 0.02,
       });
 
-      // Solid face version (very faint)
-      const solidMat = new THREE.MeshBasicMaterial({
-        color: col,
-        transparent: true,
-        opacity: Math.random() * 0.04 + 0.01,
-        side: THREE.DoubleSide,
-      });
-
-      const wire  = new THREE.Mesh(geo, mat);
-      const solid = new THREE.Mesh(geo, solidMat);
-
-      const spread = 22;
+      const mesh = new THREE.Mesh(geo, mat);
+      const spread = isMobile ? 16 : 24;
       const x = (Math.random() - 0.5) * spread;
-      const y = (Math.random() - 0.5) * spread * 0.7;
-      const z = (Math.random() - 0.5) * 14 - 4;
+      const y = (Math.random() - 0.5) * spread * 0.6;
+      const z = (Math.random() - 0.5) * 12 - 5;
 
-      wire.position.set(x, y, z);
-      solid.position.set(x, y, z);
-
-      wire.rotation.set(
+      mesh.position.set(x, y, z);
+      mesh.rotation.set(
         Math.random() * Math.PI * 2,
         Math.random() * Math.PI * 2,
         Math.random() * Math.PI * 2
       );
-      solid.rotation.copy(wire.rotation);
 
       const speed = {
-        rx: (Math.random() - 0.5) * 0.004,
-        ry: (Math.random() - 0.5) * 0.004,
-        rz: (Math.random() - 0.5) * 0.003,
-        vy: (Math.random() - 0.5) * 0.008,
-        vx: (Math.random() - 0.5) * 0.005,
+        rx: (Math.random() - 0.5) * 0.002,
+        ry: (Math.random() - 0.5) * 0.002,
+        vy: (Math.random() - 0.5) * 0.004,
       };
 
-      scene.add(wire);
-      scene.add(solid);
-      shards.push({ wire, solid, speed, baseY: y, baseX: x });
+      scene.add(mesh);
+      shards.push({ mesh, speed, baseY: y, baseX: x });
     }
 
-    // ── Floating grid plane (subtle) ──
-    const gridGeo = new THREE.PlaneGeometry(80, 50, 18, 12);
-    const gridMat = new THREE.MeshBasicMaterial({
+    // Single large hero shard
+    const heroGeo = new THREE.IcosahedronGeometry(10, 1);
+    const hPos = heroGeo.attributes.position;
+    for (let v = 0; v < hPos.count; v++) {
+      hPos.setXYZ(v,
+        hPos.getX(v) + (Math.random() - 0.5) * 0.9,
+        hPos.getY(v) + (Math.random() - 0.5) * 0.9,
+        hPos.getZ(v) + (Math.random() - 0.5) * 0.9,
+      );
+    }
+    heroGeo.computeVertexNormals();
+    const heroMat = new THREE.MeshBasicMaterial({
       color: 0x0040cc,
       wireframe: true,
       transparent: true,
       opacity: 0.04,
     });
-    const grid = new THREE.Mesh(gridGeo, gridMat);
-    grid.rotation.x = -Math.PI / 3.5;
-    grid.position.set(0, -8, -10);
-    scene.add(grid);
-
-    // ── Large background shard (hero piece) ──
-    const heroGeo = new THREE.IcosahedronGeometry(9, 1);
-    const hPos = heroGeo.attributes.position;
-    for (let v = 0; v < hPos.count; v++) {
-      hPos.setXYZ(v,
-        hPos.getX(v) + (Math.random() - 0.5) * 1.2,
-        hPos.getY(v) + (Math.random() - 0.5) * 1.2,
-        hPos.getZ(v) + (Math.random() - 0.5) * 1.2,
-      );
-    }
-    heroGeo.computeVertexNormals();
-    const heroMat = new THREE.MeshBasicMaterial({
-      color: 0x0030aa,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.07,
-    });
     const hero = new THREE.Mesh(heroGeo, heroMat);
-    hero.position.set(12, 2, -8);
+    hero.position.set(14, 2, -10);
     scene.add(hero);
 
-    // Mouse parallax
     let mx = 0, my = 0;
     document.addEventListener('mousemove', e => {
       mx = (e.clientX / W - 0.5);
@@ -191,38 +119,20 @@
     let t = 0;
     function animate() {
       requestAnimationFrame(animate);
-      t += 0.008;
+      t += 0.005;
 
-      // Rotate hero shard slowly
-      hero.rotation.x += 0.0008;
-      hero.rotation.y += 0.0012;
+      hero.rotation.x += 0.0005;
+      hero.rotation.y += 0.0007;
 
-      // Grid subtle drift
-      grid.rotation.z += 0.0002;
-
-      // Camera parallax
-      camera.position.x += (mx * 3 - camera.position.x) * 0.03;
-      camera.position.y += (-my * 2 - camera.position.y) * 0.03;
+      camera.position.x += (mx * 2 - camera.position.x) * 0.02;
+      camera.position.y += (-my * 1.5 - camera.position.y) * 0.02;
       camera.lookAt(0, 0, 0);
 
-      // Animate each shard
       shards.forEach((s, i) => {
-        s.wire.rotation.x  += s.speed.rx;
-        s.wire.rotation.y  += s.speed.ry;
-        s.wire.rotation.z  += s.speed.rz;
-        s.solid.rotation.copy(s.wire.rotation);
-
-        // Gentle float
-        const floatY = s.baseY + Math.sin(t + i * 0.4) * 0.8;
-        const floatX = s.baseX + Math.cos(t * 0.6 + i * 0.3) * 0.4;
-        s.wire.position.y  = floatY;
-        s.solid.position.y = floatY;
-        s.wire.position.x  = floatX;
-        s.solid.position.x = floatX;
-
-        // Pulse opacity
-        s.wire.material.opacity  = (Math.sin(t * 0.8 + i) * 0.06 + 0.09);
-        s.solid.material.opacity = (Math.sin(t * 0.8 + i) * 0.015 + 0.02);
+        s.mesh.rotation.x += s.speed.rx;
+        s.mesh.rotation.y += s.speed.ry;
+        s.mesh.position.y = s.baseY + Math.sin(t + i * 0.5) * 0.5;
+        s.mesh.position.x = s.baseX + Math.cos(t * 0.4 + i * 0.3) * 0.25;
       });
 
       renderer.render(scene, camera);
@@ -249,7 +159,7 @@
         }
       });
     },
-    { threshold: 0.08 }
+    { threshold: 0.06 }
   );
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
@@ -282,19 +192,15 @@ function toggleLang() {
   currentLang = currentLang === 'ja' ? 'en' : 'ja';
   const isEN = currentLang === 'en';
 
-  // Update all lang buttons
   document.querySelectorAll('#lang-btn').forEach(b => b.textContent = isEN ? 'JP' : 'EN');
   document.querySelectorAll('.mm-lang').forEach(b => b.textContent = isEN ? 'JP / EN' : 'EN / JP');
 
-  // Update all elements with data-jp / data-en
   document.querySelectorAll('[data-jp][data-en]').forEach(el => {
     const val = isEN ? el.dataset.en : el.dataset.jp;
     if (!val) return;
-    // Use innerHTML to support <br> tags
     el.innerHTML = val;
   });
 
-  // Form placeholders
   const placeholders = {
     '[name="name"]':    { jp: '山田 太郎',          en: 'Taro Yamada' },
     '[name="email"]':   { jp: 'hello@example.com',  en: 'hello@example.com' },
@@ -306,17 +212,57 @@ function toggleLang() {
     if (el) el.placeholder = isEN ? t.en : t.jp;
   });
 
-  // html lang attribute
   document.documentElement.lang = currentLang;
 }
 
-/* ─── SCROLL PROGRESS BAR ─── */
+/* ─── SCROLL PROGRESS ─── */
 (function initProgress() {
   const bar = document.createElement('div');
-  bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#0050ff,#5599ff);z-index:9999;transition:width .1s linear;pointer-events:none;';
+  bar.className = 'scroll-progress';
   document.body.appendChild(bar);
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
     bar.style.width = pct + '%';
   }, { passive: true });
+})();
+
+/* ─── FORM SUBMISSION FEEDBACK ─── */
+(function initForm() {
+  const form   = document.getElementById('contact-form');
+  const btn    = document.getElementById('submit-btn');
+  const status = document.getElementById('form-status');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    status.className = 'form-status';
+    status.textContent = '';
+
+    const isEN = currentLang === 'en';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      if (res.ok) {
+        status.className = 'form-status success';
+        status.textContent = isEN
+          ? 'Thank you. We will be in touch shortly.'
+          : 'お問い合わせありがとうございます。折り返しご連絡いたします。';
+        form.reset();
+      } else {
+        throw new Error('submit failed');
+      }
+    } catch {
+      status.className = 'form-status error';
+      status.textContent = isEN
+        ? 'Something went wrong. Please try again.'
+        : '送信に失敗しました。もう一度お試しください。';
+    } finally {
+      btn.disabled = false;
+    }
+  });
 })();

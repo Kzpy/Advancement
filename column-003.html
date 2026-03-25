@@ -37,26 +37,26 @@
       flex-wrap: wrap;
     }
     .article-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--blue-glow); }
-    .article-eyebrow a { color:var(--w40); text-decoration:none; transition:color .3s; }
+    .article-eyebrow a { color:var(--w25); text-decoration:none; transition:color .3s; }
     .article-eyebrow a:hover { color:var(--blue-glow); }
-    .article-eyebrow .sep { color:var(--w20); }
+    .article-eyebrow .sep { color:var(--w10); }
 
     /* Meta */
     .article-meta { display:flex; align-items:center; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
-    .article-date { font-family:var(--caps); font-size:.7rem; letter-spacing:.15em; color:var(--w40); }
+    .article-date { font-family:var(--caps); font-size:.7rem; letter-spacing:.15em; color:var(--w25); }
     .article-tag  { font-family:var(--caps); font-size:.62rem; letter-spacing:.18em; padding:4px 12px; border:1px solid rgba(255,160,0,.3); color:#fbbf24; }
-    .article-author { font-family:var(--caps); font-size:.65rem; letter-spacing:.14em; color:var(--w40); }
+    .article-author { font-family:var(--caps); font-size:.65rem; letter-spacing:.14em; color:var(--w25); }
 
     /* Title */
     .article-title {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: clamp(1.85rem, 4vw, 3rem);
       font-weight: 300;
       letter-spacing: -.01em;
       line-height: 1.3;
       margin-bottom: 48px;
       padding-bottom: 40px;
-      border-bottom: 1px solid var(--w15);
+      border-bottom: 1px solid var(--w10);
     }
 
     /* Lead */
@@ -70,24 +70,24 @@
     }
 
     /* Body */
-    .article-body { color:var(--w70); font-size:.95rem; line-height:2.1; }
+    .article-body { color:var(--w50); font-size:.95rem; line-height:2.1; }
     .article-body p { margin-bottom:28px; }
 
     .article-body h2 {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1.25rem;
       font-weight: 400;
       color: var(--w100);
       margin: 72px 0 20px;
       padding-top: 56px;
-      border-top: 1px solid var(--w15);
+      border-top: 1px solid var(--w10);
       display: flex;
       align-items: flex-start;
       gap: 12px;
     }
     .h2-num { font-family:var(--caps); font-size:.6rem; letter-spacing:.2em; color:var(--blue-glow); margin-top:5px; flex-shrink:0; }
 
-    .article-body h3 { font-family:var(--display); font-size:1.05rem; font-weight:500; color:var(--w90); margin:40px 0 16px; }
+    .article-body h3 { font-family:var(--serif); font-size:1.05rem; font-weight:500; color:var(--w80); margin:40px 0 16px; }
 
     .article-body ul { list-style:none; padding:0; margin-bottom:28px; }
     .article-body ul li { padding-left:1.6em; position:relative; margin-bottom:10px; }
@@ -98,7 +98,7 @@
       padding: 20px 28px;
       margin: 36px 0;
       background: rgba(0,50,180,.05);
-      color: var(--w70);
+      color: var(--w50);
       font-size: 1.05rem;
       line-height: 1.95;
       font-style: italic;
@@ -128,7 +128,7 @@
     .pg-col {
       padding: 28px 24px;
       background: rgba(255,255,255,.02);
-      border: 1px solid var(--w15);
+      border: 1px solid var(--w10);
     }
     .pg-col.old { border-color: rgba(100,100,120,.25); background: rgba(80,80,100,.03); }
     .pg-col.new { border-color: rgba(0,80,255,.25); background: rgba(0,50,180,.04); }
@@ -144,7 +144,7 @@
     .pg-col.new .pg-col-label { color: var(--blue-glow); }
     .pg-item {
       font-size: .83rem;
-      color: var(--w60);
+      color: var(--w50);
       line-height: 1.8;
       padding: 10px 0;
       border-bottom: 1px solid rgba(255,255,255,.04);
@@ -229,7 +229,7 @@
     }
     .org-note {
       font-size: .78rem;
-      color: var(--w40);
+      color: var(--w25);
       text-align: center;
       margin-top: 24px;
       font-style: italic;
@@ -303,17 +303,17 @@
       background: linear-gradient(90deg, transparent, rgba(0,80,255,.6), transparent);
     }
     .callout-quote-mark {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 4rem;
       line-height: .7;
       color: rgba(0,80,255,.15);
       margin-bottom: 16px;
     }
     .callout-quote-text {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1.3rem;
       font-weight: 300;
-      color: var(--w90);
+      color: var(--w80);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -347,7 +347,7 @@
       margin-bottom: 16px;
     }
     .action-box-title {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1.4rem;
       font-weight: 300;
       color: var(--w100);
@@ -356,7 +356,7 @@
     }
     .action-box p {
       font-size: .88rem;
-      color: var(--w60);
+      color: var(--w50);
       line-height: 1.95;
       margin: 0;
     }
@@ -365,7 +365,7 @@
     .author-box {
       margin-top: 80px;
       padding: 32px 36px;
-      border: 1px solid var(--w15);
+      border: 1px solid var(--w10);
       background: rgba(0,30,100,.07);
       display: flex;
       gap: 28px;
@@ -379,7 +379,7 @@
       flex-shrink: 0;
       font-family: var(--caps); font-size: .68rem; letter-spacing: .1em; color: var(--blue-glow);
     }
-    .author-name  { font-family:var(--display); font-size:1rem; font-weight:400; color:var(--w90); margin-bottom:6px; }
+    .author-name  { font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--w80); margin-bottom:6px; }
     .author-role  { font-family:var(--caps); font-size:.62rem; letter-spacing:.16em; color:var(--blue-glow); margin-bottom:12px; }
     .author-bio   { font-size:.83rem; color:var(--w50); line-height:1.8; }
 
@@ -387,7 +387,7 @@
     .article-footer {
       margin-top: 72px;
       padding-top: 48px;
-      border-top: 1px solid var(--w15);
+      border-top: 1px solid var(--w10);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -397,7 +397,7 @@
     .article-back {
       display: inline-flex; align-items: center; gap:10px;
       font-family: var(--caps); font-size:.72rem; letter-spacing:.2em;
-      color: var(--w40); text-decoration:none; transition:color .3s;
+      color: var(--w25); text-decoration:none; transition:color .3s;
     }
     .article-back::before { content:'←'; transition:transform .3s; }
     .article-back:hover { color:var(--blue-glow); }
@@ -405,7 +405,7 @@
 
     /* Lang */
     .lang-toggle-wrap { position:fixed; top:50%; right:32px; transform:translateY(-50%); z-index:600; display:flex; flex-direction:column; gap:8px; }
-    .lang-toggle-btn { font-family:var(--caps); font-size:.65rem; letter-spacing:.18em; background:rgba(5,9,18,.85); border:1px solid var(--w15); color:var(--w40); padding:8px 14px; cursor:pointer; transition:color .3s, border-color .3s; backdrop-filter:blur(12px); }
+    .lang-toggle-btn { font-family:var(--caps); font-size:.65rem; letter-spacing:.18em; background:rgba(5,9,18,.85); border:1px solid var(--w10); color:var(--w25); padding:8px 14px; cursor:pointer; transition:color .3s, border-color .3s; backdrop-filter:blur(12px); }
     .lang-toggle-btn.active { color:var(--blue-glow); border-color:rgba(0,80,255,.5); }
     .lang-toggle-btn:hover  { color:var(--blue-glow); border-color:rgba(0,80,255,.4); }
     [data-lang] { display:none; }
@@ -423,8 +423,6 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
-  <div class="cursor-dot"  id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
 
   <header class="header sticky" id="header">
     <a href="index.html" class="logo">Advancement</a>
@@ -477,8 +475,8 @@
 
         <p class="article-lead">
           前回の記事（<a href="column-002.html" style="color:var(--blue-glow); text-decoration:none;">AIを導入しても売上は伸びない。それでも、やらなければ終わる。</a>）では、AI導入が単なる「攻め」ではなく、データを蓄積して生き残るための「守り」であるとお話ししました。<br><br>
-          今回は、その一歩先。「じゃあ、AIをどう組織に組み込めばいいのか？」という、より実践的な<strong style="color:var(--w90);">「経営の再構築」</strong>の話をします。<br><br>
-          結論から言えば、これからの働き方は<strong style="color:var(--w90);">「1人で数千人のデジタル部下を率いる、軍団の指揮官」</strong>に変わります。
+          今回は、その一歩先。「じゃあ、AIをどう組織に組み込めばいいのか？」という、より実践的な<strong style="color:var(--w80);">「経営の再構築」</strong>の話をします。<br><br>
+          結論から言えば、これからの働き方は「1人で多数のAIエージェントを統括する、新しいマネジメントの形」に変わります。
         </p>
 
         <div class="article-body">
@@ -486,8 +484,8 @@
           <!-- ── Section 1 ── -->
           <h2><span class="h2-num">01 —</span>「AIを使う」から「AIを雇う」へのパラダイムシフト</h2>
 
-          <p>皆さんに問いかけたいことがあります。「AIを導入したら、少し効率が良くなる」——もしそんなふうに考えているとしたら、その認識は今日、この場で捨ててください。</p>
-          <p>それは、かつて「パソコンはただの高級な電卓だ」と言っていたのと同じ過失です。これから起きるのは、単なるソフトの導入ではありません。<strong style="color:var(--w90);">「人間ではない部下（AIエージェント）」を、数十人、数百人、数千人と抱えて働く時代への突入</strong>です。</p>
+          <p>皆さんに問いかけたいことがあります。「AIを導入したら、少し効率が良くなる」——しかし、その認識は更新が必要です。</p>
+          <p>かつて「パソコンは高級な電卓だ」と見なされた時代を思い出してください。同じ構造の過小評価が、今AIに対して起きています。これから起きるのは、単なるソフトの導入ではありません。<strong style="color:var(--w80);">「AIエージェント」を数十人、数百人と組織に組み込み、協働する時代への突入</strong>です。</p>
 
           <div class="paradigm-grid" id="paradigm-ja">
             <div class="pg-col old">
@@ -506,12 +504,12 @@
             </div>
           </div>
 
-          <p>これまでの「AIに質問して答えをもらう」という使い方は、いわば外部のコンサルにたまに電話するようなものです。これからのAIエージェントは違います。彼らはあなたの指示を完璧に理解し、文句も言わず、退職もせず、自社のノウハウをすべて吸収し続けて勝手に業務を完結させます。これを「ツール」と呼ぶのは、もはや不適切です。</p>
+          <p>これまでの「AIに質問して答えをもらう」という使い方は、いわば外部のコンサルにたまに電話するようなものです。これからのAIエージェントは違います。AIエージェントは、指示を正確に解釈し、自社のナレッジを継続的に学習しながら、業務を自律的に遂行します。これを「ツール」と呼ぶのは、もはや不適切です。</p>
 
           <!-- ── Section 2 ── -->
           <h2><span class="h2-num">02 —</span>組織図の「末端」がすべてAIに置き換わる日</h2>
 
-          <p>私が提唱している「業務の仕組み化」の視点から言えば、AIエージェントの登場は<strong style="color:var(--w90);">「組織図の再定義」</strong>を意味します。</p>
+          <p>私が提唱している「業務の仕組み化」の視点から言えば、AIエージェントの登場は<strong style="color:var(--w80);">「組織図の再定義」</strong>を意味します。</p>
           <p>これまでの組織はピラミッド型でした。一人のリーダーの下にマネージャーがいて、その下に実務を担うメンバーがいる。この構造の最大のボトルネックは、常に「人間のキャパシティ」と「コミュニケーションコスト」でした。</p>
           <p>しかし、AIエージェントが実用化された今、このピラミッドの底辺はすべてデジタル化されます。</p>
 
@@ -549,13 +547,13 @@
             </div>
           </div>
 
-          <p>リサーチ担当、カスタマーサポート担当、ルーチン分析担当のAIエージェントには給与も社会保険も必要ありません。必要なのは、稼働させるための計算リソース（APIコスト）だけ。つまり、<strong style="color:var(--w90);">「1人で大企業並みのインパクトを出す組織」</strong>が、理論上ではなく物理的に可能になったのです。</p>
+          <p>リサーチ担当、カスタマーサポート担当、ルーチン分析担当のAIエージェントには給与も社会保険も必要ありません。必要なのは計算リソース（API費用）のみ。少人数の組織が、従来の大企業に匹敵するオペレーション能力を持ち得る時代に入りました。</p>
 
           <!-- ── Section 3 ── -->
           <h2><span class="h2-num">03 —</span>指揮官に求められるのは「作業能力」ではなく「設計図」</h2>
 
           <p>AIが「部下」になると、リーダーであるあなたの仕事は劇的に変わります。もはや、あなたがExcelを叩いたり、メールの文面を考えたりしている暇はありません。</p>
-          <p>あなたの本当の仕事は、<strong style="color:var(--w90);">「どんな能力を持つAI部下を、どう組み合わせるか」という組織の設計（アーキテクチャ）</strong>になります。</p>
+          <p>あなたの本当の仕事は、<strong style="color:var(--w80);">「どんな能力を持つAI部下を、どう組み合わせるか」という組織の設計（アーキテクチャ）</strong>になります。</p>
 
           <div class="skill-spectrum" id="skill-ja">
             <div class="skill-spectrum-label">AI時代に求められるスキルの変化</div>
@@ -593,14 +591,14 @@
 
           <div class="highlight">
             <span class="hl-label">BPMの究極形</span>
-            これこそが、長年取り組んできた「BPM（ビジネスプロセス・マネジメント）」の究極形です。業務の流れを可視化し、どこにAIを配置すれば最大のパフォーマンスが出るか。どのデータを流し込めば、AI部下が「わが社らしい」判断をしてくれるか。<strong>この「業務の設計図」を描けるかどうかが、これからの経営者のスキルの差になります。</strong>
+            これこそが、長年取り組んできた「BPM（ビジネスプロセス・マネジメント）」の究極形です。業務の流れを可視化し、どこにAIを配置すれば最大のパフォーマンスが出るか。どのデータを流し込めば、AI部下が「わが社らしい」判断をしてくれるか。この「業務の設計図」を描けるかどうかが、これからの経営者のスキルの差になります。
           </div>
 
           <!-- ── Section 4 ── -->
           <h2><span class="h2-num">04 —</span>最後に残る、人間にしかできない「たった一つのこと」</h2>
 
           <p>「じゃあ、人間はいらなくなるのか？」——そう不安に思うかもしれません。しかし、答えは「逆」です。</p>
-          <p>数千人のAI部下がどんなに優秀でも、彼らは<strong style="color:var(--w90);">「意志」</strong>を持っていません。「なぜこのビジネスをやるのか」「顧客にどんな感動を届けたいのか」。こうした情熱やビジョン、そして最終的な「責任」は、人間にしか宿りません。</p>
+          <p>数千人のAI部下がどんなに優秀でも、彼らは<strong style="color:var(--w80);">「意志」</strong>を持っていません。「なぜこのビジネスをやるのか」「顧客にどんな感動を届けたいのか」。こうした情熱やビジョン、そして最終的な「責任」は、人間にしか宿りません。</p>
 
           <div class="callout-quote" id="callout-ja">
             <div class="callout-quote-mark">"</div>
@@ -615,9 +613,7 @@
 
           <p>AIエージェントを使いこなす側と、いまだに「便利な検索ツール」だと思っている側。この両者の間には、数年後、埋めようのない「戦力の差」が生まれます。</p>
 
-          <blockquote>
-            1人で竹槍を持って戦う騎士と、近代兵器を備えた軍隊が戦うようなものです。どちらが勝つかは、戦う前から決まっています。
-          </blockquote>
+          <p>この差は線形ではなく指数関数的に拡大します。データの蓄積量、プロセスの最適化度、組織の学習速度——すべてが複利で効いてくるからです。</p>
 
           <p>まずは、あなたの隣に「最初のデジタル部下」を一人置いてみてください。その部下にどんな仕事を任せ、どんな基準で判断させるか。その「対話」の積み重ねが、数年後にあなたを支える最強の軍団の礎になります。</p>
 
@@ -625,7 +621,7 @@
             <div class="action-box-eyebrow">Your First Action</div>
             <div class="action-box-title">あなたの「最初の部下」に、何を任せますか？</div>
             <p>
-              まず一つ、「この業務をAIに任せてみる」と決めてください。完璧な準備は必要ありません。最初の部下との対話を始めることで、あなたの軍団づくりはすでに始まっています。
+              まず一つ、「この業務をAIエージェントに委譲する」と決めてください。完璧な準備は不要です。最初のエージェントとの協働を通じて、組織の学習サイクルが動き始めます。
             </p>
           </div>
 
@@ -676,16 +672,16 @@
 
         <p class="article-lead">
           In the previous article (<a href="column-002.html" style="color:var(--blue-glow); text-decoration:none;">AI Adoption May Not Grow Your Revenue. And Yet — Not Doing It Will End You.</a>), I argued that AI investment is not about offense, but defense — accumulating data to survive.<br><br>
-          This article goes one step further: <em>how do you actually embed AI into your organization?</em> This is a conversation about <strong style="color:var(--w90);">the practical reconstruction of management itself.</strong><br><br>
-          The conclusion: the way we work is transforming into <strong style="color:var(--w90);">"one person commanding an army of thousands of digital subordinates."</strong>
+          This article goes one step further: <em>how do you actually embed AI into your organization?</em> This is a conversation about <strong style="color:var(--w80);">the practical reconstruction of management itself.</strong><br><br>
+          The conclusion: the way we work is transforming into "one person orchestrating multiple AI agents — a new form of management."
         </p>
 
         <div class="article-body">
 
           <h2><span class="h2-num">01 —</span>The Paradigm Shift: From "Using AI" to "Hiring AI"</h2>
 
-          <p>Let me ask you something directly. "If we introduce AI, we'll get a bit more efficient" — if that's how you're thinking, I want you to discard that framing right now.</p>
-          <p>It's the same mistake as saying "computers are just expensive calculators." What's coming is not a new software rollout. It's the arrival of an era where you manage <strong style="color:var(--w90);">dozens, hundreds, thousands of non-human subordinates — AI agents — as part of your daily work.</strong></p>
+          <p>Let me ask you something directly. "If we introduce AI, we'll get a bit more efficient" — however, that framing needs updating.</p>
+          <p>Recall the era when "computers are just expensive calculators" was a common dismissal. The same structural underestimation is now happening with AI. What's coming is not a new software rollout. It's the arrival of an era where you integrate <strong style="color:var(--w80);">dozens, even hundreds of AI agents into your organization as collaborative members of your workflow.</strong></p>
 
           <div class="paradigm-grid" id="paradigm-en">
             <div class="pg-col old">
@@ -704,11 +700,11 @@
             </div>
           </div>
 
-          <p>The old way — asking AI a question and receiving an answer — was like occasionally calling an outside consultant. AI agents are fundamentally different. They understand your instructions precisely, never complain, never resign, absorb all of your firm's institutional knowledge, and complete work autonomously. Calling this a "tool" is no longer appropriate.</p>
+          <p>The old way — asking AI a question and receiving an answer — was like occasionally calling an outside consultant. AI agents are fundamentally different. They interpret instructions accurately, continuously learn your organization's knowledge base, and execute tasks autonomously. Calling this a "tool" is no longer appropriate.</p>
 
           <h2><span class="h2-num">02 —</span>The Day AI Replaces Every Node at the Bottom of Your Org Chart</h2>
 
-          <p>From the lens of "business systematization" that I've long advocated, the rise of AI agents means <strong style="color:var(--w90);">a complete redefinition of the organizational chart.</strong></p>
+          <p>From the lens of "business systematization" that I've long advocated, the rise of AI agents means <strong style="color:var(--w80);">a complete redefinition of the organizational chart.</strong></p>
           <p>Traditional organizations were pyramidal — a leader atop, managers in the middle, execution staff at the base. The greatest bottleneck was always human capacity and the cost of communication.</p>
           <p>With AI agents now operational, the base of that pyramid is entirely digitized.</p>
 
@@ -743,12 +739,12 @@
             </div>
           </div>
 
-          <p>AI agents for research, customer support, and routine analysis require no salary or social insurance. Only compute resources — API costs. In other words, <strong style="color:var(--w90);">"an organization where one person delivers the impact of a large corporation"</strong> is now physically achievable, not merely theoretical.</p>
+          <p>AI agents for research, customer support, and routine analysis require no salary or social insurance. Only compute resources — API fees. Small teams can now possess operational capabilities rivaling those of large enterprises.</p>
 
           <h2><span class="h2-num">03 —</span>Commanders Don't Need Execution Skills — They Need Blueprints</h2>
 
           <p>When AI becomes your subordinate, your role as a leader changes dramatically. There is no longer time to be the one running the spreadsheets or drafting the emails yourself.</p>
-          <p>Your real job becomes <strong style="color:var(--w90);">organizational architecture — deciding what kinds of AI subordinates to deploy, and how to combine them.</strong></p>
+          <p>Your real job becomes <strong style="color:var(--w80);">organizational architecture — deciding what kinds of AI subordinates to deploy, and how to combine them.</strong></p>
 
           <div class="skill-spectrum" id="skill-en">
             <div class="skill-spectrum-label">How Required Skills Are Shifting in the AI Era</div>
@@ -786,13 +782,13 @@
 
           <div class="highlight">
             <span class="hl-label">The Ultimate Form of BPM</span>
-            This is the ultimate expression of Business Process Management — making workflows visible, identifying where AI placement creates maximum performance, and determining what data trains AI agents to make "our company's" judgments. <strong>Whether you can draw this "business blueprint" will define the gap between tomorrow's leaders.</strong>
+            This is the ultimate expression of Business Process Management — making workflows visible, identifying where AI placement creates maximum performance, and determining what data trains AI agents to make "our company's" judgments. Whether you can draw this "business blueprint" will define the gap between tomorrow's leaders.
           </div>
 
           <h2><span class="h2-num">04 —</span>The One Thing Left That Only Humans Can Do</h2>
 
           <p>"So are humans no longer needed?" You may feel that anxiety. But the answer is the opposite.</p>
-          <p>No matter how capable thousands of AI subordinates become, they carry no <strong style="color:var(--w90);">will</strong>. "Why does this business exist?" "What kind of experience do we want to create for customers?" The passion, the vision, and ultimately the <em>responsibility</em> — these can only live in humans.</p>
+          <p>No matter how capable thousands of AI subordinates become, they carry no <strong style="color:var(--w80);">will</strong>. "Why does this business exist?" "What kind of experience do we want to create for customers?" The passion, the vision, and ultimately the <em>responsibility</em> — these can only live in humans.</p>
 
           <div class="callout-quote" id="callout-en">
             <div class="callout-quote-mark">"</div>
@@ -806,9 +802,7 @@
 
           <p>Between those who master AI agents and those still treating AI as "a convenient search engine" — within a few years, an unbridgeable gap in capability will form.</p>
 
-          <blockquote>
-            It is like a lone warrior with a bamboo spear facing a modern military. The outcome is decided before the battle begins.
-          </blockquote>
+          <p>This gap does not grow linearly — it grows exponentially. Data accumulation, process optimization, organizational learning speed — all compound over time.</p>
 
           <p>Start by placing your "first digital subordinate" by your side. Decide what work to delegate. Set the standards for judgment. That ongoing dialogue is the foundation of the most capable team you will ever lead — years from now.</p>
 
@@ -816,7 +810,7 @@
             <div class="action-box-eyebrow">Your First Action</div>
             <div class="action-box-title">What will you assign to your first subordinate?</div>
             <p>
-              Start with one decision: "I will delegate this task to AI." No perfect preparation required. The moment you begin that dialogue with your first subordinate, you've already started building your army.
+              Start with one decision: "I will delegate this task to an AI agent." No perfect preparation needed. Through that first collaboration with an agent, your organization's learning cycle begins.
             </p>
           </div>
 
@@ -843,7 +837,7 @@
 
   <footer class="footer">
     <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
-      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <p class="ft-copy">© 2023–2026 Advancement Inc.</p>
       <div class="ft-policy">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>

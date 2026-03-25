@@ -45,12 +45,12 @@
       background: var(--blue-glow);
     }
     .article-eyebrow a {
-      color: var(--w40);
+      color: var(--w25);
       text-decoration: none;
       transition: color .3s;
     }
     .article-eyebrow a:hover { color: var(--blue-glow); }
-    .article-eyebrow .sep { color: var(--w20); }
+    .article-eyebrow .sep { color: var(--w10); }
 
     /* Meta */
     .article-meta {
@@ -64,7 +64,7 @@
       font-family: var(--caps);
       font-size: .7rem;
       letter-spacing: .15em;
-      color: var(--w40);
+      color: var(--w25);
     }
     .article-tag {
       font-family: var(--caps);
@@ -78,19 +78,19 @@
       font-family: var(--caps);
       font-size: .65rem;
       letter-spacing: .14em;
-      color: var(--w40);
+      color: var(--w25);
     }
 
     /* Title */
     .article-title {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: clamp(1.85rem, 4vw, 3rem);
       font-weight: 300;
       letter-spacing: -.01em;
       line-height: 1.3;
       margin-bottom: 48px;
       padding-bottom: 40px;
-      border-bottom: 1px solid var(--w15);
+      border-bottom: 1px solid var(--w10);
     }
 
     /* Lead sentence */
@@ -105,20 +105,20 @@
 
     /* Body */
     .article-body {
-      color: var(--w70);
+      color: var(--w50);
       font-size: .95rem;
       line-height: 2.1;
     }
     .article-body p { margin-bottom: 28px; }
 
     .article-body h2 {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1.3rem;
       font-weight: 400;
       color: var(--w100);
       margin: 64px 0 20px;
       padding-top: 64px;
-      border-top: 1px solid var(--w15);
+      border-top: 1px solid var(--w10);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -132,10 +132,10 @@
     }
 
     .article-body h3 {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1.05rem;
       font-weight: 500;
-      color: var(--w90);
+      color: var(--w80);
       margin: 40px 0 16px;
     }
 
@@ -182,7 +182,7 @@
       padding: 16px 24px;
       margin: 36px 0;
       background: rgba(0,50,180,.05);
-      color: var(--w60);
+      color: var(--w50);
       font-size: .9rem;
       line-height: 1.95;
       font-style: italic;
@@ -211,7 +211,7 @@
     .author-box {
       margin-top: 80px;
       padding: 32px 36px;
-      border: 1px solid var(--w15);
+      border: 1px solid var(--w10);
       background: rgba(0,30,100,.07);
       display: flex;
       gap: 28px;
@@ -234,10 +234,10 @@
     }
     .author-info {}
     .author-name {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: 1rem;
       font-weight: 400;
-      color: var(--w90);
+      color: var(--w80);
       margin-bottom: 6px;
     }
     .author-role {
@@ -257,7 +257,7 @@
     .article-footer {
       margin-top: 72px;
       padding-top: 48px;
-      border-top: 1px solid var(--w15);
+      border-top: 1px solid var(--w10);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -271,7 +271,7 @@
       font-family: var(--caps);
       font-size: .72rem;
       letter-spacing: .2em;
-      color: var(--w40);
+      color: var(--w25);
       text-decoration: none;
       transition: color .3s;
     }
@@ -295,8 +295,8 @@
       font-size: .65rem;
       letter-spacing: .18em;
       background: rgba(5,9,18,.85);
-      border: 1px solid var(--w15);
-      color: var(--w40);
+      border: 1px solid var(--w10);
+      color: var(--w25);
       padding: 8px 14px;
       cursor: pointer;
       transition: color .3s, border-color .3s;
@@ -319,9 +319,6 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
-  <div class="cursor-dot"  id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
-
   <header class="header sticky" id="header">
     <a href="index.html" class="logo">Advancement</a>
     <nav class="nav">
@@ -443,7 +440,7 @@
 
           <div class="highlight">
             <span class="hl-label">実践チェックリスト</span>
-            <strong>POC開始前に定義すべき3点：</strong><br>
+            POC開始前に定義すべき3点：<br>
             ① 解決対象の業務課題と現状の工数・コスト<br>
             ② 成功の定義（KGI/KPIと目標値）<br>
             ③ 横展開の判断基準（どのスコアで全社展開に移行するか）
@@ -461,8 +458,8 @@
             この三層を統合的に設計し直すことが、AIトランスフォーメーションの本質だと私は考えています。
           </p>
           <p>
-            Advancementでは、この「実装の壁」を越えるための支援を行っています。
-            課題感をお持ちの方は、ぜひ一度ご相談ください。
+            「実装の壁」は、戦略・組織・評価の三層を統合的に再設計することで越えられる。
+            技術の問題ではなく、経営の問題として捉え直すことが、第一歩です。
           </p>
 
         </div>
@@ -537,7 +534,7 @@
             AI must be designed not from "what technology can do," but by working backward from
             "which management challenge does this solve?" Without that, it cannot clear the
             organizational decision-making hurdles.
-            <strong>Holding a strategic hypothesis before POC begins is a prerequisite.</strong>
+            Holding a strategic hypothesis before POC begins is a prerequisite.
           </div>
 
           <h2><span class="h2-num">02 —</span> No Organizational Design: No Structure to Absorb Change</h2>
@@ -585,7 +582,7 @@
 
           <div class="highlight">
             <span class="hl-label">Practical Checklist</span>
-            <strong>Three things to define before a POC begins:</strong><br>
+            Three things to define before a POC begins:<br>
             ① The target business challenge and current man-hours / cost<br>
             ② The definition of success (KGI / KPI and target values)<br>
             ③ Rollout criteria (at what score does organization-wide deployment proceed?)
@@ -605,8 +602,9 @@
             of AI transformation.
           </p>
           <p>
-            At Advancement, we support organizations in breaking through precisely this implementation wall.
-            If any of this resonates with challenges you are facing, we welcome the opportunity to talk.
+            The implementation wall can be crossed by redesigning strategy, organization, and evaluation
+            as an integrated system. The first step is reframing this as a management challenge,
+            not a technology problem.
           </p>
 
         </div>
@@ -637,7 +635,7 @@
 
   <footer class="footer">
     <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
-      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <p class="ft-copy">© 2023–2026 Advancement Inc.</p>
       <div class="ft-policy">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>

@@ -481,6 +481,21 @@ body::after {
 }
 .ft-brand { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; letter-spacing: .2em; margin-bottom: 16px; }
 .ft-tagline { font-size: .92rem; color: var(--w25); line-height: 1.85; }
+.ft-corporate {
+  display: flex; gap: 56px; padding: 36px 0;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--w10);
+}
+.ft-corp-item { display: flex; flex-direction: column; gap: 6px; }
+.ft-corp-label {
+  font-family: var(--serif); font-size: .7rem;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); opacity: .7;
+}
+.ft-corp-value {
+  font-family: var(--sans); font-size: .85rem;
+  color: var(--w50); letter-spacing: .04em;
+}
 .ft-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .ft-col h4 {
   font-family: var(--sans); font-size: .78rem;
@@ -587,6 +602,7 @@ body::after {
   .track-grid     { grid-template-columns: 1fr; }
   .cred-grid      { grid-template-columns: 1fr; }
   .ft-links       { grid-template-columns: 1fr; }
+  .ft-corporate   { flex-wrap: wrap; gap: 32px 48px; }
   .services-head  { flex-direction: column; align-items: flex-start; }
   .services-sub   { text-align: left; }
   .stat           { padding: 32px 24px; }

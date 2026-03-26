@@ -14,6 +14,9 @@
   <title>News & Column | Advancement</title>
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon_96x96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&display=swap">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Page Layout ── */
@@ -27,10 +30,10 @@
 
     /* Eyebrow */
     .page-eyebrow {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .68rem;
       letter-spacing: .28em;
-      color: var(--blue-glow);
+      color: var(--gold);
       margin-bottom: 24px;
       display: flex;
       align-items: center;
@@ -41,25 +44,25 @@
       display: block;
       width: 28px;
       height: 1px;
-      background: var(--blue-glow);
+      background: var(--gold);
     }
 
     /* Page title */
     .page-title {
-      font-family: var(--display);
+      font-family: var(--serif);
       font-size: clamp(2.4rem, 5vw, 4rem);
       font-weight: 300;
       letter-spacing: -.01em;
       margin-bottom: 16px;
     }
     .page-desc {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .75rem;
       letter-spacing: .12em;
-      color: var(--w40);
+      color: var(--w25);
       margin-bottom: 64px;
       padding-bottom: 48px;
-      border-bottom: 1px solid var(--w15);
+      border-bottom: 1px solid var(--w10);
     }
 
     /* ── Filter tabs ── */
@@ -70,20 +73,20 @@
       flex-wrap: wrap;
     }
     .filter-btn {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .62rem;
       letter-spacing: .2em;
       padding: 8px 20px;
-      border: 1px solid var(--w15);
+      border: 1px solid var(--w10);
       background: transparent;
-      color: var(--w40);
+      color: var(--w25);
       cursor: pointer;
       transition: color .3s, border-color .3s, background .3s;
     }
     .filter-btn:hover,
     .filter-btn.active {
-      color: var(--blue-glow);
-      border-color: rgba(0,80,255,.5);
+      color: var(--gold);
+      border-color: rgba(184,150,90,.5);
       background: rgba(0,50,200,.07);
     }
 
@@ -91,7 +94,7 @@
     .article-list { list-style: none; }
 
     .article-li {
-      border-bottom: 1px solid var(--w15);
+      border-bottom: 1px solid var(--w10);
       opacity: 0;
       transform: translateY(18px);
       transition: opacity .55s var(--ease), transform .55s var(--ease);
@@ -110,25 +113,25 @@
     .article-row:hover { padding-left: 18px; }
 
     .ar-date {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .76rem;
       letter-spacing: .06em;
-      color: var(--w40);
+      color: var(--w25);
     }
 
     .ar-tag {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .6rem;
       letter-spacing: .14em;
       text-transform: uppercase;
       padding: 5px 12px;
-      border: 1px solid var(--w15);
-      color: var(--w40);
+      border: 1px solid var(--w10);
+      color: var(--w25);
       text-align: center;
       white-space: nowrap;
     }
-    .ar-tag.column { border-color: rgba(255,160,0,.3);  color: #fbbf24; }
-    .ar-tag.press  { border-color: rgba(0,160,255,.3);  color: var(--blue-glow); }
+    .ar-tag.column { border-color: rgba(184,150,90,.3);  color: var(--gold); }
+    .ar-tag.press  { border-color: rgba(184,150,90,.3);  color: var(--gold); }
     .ar-tag.event  { border-color: rgba(120,80,255,.3); color: #a78bfa; }
 
     .ar-body {}
@@ -140,35 +143,35 @@
       margin-bottom: 6px;
       transition: color .3s;
     }
-    .article-row:hover .ar-title { color: var(--blue-glow); }
+    .article-row:hover .ar-title { color: var(--gold); }
     .ar-excerpt {
       font-size: .8rem;
-      color: var(--w40);
+      color: var(--w25);
       line-height: 1.7;
     }
 
     .ar-arr {
-      color: var(--w15);
+      color: var(--w10);
       transition: color .3s, transform .3s;
       font-size: .9rem;
     }
-    .article-row:hover .ar-arr { color: var(--blue-glow); transform: translateX(4px); }
+    .article-row:hover .ar-arr { color: var(--gold); transform: translateX(4px); }
 
     /* ── Back link ── */
     .page-back {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .72rem;
       letter-spacing: .2em;
-      color: var(--w40);
+      color: var(--w25);
       text-decoration: none;
       margin-top: 72px;
       transition: color .3s;
     }
     .page-back::before { content: '←'; transition: transform .3s; }
-    .page-back:hover { color: var(--blue-glow); }
+    .page-back:hover { color: var(--gold); }
     .page-back:hover::before { transform: translateX(-4px); }
 
     /* ── Lang toggle (same as other pages) ── */
@@ -183,19 +186,19 @@
       gap: 8px;
     }
     .lang-toggle-btn {
-      font-family: var(--caps);
+      font-family: var(--sans);
       font-size: .65rem;
       letter-spacing: .18em;
       background: rgba(5,9,18,.85);
-      border: 1px solid var(--w15);
-      color: var(--w40);
+      border: 1px solid var(--w10);
+      color: var(--w25);
       padding: 8px 14px;
       cursor: pointer;
       transition: color .3s, border-color .3s;
       backdrop-filter: blur(12px);
     }
-    .lang-toggle-btn.active { color: var(--blue-glow); border-color: rgba(0,80,255,.5); }
-    .lang-toggle-btn:hover  { color: var(--blue-glow); border-color: rgba(0,80,255,.4); }
+    .lang-toggle-btn.active { color: var(--gold); border-color: rgba(184,150,90,.5); }
+    .lang-toggle-btn:hover  { color: var(--gold); border-color: rgba(184,150,90,.4); }
 
     [data-lang]         { display: none; }
     [data-lang].visible { display: block; }
@@ -219,15 +222,13 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
-  <div class="cursor-dot"  id="cursor-dot"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
 
   <header class="header sticky" id="header">
     <a href="index.html" class="logo">Advancement</a>
     <nav class="nav">
       <a href="index.html#about"    class="nav-link">Philosophy</a>
       <a href="index.html#services" class="nav-link">Services</a>
-      <a href="news.html"           class="nav-link" style="color:var(--blue-glow);">News</a>
+      <a href="news.html"           class="nav-link" style="color:var(--gold);">News</a>
       <a href="index.html#contact"  class="nav-cta"><span>Contact</span></a>
     </nav>
     <button class="nav-hamburger" id="hamburger" aria-label="menu">
@@ -271,7 +272,7 @@
               <span class="ar-date">2026.03.09</span>
               <span class="ar-tag column">Column</span>
               <span class="ar-body">
-                <span class="ar-title">AIを信じるな。「仕組み」を信じろ。</span>
+                <span class="ar-title">技術に依存するな。「仕組み」に投資せよ。</span>
                 <span class="ar-excerpt">特定のAIツールに心中してはいけない。あなたが守るべきは「最新のAI」ではなく、自社の「業務フロー」と「組織データ」そのものだ。</span>
               </span>
               <span class="ar-arr">→</span>
@@ -284,7 +285,7 @@
               <span class="ar-date">2026.03.04</span>
               <span class="ar-tag column">Column</span>
               <span class="ar-body">
-                <span class="ar-title">AIは「ツール」じゃない。今日からあなたの「部下」になる。</span>
+                <span class="ar-title">AIエージェント時代の組織設計</span>
                 <span class="ar-excerpt">AIエージェントは「道具」ではなく「部下」だ。1人で数千人のデジタル部下を率いる指揮官へ——組織の再設計と、人間にしか残らない役割を論じる。</span>
               </span>
               <span class="ar-arr">→</span>
@@ -297,7 +298,7 @@
               <span class="ar-date">2026.03.01</span>
               <span class="ar-tag column">Column</span>
               <span class="ar-body">
-                <span class="ar-title">AIを導入しても、売上は伸びないかもしれない。それでも、やらなければ終わる。</span>
+                <span class="ar-title">AI投資の本質——売上ではなく、競争基盤の防衛</span>
                 <span class="ar-excerpt">「AIで売上が上がる」は胡散臭い——その感覚は正しい。それでもAIへの投資を先送りすることが経営リスクである理由を、データ蓄積の複利効果から解説する。</span>
               </span>
               <span class="ar-arr">→</span>
@@ -425,7 +426,7 @@
 
   <footer class="footer">
     <div class="ft-bot" style="padding-top:0; border-top:1px solid rgba(255,255,255,0.07);">
-      <p class="ft-copy">© 2023 Advancement Inc. All rights reserved.</p>
+      <p class="ft-copy">© 2023–2026 Advancement Inc.</p>
       <div class="ft-policy">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Use</a>

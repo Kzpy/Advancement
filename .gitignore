@@ -1,0 +1,9 @@
+# Internal / private files — DO NOT push to public repo
+SKILL/
+.claude/
+アーカイブ/
+
+# Environment / secrets
+.env
+*.local
+credentials*

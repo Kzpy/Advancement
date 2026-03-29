@@ -85,7 +85,9 @@ body::after {
 .logo {
   font-family: var(--serif); font-weight: 600;
   font-size: 1.25rem; letter-spacing: .2em;
+  display: inline-flex; align-items: center; gap: 8px;
 }
+.logo-mark { flex-shrink: 0; }
 .nav { display: flex; align-items: center; gap: 48px; }
 .nav-link {
   font-family: var(--sans); font-size: .82rem; font-weight: 400;
